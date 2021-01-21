@@ -1,0 +1,22 @@
+{
+  "name": "warriors-bot",
+  "version": "2.0.0",
+  "description": "Upgrade du Warriors Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warriors-Army/warriors-bot-upgrade.git"
+  },
+  "author": "Mizari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Warriors-Army/warriors-bot-upgrade/issues"
+  },
+  "homepage": "https://github.com/Warriors-Army/warriors-bot-upgrade#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
