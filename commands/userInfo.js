@@ -27,9 +27,9 @@ module.exports = (client, msg) => {
       .addField("Arrivé sur le serveur", `${dateJ}`, true)
       .addField("Arrivé sur discord", `${dateC}`, true)
 
-    if (msg.guild.id === "645239930896908293") { //585906194724552706
+    if (msg.guild.id === "585906194724552706") {
       var warrior = "";
-      if (mbr.roles.cache.find(rl => rl.id == "703243368335147058")) {
+      if (mbr.roles.cache.find(rl => rl.id == "643209189971329083")) {
         warrior = "YEP! 😎";
       }else {
         warrior = "NOPE! 😭";
