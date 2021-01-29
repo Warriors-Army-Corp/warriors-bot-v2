@@ -17,8 +17,6 @@ module.exports = (client, msg) => {
       perm = "Member";
     }
 
-    console.log(mbr.roles.highest.color);
-
     var userEmbed = new MessageEmbed()
       .setColor(mbr.roles.highest.color)
       .setFooter(`user ID : ${mbr.id} | ${client.MARQUE}`, client.THUMB)
@@ -29,15 +27,15 @@ module.exports = (client, msg) => {
       .addField("Arrivé sur le serveur", `${dateJ}`, true)
       .addField("Arrivé sur discord", `${dateC}`, true)
 
-    /*if (msg.guild.id === "645239930896908293") { //585906194724552706
+    if (msg.guild.id === "645239930896908293") { //585906194724552706
       var warrior = "";
-      if (mbr.roles.cache.find("id", "703243368335147058")) {
+      if (mbr.roles.cache.find(rl => rl.id == "703243368335147058")) {
         warrior = "YEP! 😎";
       }else {
         warrior = "NOPE! 😭";
       }
       userEmbed.addField("Est ce que c'est un warrior?", warrior, true)
-    }*/
+    }
     return userEmbed;
   }
 
