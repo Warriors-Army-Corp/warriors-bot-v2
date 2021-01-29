@@ -12,11 +12,11 @@ module.exports = (client, msg) => {
     .addField("`roleInfo [role]`", "affiche des infos sur un role")
     .addField("`roulette`", "testez votre chance avec notre jeu de la roulette russe :D")
 
-  if (msg.author.hasPermission('MANAGE_MESSAGES')) {
-    helpEmbed.addField("clear [nombre]", "supprime un nombre de messages défini");
+  if (msg.member.hasPermission('MANAGE_MESSAGES')) {
+    helpEmbed.addField("`clear [nombre]`", "supprime un nombre de messages défini");
   }
 
-  if (msg.author.hasPermission('BAN_MEMBERS')) {
+  if (msg.member.hasPermission('BAN_MEMBERS')) {
     helpEmbed.addField("`banhammer [ping]`", "fou un énorme coup de banhammer sur la gueule de la personne ping :fire:");
   }
 
