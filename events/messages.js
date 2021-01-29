@@ -8,9 +8,9 @@ module.exports = (client, msg) => {
   console.log(`Auteur : ${msg.author.tag}`);
   console.log(`Commande : ${cmd}`);
   console.log(`Liste des arguments : ${args}`);
-  console.log("-----------------");
+  console.log("-----------------\n");
 
 
 
-  if (client.commands.has(cmd)) client.commands.get(cmd)(client, msg, args); //si la commande existe, on éxécute le script correspondant
+  if (client.commands.has(cmd)) client.commands.get(cmd).cmd(client, msg, args); //si la commande existe, on éxécute le script correspondant
 }

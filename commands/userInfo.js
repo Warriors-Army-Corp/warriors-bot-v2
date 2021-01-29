@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 
-module.exports = (client, msg) => {
+exports.cmd = (client, msg) => {
   //fonction pour l'embed
   function userEmbedF(author, avatar, mbr) {
     var dateJ = require('../fonctions/date.js')(mbr.joinedAt);
@@ -60,4 +60,11 @@ module.exports = (client, msg) => {
     var self = msg.member;
     msg.channel.send(userEmbedF(author, avatar, self));
   }
+}
+
+
+exports.help = {
+  perm: "SEND_MESSAGES",
+  cmd: "userInfo ([ping])",
+  desc: "Permet d'avoir quelques infos sur une personne."
 }
