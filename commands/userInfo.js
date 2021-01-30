@@ -17,15 +17,39 @@ exports.cmd = (client, msg) => {
       perm = "Member";
     }
 
-    var userEmbed = new MessageEmbed()
-      .setColor(mbr.roles.highest.color)
-      .setFooter(`user ID : ${mbr.id} | ${client.MARQUE}`, client.THUMB)
-      .setTitle(`INFO SUR LE MEMBRE **${author}**`)
-      .setThumbnail(avatar)
-      .addField("Status", perm, true)
-      .addField("Plus haut grade", mbr.roles.highest, true)
-      .addField("Arrivé sur le serveur", `${dateJ}`, true)
-      .addField("Arrivé sur discord", `${dateC}`, true)
+    var userEmbed = new MessageEmbed({
+      "title": `INFO SUR LE MEMBRE **${author}**`,
+      "color": mbr.roles.highest.color,
+      "footer": {
+        "icon_url": client.THUMB,
+        "text": `user ID : ${mbr.id} | ${client.MARQUE}`
+      },
+      "thumbnail": {
+        "url": avatar
+      },
+      "fields": [
+        {
+          "name": "Status",
+          "value": perm,
+          "inline": true
+        },
+        {
+          "name": "Plus haut grade",
+          "value": mbr.roles.highest,
+          "inline": true
+        },
+        {
+          "name": "Arrivé sur le serveur",
+          "value": `${dateJ}`,
+          "inline": true
+        },
+        {
+          "name": "Arrivé sur discord",
+          "value": `${dateC}`,
+          "inline": true
+        },
+      ]
+    });
 
     if (msg.guild.id === "585906194724552706") {
       var warrior = "";
