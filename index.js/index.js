@@ -15,7 +15,7 @@ client.commands.set(`clear`, require("../commands/clear.js"));
 // client.commands.set(`servinfo`, require("../commands/servInfo.js"));
 client.commands.set(`userinfo`, require("../commands/userInfo.js"));
 // client.commands.set(`roulette`, require("../commands/roulette.js"));
-// client.commands.set(`banhammer`, require("../commands/ban.js"));
+client.commands.set(`banhammer`, require("../commands/ban.js"));
 
 //appel des events
 client.on('ready', () => require('../events/ready.js')(client));
