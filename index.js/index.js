@@ -11,7 +11,7 @@ client.THUMB = "https://cdn.discordapp.com/emojis/594149233246863380.png";
 //appel des commandes
 client.commands.set(`help`, require("../commands/help.js"));
 client.commands.set(`clear`, require("../commands/clear.js"));
-// client.commands.set(`roleinfo`, require("../commands/roleInfo.js"));
+client.commands.set(`roleinfo`, require("../commands/roleInfo.js"));
 client.commands.set(`servinfo`, require("../commands/servInfo.js"));
 client.commands.set(`userinfo`, require("../commands/userInfo.js"));
 // client.commands.set(`roulette`, require("../commands/roulette.js"));
