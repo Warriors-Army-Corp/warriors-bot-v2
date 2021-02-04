@@ -2,7 +2,7 @@ const { MessageEmbed, WebhookClient } = require('discord.js');
 
 exports.cmd = (client, msg, args) => {
   const auteur = msg.member;
-  const hook = new WebhookClient('765193588241858602', 'q4pOyYociRycIEmzqCqiOc_PwMDJQs1ER6mt7HVxCzYXUblksCk9tbaDHGjyfyyWzSzj');
+  const hook = new WebhookClient('805089116559114241', 'SL7TWCCwMgsEW10BzMx75acfv85ThpcjOI5KLMPBrFHaglgQM3DZjky7jLtia9KqEeBx');
 
   if (auteur.hasPermission('BAN_MEMBERS')){
 
