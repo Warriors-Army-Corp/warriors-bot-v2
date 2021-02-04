@@ -65,7 +65,7 @@ exports.cmd = (client, msg, args) => {
 }
 
 exports.help = {
-  perm: "SEND_MESSAGES",
+  perm: "BAN_MEMBERS",
   cmd: "ban [ping] ([raison du ban])",
-  desc: "Permet d'afficher ce message."
+  desc: "Permet de bannir un membre."
 }
