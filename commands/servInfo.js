@@ -89,3 +89,9 @@ exports.cmd = (client, msg) => {
 
   msg.channel.send(servEmbed);
 }
+
+exports.help = {
+  perm: "SEND_MESSAGES",
+  cmd: "servInfo",
+  desc: "Permet d'avoir quelques infos sur le serveur."
+}
