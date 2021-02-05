@@ -19,3 +19,9 @@ exports.cmd = (client, msg) => {
     msg.reply("Je ne peux pas vous kick donc vous ne pouvez pas jouer... désolé Ô grand maître :person_bowing:")
   }
 }
+
+exports.help = {
+  perm: "SEND_MESSAGES",
+  cmd: "roulette",
+  desc: "Permet de jouer à la roulette russe."
+}
