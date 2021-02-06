@@ -1,7 +1,6 @@
 const Discord = require('discord.js'); //appeler la bibliothèque discord
 const client = new Discord.Client(); //création du client
 client.commands = new Discord.Collection(); //création d'une collection pour répertorier les commandes
-const { TOKEN } = require('../config'); //token stocké dans un autre fichier
 
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
@@ -23,6 +22,6 @@ client.commands.set(`ban`, require("../commands/ban.js"));
 client.on('ready', () => require('../events/ready.js')(client));
 client.on('message', msg => require('../events/messages.js')(client, msg));
 
-client.login(TOKEN); //connexion
+client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
 client.on('warn', console.warn); //affichage des warns Discord dans la console
