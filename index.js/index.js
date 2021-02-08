@@ -4,7 +4,7 @@ client.commands = new Discord.Collection(); //création d'une collection pour r�
 
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
-client.MARQUE = "Warriors' Bot official";
+client.MARQUE = "Warriors Bot official";
 client.THUMB = "https://cdn.discordapp.com/emojis/594149233246863380.png";
 //pour la roulette
 client.ROULETTE = 6;
