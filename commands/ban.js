@@ -19,9 +19,9 @@ exports.cmd = (client, msg, args) => {
             dm.send(`Vous avez été frappé par le banhammer, asséné part ${msg.author.tag}, pour la raison : "${reason}".`).then(
               member.ban({ reason: `${msg.author.tag} a banni ${victime} pour la raison : ${reason}`}).then(
                 msg.channel.send(`${victime} s'est prit un violent coup de banhammer sur la tête de la part de ${msg.author}`).then(
-                  hook.send({
-                    "embeds": [
-                      {
+                  if(msg.guild.id === "585906194724552706"){
+                    hook.send({
+                      "embeds": [{
                         "title": "NOUVEAU BAN",
                         "color": 16711680,
                         "author": {
@@ -31,19 +31,17 @@ exports.cmd = (client, msg, args) => {
                         "thumbnail": {
                           "url": user.displayAvatarURL()
                         },
-                        "fields": [
-                          {
-                            "name": "Victime",
-                            "value": victime
-                          },
-                          {
-                            "name": "Raison",
-                            "value": reason
-                          }
-                        ]
-                      }
-                    ]
-                  }).catch(console.error("pas réussi à evoyer le webhook")), console.error("pas réussi à envoyer la confirmation dans le salon")
+                        "fields": [{
+                          "name": "Victime",
+                          "value": victime
+                        },
+                        {
+                          "name": "Raison",
+                          "value": reason
+                        }]
+                      }]
+                    }).catch(console.error("pas réussi à evoyer le webhook")), console.error("pas réussi à envoyer la confirmation dans le salon")
+                  }
                 ), console.error("pas réussi à ban")
               ), console.error("pas réussi à envoyer de message")
             )
