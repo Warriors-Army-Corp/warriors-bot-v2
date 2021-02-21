@@ -1,4 +1,4 @@
-# Warriors' Bot
+# Warriors Bot
 Le bot des Warriors, 100% dev par la communauté
 
 ## Comment participer au développement du bot ?
