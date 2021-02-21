@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Warriors-Army/warriors-bot-upgrade.git"
+    "url": "git+https://github.com/Warriors-Army/warriors-bot-v2.git"
   },
   "author": "Mizari",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Warriors-Army/warriors-bot-upgrade/issues"
+    "url": "https://github.com/Warriors-Army/warriors-bot-v2/issues"
   },
-  "homepage": "https://github.com/Warriors-Army/warriors-bot-upgrade#readme",
+  "homepage": "https://github.com/Warriors-Army/warriors-bot-v2#readme",
   "dependencies": {
     "discord.js": "^12.5.1"
   }
