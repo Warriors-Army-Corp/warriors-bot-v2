@@ -41,6 +41,8 @@ for(const file of cmdFiles){
 client.on('ready', () => require('../events/ready.js')(client));
 client.on('message', msg => require('../events/messages.js')(client, msg));
 
+
+
 client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
 client.on('warn', console.warn); //affichage des warns Discord dans la console
