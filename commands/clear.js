@@ -8,6 +8,7 @@ exports.cmd = (client, msg, args) => {
 
 exports.help = {
   perm: "MANAGE_MESSAGES",
-  cmd: "clear [nombre]",
+  cmd: "clear",
+  args: "[nombre]",
   desc: "Permet de supprimer un grand nombre de messages."
 }

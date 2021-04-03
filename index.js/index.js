@@ -2,6 +2,27 @@ const Discord = require('discord.js'); //appeler la bibliothèque discord
 const client = new Discord.Client(); //création du client
 client.commands = new Discord.Collection(); //création d'une collection pour répertorier les commandes
 
+const fs = require('fs'); //pour les commands handler
+
+//modification de la class GuildMember
+Discord.Structures.extend('GuildMember', GuildMember => {
+  class GuildMemberV2 extends GuildMember {
+    pending = false;
+
+    constructor(client, data, guild) {
+      super(client, data, guild);
+      this.pending = data.pending;
+    }
+
+    _patch(data) {
+        super._patch(data);
+        this.pending = data.pending;
+    }
+  }
+
+  return GuildMemberV2;
+});
+
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
 client.MARQUE = "Warriors Bot official";
@@ -10,13 +31,11 @@ client.THUMB = "https://cdn.discordapp.com/emojis/594149233246863380.png";
 client.ROULETTE = 6;
 
 //appel des commandes
-client.commands.set(`help`, require("../commands/help.js"));
-client.commands.set(`clear`, require("../commands/clear.js"));
-client.commands.set(`roleinfo`, require("../commands/roleInfo.js"));
-client.commands.set(`servinfo`, require("../commands/servInfo.js"));
-client.commands.set(`userinfo`, require("../commands/userInfo.js"));
-client.commands.set(`roulette`, require("../commands/roulette.js"));
-client.commands.set(`ban`, require("../commands/ban.js"));
+const cmdFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); //lire les fichiers dans le dossier commands
+for(const file of cmdFiles){
+  const cmd = require(`../commands/${file}`); //récupère le fichier
+  client.commands.set(cmd.help.cmd.toLowerCase(), cmd); //stack le fichier dans la collection
+}
 
 //appel des events
 client.on('ready', () => require('../events/ready.js')(client));
