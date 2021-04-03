@@ -24,5 +24,6 @@ exports.cmd = async (client, msg) => {
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "roulette",
+  args: "",
   desc: "Permet de jouer à la roulette russe."
 }

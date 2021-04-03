@@ -19,7 +19,7 @@ exports.cmd = (client, msg) => {
 
     var userEmbed = new MessageEmbed({
       "title": `INFO SUR LE MEMBRE **${author}**`,
-      "color": mbr.roles.highest.color,
+      "color": mbr.displayColor,
       "footer": {
         "icon_url": client.THUMB,
         "text": `user ID : ${mbr.id} | ${client.MARQUE}`
@@ -48,6 +48,11 @@ exports.cmd = (client, msg) => {
           "value": `${dateC}`,
           "inline": true
         },
+        {
+          "name": "Bot ?",
+          "value": mbr.user.bot?"✅":"❌",
+          "inline": true
+        }
       ]
     });
 
@@ -89,6 +94,7 @@ exports.cmd = (client, msg) => {
 
 exports.help = {
   perm: "SEND_MESSAGES",
-  cmd: "userInfo ([ping])",
+  cmd: "userInfo",
+  args: "([ping])",
   desc: "Permet d'avoir quelques infos sur une personne."
 }
