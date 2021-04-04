@@ -3,7 +3,7 @@ module.exports = (client) => {
 
   var count = 0;
   setInterval(() => {
-    if(count > 2)
+    if(count > 3)
       count = 0;
     switch (count) {
       case 0:
@@ -15,6 +15,8 @@ module.exports = (client) => {
       case 2:
         client.user.setActivity(`${client.MARQUE} | ${client.PREFIX}help`, {type: 'PLAYING'});
         break;
+      case 3:
+        client.user.setActivity("WAC song", {type: 'LISTENING'});
         break;
       default:
         console.log("y a un problème chef");
