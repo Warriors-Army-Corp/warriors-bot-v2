@@ -26,7 +26,7 @@ Discord.Structures.extend('GuildMember', GuildMember => {
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
 client.MARQUE = "Warriors Bot official";
-client.THUMB = "https://cdn.discordapp.com/emojis/594149233246863380.png";
+client.THUMB = "https://cdn.discordapp.com/emojis/823254034654822401.png";
 //pour la roulette
 client.ROULETTE = 6;
 
@@ -40,6 +40,7 @@ for(const file of cmdFiles){
 //appel des events
 client.on('ready', () => require('../events/ready.js')(client));
 client.on('message', msg => require('../events/messages.js')(client, msg));
+client.on('guildMemberUpdate', (oldMember, newMember) => require('../events/guildMemberUpdate.js')(oldMember, newMember));
 
 client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
