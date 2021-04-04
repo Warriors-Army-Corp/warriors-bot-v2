@@ -29,7 +29,7 @@ exports.cmd = (client, msg) => {
       },
       "fields": [
         {
-          "name": "Status",
+          "name": "Statut",
           "value": perm,
           "inline": true
         },
@@ -59,11 +59,11 @@ exports.cmd = (client, msg) => {
     if (msg.guild.id === "585906194724552706") {
       var warrior = "";
       if (mbr.roles.cache.find(rl => rl.id == "643209189971329083")) {
-        warrior = "YEP! 😎";
+        warrior = "✅";
       }else {
-        warrior = "NOPE! 😭";
+        warrior = "❌";
       }
-      userEmbed.addField("Est ce que c'est un warrior?", warrior, true)
+      userEmbed.addField("Warrior ?", warrior, true)
     }
     return userEmbed;
   }

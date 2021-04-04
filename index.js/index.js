@@ -26,7 +26,7 @@ Discord.Structures.extend('GuildMember', GuildMember => {
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
 client.MARQUE = "Warriors Bot official";
-client.THUMB = "https://cdn.discordapp.com/emojis/594149233246863380.png";
+client.THUMB = "https://cdn.discordapp.com/emojis/823254034654822401.png";
 //pour la roulette
 client.ROULETTE = 6;
 
