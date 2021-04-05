@@ -8,9 +8,7 @@ const { Menu } = require('discord.js-menu');
 exports.cmd = (client, msg, args) => {
   const pseudo = args.join("%20"); // on récupère le pseudo
 
-  console.log(pseudo);
-
-  // les options pour l'API
+  // les options pour l'API pour la première requête
   var options = {
     hostname: "api.www.root-me.org",
     path: "/auteurs?nom="+pseudo,
@@ -28,7 +26,21 @@ exports.cmd = (client, msg, args) => {
     });
 
     res.on('end', () => {
-      console.log(data);
+      var ids = []; // pour stacker les ids
+      var nums = [] // pour stocker les numéros
+      const json = JSON.parse(data)[0];
+      // on parcour le JSON pour récupérer les numéros
+      for (const num in json) {
+        nums.push(num|0);
+      }
+
+      // on stack les ids
+      for (var i = 0; i < nums.length; i++) {
+        ids.push(json[nums[i]].id_auteur);
+      }
+
+      console.log(ids);
+
     });
   // gestion d'erreur
   }).on('error', e => {
