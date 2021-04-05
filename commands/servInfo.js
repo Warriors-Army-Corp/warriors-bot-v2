@@ -36,7 +36,7 @@ exports.cmd = (client, msg) => {
 
   var servEmbed = new MessageEmbed({
     "title": `INFO SUR LE SERV **${msg.guild.name}**`,
-    "color": "#000001",
+    "color": msg.member.displayColor,
     "thumbnail": {
       "url": msg.guild.iconURL()
     },
