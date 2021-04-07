@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/Warriors-Army/warriors-bot-v2#readme",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "^12.5.3",
     "discord.js-menu": "^2.3.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1"
   }
 }
