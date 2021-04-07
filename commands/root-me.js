@@ -5,7 +5,7 @@ const { Menu } = require('discord.js-menu');
 // appel de fetch pour les requêtes
 const fetch = require('node-fetch');
 // récupération de la clé d'API
-const key = require("../config.json").ROOTME_KEY;
+const key = process.env.ROOTME_KEY;
 // importantion de la fonction pour afficher correctement un statut
 const statut = require('../fonctions/statutRootMe.js');
 
