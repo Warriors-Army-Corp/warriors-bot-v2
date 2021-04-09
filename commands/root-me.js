@@ -5,7 +5,7 @@ const { Menu } = require('discord.js-menu');
 // appel de fetch pour les requêtes
 const fetch = require('node-fetch');
 // récupération de la clé d'API
-const key = process.env.ROOTME_KEY;
+const key = require('../config.json').ROOTME_KEY;
 // importantion de la fonction pour afficher correctement un statut
 const statut = require('../fonctions/statutRootMe.js');
 
@@ -25,8 +25,17 @@ exports.cmd = async (client, msg, args) => {
     if (idsResp.error) {
       msg.channel.send("Cet utilisateur n'existe pas.");
     } else {
+
+      // conteur pour les pages
+      var nbPages = 0;
+      for (var i in idsResp) {
+        nbPages++;
+      }
+
+      var numPage = 0; // pour le numéro de la page
       // on parcour les IDs pour chopper les profils
       for (id in idsResp) {
+        numPage++; // compter les pages
         // 2e requête pour récupérer les infos des profils
         var profil = await fetch('https://api.www.root-me.org/auteurs/'+idsResp[id].id_auteur, {
           method: 'get',
@@ -40,7 +49,7 @@ exports.cmd = async (client, msg, args) => {
             "title": "Profil Root-Me de **"+profil.nom+"**",
             "color": 0,
             "footer": {
-              "text": "ID de l'utilisateur : "+idsResp[id].id_auteur,
+              "text": "ID de l'utilisateur : "+idsResp[id].id_auteur+"\t\t\tPage "+numPage+" sur "+nbPages,
               "icon_url": client.THUMB
             },
             "thumbnail": {
@@ -80,8 +89,8 @@ exports.cmd = async (client, msg, args) => {
             ]
           }),
           reactions: {
-            '◀': 'previous',
-            '▶': 'next'
+            '⬅️': 'previous',
+            '➡️': 'next'
           }
         }
         await embeds.push(embed);
