@@ -7,7 +7,7 @@ exports.cmd = (client, msg) => {
     "description": "Ce qu'il y a entre `[]` sont les arguments à écrire. Les `()` signifient que les arguments sont optionnels. Les `[]` et les `()` ne sont pas à écrire.",
     "color": msg.member.displayColor,
     "thumbnail": {
-      "url": "https://cdn.discordapp.com/emojis/395627468276367370.png?v=1"
+      "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
     },
     "footer": {
       "icon_url": client.THUMB,
