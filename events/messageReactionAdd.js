@@ -34,11 +34,11 @@ module.exports = async (messageReaction, user) => {
               await mbr.roles.add("700284813923451000");
               console.log("bébé : "+ stringToHex(emote));
               break;
-            case "‍\uD83E\uDDD2":
+            case "\ud83e\uddd2":
               await mbr.roles.add("700458610534383807");
               console.log("ados : "+ stringToHex(emote));
               break;
-            case "‍\uD83E\uDDD4":
+            case "\ud83e\uddd4":
               await mbr.roles.add("700458717761634315");
               console.log("vieux : "+ stringToHex(emote));
               break;
@@ -54,15 +54,15 @@ module.exports = async (messageReaction, user) => {
                 await mbr.roles.add("700665400320327680");
                 console.log("manga : "+ stringToHex(emote));
                 break;
-              case "‍\uD83C\uDFAE":
+              case "\ud83c\udfae":
                 await mbr.roles.add("700665299225149472");
                 console.log("jeux vidéo : "+ stringToHex(emote));
                 break;
-              case "‍\uD83D\uDD8C\uFE0F":
+              case "\ud83d\udd8c\ufe0f":
                 await mbr.roles.add("700665418691379262");
                 console.log("dessin : "+ stringToHex(emote));
                 break;
-              case "‍\u270D\uFE0F":
+              case "\u270d\ufe0f":
                 await mbr.roles.add("700665405772922960");
                 console.log("ecriture : "+ stringToHex(emote));
                 break;
@@ -74,7 +74,7 @@ module.exports = async (messageReaction, user) => {
                 await mbr.roles.add("725026216461205526");
                 console.log("hackeur : "+ emote);
                 break;
-              case "‍\uD83C\uDFB5":
+              case "\ud83c\udfb5":
                 await mbr.roles.add("806142199170727976");
                 console.log("musique : "+ stringToHex(emote));
                 break;
