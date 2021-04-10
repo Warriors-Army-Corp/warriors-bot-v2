@@ -13,7 +13,7 @@ module.exports = async (messageReaction, user) => {
     case "700738908765552652":
       if (["💂‍♀️", "💂‍♂️"].includes(emote)) {
         switch (emote) {
-          case "💂":
+          case "💂‍♀️":
             mbr.roles.remove("700676156885696514");
             break;
           case "💂‍♂️":
@@ -38,7 +38,7 @@ module.exports = async (messageReaction, user) => {
         }
         break;
         case "700741011042861127":
-          if (["🎎", "🎮", "🖌️", "✍️", "📖", "<:h4x0r:717763734835167273>", "🎵"].includes(emote)) {
+          if (["🎎", "🎮", "🖌️", "✍️", "📖", "h4x0r", "🎵"].includes(emote)) {
             switch (emote) {
               case "🎎":
                 mbr.roles.remove("700665400320327680");
@@ -55,7 +55,7 @@ module.exports = async (messageReaction, user) => {
               case "📖":
                 mbr.roles.remove("700665410441314354");
                 break;
-              case "‍<:h4x0r:717763734835167273>":
+              case "‍h4x0r":
                 mbr.roles.remove("725026216461205526");
                 break;
               case "‍🎵":
