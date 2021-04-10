@@ -2,6 +2,7 @@ module.exports = async (messageReaction, user) => {
   const msg = messageReaction.message; // le message qui a reçu la réaction
   const emote = messageReaction.emoji.name; // l'émote de la réaction
   const mbr = msg.guild.members.cache.get(user.id); // le membre qui réagit
+  const { stringToHex } = require("../fonctions/stringToHex.js");
   if (user.bot) return; // si l'utilisateur est un bot, on fait rien
   if (msg.guild.id !== "585906194724552706") return; // si on est pas sur le bon serv, on fait rien
 
@@ -15,10 +16,14 @@ module.exports = async (messageReaction, user) => {
         switch (emote) {
           case "\uD83D\uDC82\u200D\u2640\uFE0F":
             await mbr.roles.add("700676156885696514");
+            console.log("soldate : "+ stringToHex(emote));
             break;
           case "\uD83D\uDC82\u200D\u2642\uFE0F":
             await mbr.roles.add("700675718002114660");
+            console.log("soldat : "+ stringToHex(emote));
             break;
+          default:
+            console.log("sexe : "+ stringToHex(emote));
         }
       }
       break;
@@ -27,13 +32,18 @@ module.exports = async (messageReaction, user) => {
           switch (emote) {
             case "\uD83D\uDC76":
               await mbr.roles.add("700284813923451000");
+              console.log("bébé : "+ stringToHex(emote));
               break;
             case "‍\uD83E\uDDD2":
               await mbr.roles.add("700458610534383807");
+              console.log("ados : "+ stringToHex(emote));
               break;
             case "‍\uD83E\uDDD4":
               await mbr.roles.add("700458717761634315");
+              console.log("vieux : "+ stringToHex(emote));
               break;
+            default:
+              console.log("age : "+ stringToHex(emote));
           }
         }
         break;
@@ -42,25 +52,34 @@ module.exports = async (messageReaction, user) => {
             switch (emote) {
               case "\uD83C\uDF8E":
                 await mbr.roles.add("700665400320327680");
+                console.log("manga : "+ stringToHex(emote));
                 break;
               case "‍\uD83C\uDFAE":
                 await mbr.roles.add("700665299225149472");
+                console.log("jeux vidéo : "+ stringToHex(emote));
                 break;
               case "‍\uD83D\uDD8C\uFE0F":
                 await mbr.roles.add("700665418691379262");
+                console.log("dessin : "+ stringToHex(emote));
                 break;
               case "‍\u270D\uFE0F":
                 await mbr.roles.add("700665405772922960");
+                console.log("ecriture : "+ stringToHex(emote));
                 break;
               case "\uD83D\uDCD6":
                 await mbr.roles.add("700665410441314354");
+                console.log("livre : "+ stringToHex(emote));
                 break;
               case "h4x0r":
                 await mbr.roles.add("725026216461205526");
+                console.log("hackeur : "+ emote);
                 break;
               case "‍\uD83C\uDFB5":
                 await mbr.roles.add("806142199170727976");
+                console.log("musique : "+ stringToHex(emote));
                 break;
+              default:
+                console.log("activite : "+ stringToHex(emote));
             }
           }
           break;
@@ -69,5 +88,7 @@ module.exports = async (messageReaction, user) => {
             mbr.roles.add("643210975222300703");
           }
           break;
+        default:
+          console.log("rien : "+ stringToHex(emote));
   }
 }
