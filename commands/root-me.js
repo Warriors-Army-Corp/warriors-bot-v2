@@ -129,5 +129,5 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "root-me",
   args: "[pseudo Root-Me]",
-  desc: "Donne des infos sur un profil Root-ME."
+  desc: "Donne des infos sur un profil [Root-ME](https://www.root-me.org/)."
 }
