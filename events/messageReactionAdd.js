@@ -2,7 +2,7 @@ module.exports = async (messageReaction, user) => {
   const msg = messageReaction.message; // le message qui a reçu la réaction
   const emote = messageReaction.emoji.name; // l'émote de la réaction
   const mbr = msg.guild.members.cache.get(user.id); // le membre qui réagit
-  const { stringToHex } = require("../fonctions/stringToHex.js");
+  const stringToHex = require("../fonctions/stringToHex.js");
   if (user.bot) return; // si l'utilisateur est un bot, on fait rien
   if (msg.guild.id !== "585906194724552706") return; // si on est pas sur le bon serv, on fait rien
 
