@@ -13,10 +13,10 @@ module.exports = async (messageReaction, user) => {
     case "700738908765552652":
       if (["💂‍♀️", "💂‍♂️"].includes(emote)) {
         switch (emote) {
-          case "💂":
+          case "💂‍♀️":
             mbr.roles.add("700676156885696514");
             break;
-          case "💂‍♂️":
+          case "💂":
             mbr.roles.add("700675718002114660");
             break;
         }
@@ -38,7 +38,7 @@ module.exports = async (messageReaction, user) => {
         }
         break;
         case "700741011042861127":
-          if (["🎎", "🎮", "🖌️", "✍️", "📖", "<:h4x0r:717763734835167273>", "🎵"].includes(emote)) {
+          if (["🎎", "🎮", "🖌️", "✍️", "📖", "h4x0r", "🎵"].includes(emote)) {
             switch (emote) {
               case "🎎":
                 mbr.roles.add("700665400320327680");
@@ -49,13 +49,13 @@ module.exports = async (messageReaction, user) => {
               case "‍🖌️":
                 mbr.roles.add("700665418691379262");
                 break;
-              case "‍✍️":
+              case "‍‍✍️":
                 mbr.roles.add("700665405772922960");
                 break;
               case "📖":
                 mbr.roles.add("700665410441314354");
                 break;
-              case "‍<:h4x0r:717763734835167273>":
+              case "‍h4x0r":
                 mbr.roles.add("725026216461205526");
                 break;
               case "‍🎵":
@@ -70,5 +70,4 @@ module.exports = async (messageReaction, user) => {
           }
           break;
   }
-
 }
