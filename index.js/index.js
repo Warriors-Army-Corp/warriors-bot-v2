@@ -1,5 +1,5 @@
 const Discord = require('discord.js'); //appeler la bibliothèque discord
-const client = new Discord.Client(); //création du client
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); //création du client
 client.commands = new Discord.Collection(); //création d'une collection pour répertorier les commandes
 
 const fs = require('fs'); //pour les commands handler
@@ -41,6 +41,8 @@ for(const file of cmdFiles){
 client.on('ready', () => require('../events/ready.js')(client));
 client.on('message', msg => require('../events/messages.js')(client, msg));
 client.on('guildMemberUpdate', (oldMember, newMember) => require('../events/guildMemberUpdate.js')(oldMember, newMember));
+client.on('messageReactionAdd', (messageReaction, user) => require('../events/messageReactionAdd.js')(messageReaction, user));
+client.on('messageReactionRemove', (messageReaction, user) => require('../events/messageReactionRemove.js')(messageReaction, user));
 
 client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
