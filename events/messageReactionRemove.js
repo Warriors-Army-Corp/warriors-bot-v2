@@ -28,10 +28,10 @@ module.exports = async (messageReaction, user) => {
             case "\uD83D\uDC76":
               await mbr.roles.remove("700284813923451000");
               break;
-            case "‍\uD83E\uDDD2":
+            case "\ud83e\uddd2":
               await mbr.roles.remove("700458610534383807");
               break;
-            case "‍\uD83E\uDDD4":
+            case "\ud83e\uddd4":
               await mbr.roles.remove("700458717761634315");
               break;
           }
@@ -43,22 +43,22 @@ module.exports = async (messageReaction, user) => {
               case "\uD83C\uDF8E":
                 await mbr.roles.remove("700665400320327680");
                 break;
-              case "‍\uD83C\uDFAE":
+              case "\ud83c\udfae":
                 await mbr.roles.remove("700665299225149472");
                 break;
-              case "‍\uD83D\uDD8C\uFE0F":
+              case "\ud83d\udd8c\ufe0f":
                 await mbr.roles.remove("700665418691379262");
                 break;
-              case "‍\u270D\uFE0F":
+              case "\u270d\ufe0f":
                 await mbr.roles.remove("700665405772922960");
                 break;
               case "\uD83D\uDCD6":
                 await mbr.roles.remove("700665410441314354");
                 break;
-              case "‍h4x0r":
+              case "h4x0r":
                 await mbr.roles.remove("725026216461205526");
                 break;
-              case "‍\uD83C\uDFB5":
+              case "\ud83c\udfb5":
                 await mbr.roles.remove("806142199170727976");
                 break;
             }
