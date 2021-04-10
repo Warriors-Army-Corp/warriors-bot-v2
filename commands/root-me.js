@@ -22,7 +22,7 @@ exports.cmd = async (client, msg, args) => {
     var idsResp = await fetch('https://api.www.root-me.org/auteurs?nom='+pseudo, {
       method: 'get',
       headers: {cookie: 'api_key='+key}
-    }).then(res => res.json()).then(json => json[0]);
+    }).then(res => res.json()).then(json => json[0]).catch();
 
     // si il trouve pas d'user il prévient (le bot trop sympa quoi)
     if (idsResp.error) {
@@ -43,9 +43,9 @@ exports.cmd = async (client, msg, args) => {
         // pp du profil
         var img = "https://www.root-me.org/IMG/auton"+idUser+".jpg";
         // checker la pp du profil
-        var checkImg = await fetch(img);
+        var checkImg = await fetch(img).catch();
         if (!checkImg.ok) {
-          checkImg = await fetch("https://www.root-me.org/IMG/auton"+idUser+".png")
+          checkImg = await fetch("https://www.root-me.org/IMG/auton"+idUser+".png").catch();
           if (checkImg.ok) {
             img = "https://www.root-me.org/IMG/auton"+idUser+".png";
           } else {
@@ -58,7 +58,7 @@ exports.cmd = async (client, msg, args) => {
         var profil = await fetch('https://api.www.root-me.org/auteurs/'+idUser, {
           method: 'get',
           headers: {cookie: 'api_key='+key}
-        }).then(res => res.json());
+        }).then(res => res.json()).catch();
 
         // on créer les pages embeds des profils et on les stock
         var embed = await {
