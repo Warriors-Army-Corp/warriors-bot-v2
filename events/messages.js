@@ -8,6 +8,7 @@ module.exports = (client, msg) => {
   console.log(`Auteur : ${msg.author.tag}`);
   console.log(`Commande : ${cmd}`);
   console.log(`Liste des arguments : ${args}`);
+  console.log(`Sur le serveur : ${msg.guild.name}`);
   console.log("-----------------\n");
 
 
