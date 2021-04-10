@@ -35,7 +35,7 @@ exports.cmd = (client, msg, args) => {
         "title": `INFO SUR LE ROLE **${role.name}**`,
         "color": role.color,
         "thumbnail": {
-          "url": "https://media.discordapp.net/attachments/661396307973242894/830491748639572039/Capture_decran_2021-04-10_a_19.17.22.png?width=499&height=498"
+          "url": "https://media.discordapp.net/attachments/661396307973242894/830494635301273640/Capture_decran_2021-04-10_a_19.28.51.png?width=498&height=498"
         },
         "footer": {
           "icon_url": client.THUMB,
