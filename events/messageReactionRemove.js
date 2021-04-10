@@ -64,7 +64,7 @@ module.exports = async (messageReaction, user) => {
             }
           }
           break;
-        case "700738908765552652":
+        case "700772763123580978":
           if (emote === "🚩" && mbr.roles.cache.get("643209189971329083")) {
             mbr.roles.remove("643210975222300703");
           }
