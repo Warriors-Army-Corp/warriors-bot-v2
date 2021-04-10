@@ -13,6 +13,9 @@ exports.cmd = async (client, msg, args) => {
   var pseudo = args.join("%20"); // recontitution du pseudo
   var embeds = []; // initialisation du tableau qui contiendra les pages
 
+  // commence à écrire pour sinialer que la réponse arrive
+  msg.channel.startTyping();
+
   if (pseudo !== "") {
 
     // première requêtes pour chopper les IDs
@@ -25,26 +28,50 @@ exports.cmd = async (client, msg, args) => {
     if (idsResp.error) {
       msg.channel.send("Cet utilisateur n'existe pas.");
     } else {
+
+      // conteur pour les pages
+      var nbPages = 0;
+      for (var i in idsResp) {
+        nbPages++;
+      }
+
+      var numPage = 0; // pour le numéro de la page
       // on parcour les IDs pour chopper les profils
       for (id in idsResp) {
+        // id du profil
+        const idUser = idsResp[id].id_auteur;
+        // pp du profil
+        var img = "https://www.root-me.org/IMG/auton"+idUser+".jpg";
+        // checker la pp du profil
+        var checkImg = await fetch(img);
+        if (!checkImg.ok) {
+          checkImg = await fetch("https://www.root-me.org/IMG/auton"+idUser+".png")
+          if (checkImg.ok) {
+            img = "https://www.root-me.org/IMG/auton"+idUser+".png";
+          } else {
+            img = "https://www.root-me.org/IMG/auton0.png";
+          }
+        }
+
+        numPage++; // compter les pages
         // 2e requête pour récupérer les infos des profils
-        var profil = await fetch('https://api.www.root-me.org/auteurs/'+idsResp[id].id_auteur, {
+        var profil = await fetch('https://api.www.root-me.org/auteurs/'+idUser, {
           method: 'get',
           headers: {cookie: 'api_key='+key}
         }).then(res => res.json());
 
         // on créer les pages embeds des profils et on les stock
         var embed = await {
-          name: idsResp[id].id_auteur,
+          name: idUser,
           content: new MessageEmbed({
             "title": "Profil Root-Me de **"+profil.nom+"**",
             "color": 0,
             "footer": {
-              "text": "ID de l'utilisateur : "+idsResp[id].id_auteur,
+              "text": "ID de l'utilisateur : "+idUser+"\t\t\tPage "+numPage+" sur "+nbPages,
               "icon_url": client.THUMB
             },
             "thumbnail": {
-              "url": "https://media.discordapp.net/attachments/661396307973242894/828351018881253376/Root-Me.png"
+              "url": img
             },
             "fields": [
               {
@@ -80,8 +107,8 @@ exports.cmd = async (client, msg, args) => {
             ]
           }),
           reactions: {
-            '◀': 'previous',
-            '▶': 'next'
+            '⬅️': 'previous',
+            '➡️': 'next'
           }
         }
         await embeds.push(embed);
@@ -94,6 +121,8 @@ exports.cmd = async (client, msg, args) => {
   }else {
     msg.channel.send("Il faut me donner un pseudo pour que je puisse trouver quelqu'un.");
   }
+
+  msg.channel.stopTyping(true);
 }
 
 exports.help = {
