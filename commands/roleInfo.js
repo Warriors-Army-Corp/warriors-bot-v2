@@ -77,6 +77,6 @@ exports.cmd = (client, msg, args) => {
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "roleInfo",
-  args: "[role_name]",
+  args: "[nom du rôle]",
   desc: "Permet d'avoir quelques infos sur un rôle."
 }
