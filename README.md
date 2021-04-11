@@ -19,8 +19,11 @@ Vous pouvez proposer de nouvelles fonctionnalités dans les "Issues" ou alors co
 // appel des packages nécessaire
 exports.cmd = /*async si besoin*/ (client, msg, args) => {
   // code a executer
+  // client est le bot
+  // msg est le message
+  // args est la liste des paramètres donnés par l'utilisateur
   // exemple :
-  // msg.channel.send("Hello World !");
+  msg.channel.send("Hello World !");
 }
 
 exports.help = {
