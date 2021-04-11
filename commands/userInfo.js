@@ -95,6 +95,6 @@ exports.cmd = (client, msg) => {
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "userInfo",
-  args: "([ping])",
+  args: "([@ping])",
   desc: "Permet d'avoir quelques infos sur une personne."
 }
