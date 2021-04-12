@@ -1,11 +1,18 @@
 const { MessageEmbed } = require('discord.js');
+const getBadges = require('../fonctions/getBadges.js');
+const getRoles = require('../fonctions/getRoles.js');
+const formatDate = require('../fonctions/date.js');
 
-exports.cmd = (client, msg) => {
+exports.cmd = async (client, msg) => {
   //fonction pour l'embed
-  function userEmbedF(author, avatar, mbr) {
-    var dateJ = require('../fonctions/date.js')(mbr.joinedAt);
-    var dateC = require('../fonctions/date.js')(mbr.user.createdAt);
+  async function userEmbedF(name, avatar, mbr) {
+    var dateJ = formatDate(mbr.joinedAt);
+    var dateC = formatDate(mbr.user.createdAt);
     var perm = "";
+
+    // récupération des roles (pour raison obscure, la fonction renvoit une promesse au lieu de renvoyer les roles directement...)
+    var roles = "";
+    await getRoles(mbr.roles.cache).then(rls => roles = rls);
 
     if (mbr.id === msg.guild.ownerID) {
       perm = "Owner";
@@ -18,24 +25,34 @@ exports.cmd = (client, msg) => {
     }
 
     var userEmbed = new MessageEmbed({
-      "title": `INFO SUR LE MEMBRE **${author}**`,
+      "title": `INFOS SUR **${name}**`,
       "color": mbr.displayColor,
       "footer": {
         "icon_url": client.THUMB,
-        "text": `user ID : ${mbr.id} | ${client.MARQUE}`
+        "text": `${client.MARQUE}`
       },
       "thumbnail": {
         "url": avatar
       },
       "fields": [
         {
-          "name": "Statut",
-          "value": perm,
+          "name": "ID",
+          "value": mbr.id,
           "inline": true
         },
         {
-          "name": "Plus haut grade",
-          "value": mbr.roles.highest,
+          "name": "Pseudo",
+          "value": mbr.nickname!==null?mbr.nickname:"Aucun",
+          "inline": true
+        },
+        {
+          "name": "Badges",
+          "value": getBadges(mbr.user, mbr),
+          "inline": true
+        },
+        {
+          "name": "Statut",
+          "value": perm,
           "inline": true
         },
         {
@@ -49,8 +66,13 @@ exports.cmd = (client, msg) => {
           "inline": true
         },
         {
-          "name": "Bot ?",
-          "value": mbr.user.bot?"✅":"❌",
+          "name": "Boost",
+          "value": mbr.premiumSinceTimestamp>0?formatDate(mbr.premiumSince):"Ne boost pas",
+          "inline": true
+        },
+        {
+          "name": "Roles ("+(mbr.roles.cache.size - 1)+")",
+          "value": roles?roles:"Pas de rôles",
           "inline": true
         }
       ]
@@ -74,20 +96,20 @@ exports.cmd = (client, msg) => {
     const member = msg.guild.member(user);
     if (member) {
 
-      var author = user.username;
-      var avatar = user.avatarURL();
+      var name = user.username;
+      var avatar = user.avatarURL({dynamic: true});
 
-      msg.channel.send(userEmbedF(author, avatar, member));
+      msg.channel.send(await userEmbedF(name, avatar, member));
     }else {
       msg.reply("déso mais il est pas sur le serv lui :/")
     }
 
   //quand y en a pas
   }else{
-    var author = msg.author.username;
-    var avatar = msg.author.avatarURL();
+    var name = msg.author.username;
+    var avatar = msg.author.avatarURL({dynamic: true});
     var self = msg.member;
-    msg.channel.send(userEmbedF(author, avatar, self));
+    msg.channel.send(await userEmbedF(name, avatar, self));
   }
 }
 
