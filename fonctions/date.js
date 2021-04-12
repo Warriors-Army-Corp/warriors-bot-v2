@@ -1,4 +1,4 @@
-//exportation de la fonction
+//fonction pour formater les dates
 module.exports = function DATE(date){
   // jour
   var j = `${date.getDate()}`;
@@ -11,5 +11,6 @@ module.exports = function DATE(date){
   // année
   var a = `${date.getFullYear()}`;
 
+  // on renvoit le tout
   return `${j}/${m}/${a}`;
 }
