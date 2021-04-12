@@ -1,8 +1,8 @@
 module.exports = async function getRoles(roles) {
   allRoles = [];
-  await roles.each(rl => {
+  await roles.each(async rl => {
     if (rl.rawPosition !== 0) {
-      allRoles.push(`<@&${rl.id}>`);
+      await allRoles.push(`<@&${rl.id}>`);
     }
   });
   return allRoles.join(" ");
