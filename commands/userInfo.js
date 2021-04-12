@@ -72,8 +72,7 @@ exports.cmd = async (client, msg) => {
         },
         {
           "name": "Roles ("+(mbr.roles.cache.size - 1)+")",
-          "value": roles?roles:"Pas de rôles",
-          "inline": true
+          "value": roles?roles:"Pas de rôles"
         }
       ]
     });
