@@ -10,7 +10,7 @@ exports.cmd = async (client, msg, args) => {
       msg.channel.send({
         files: [{
           attachment: output,
-          name: 'qrcode.png'
+          name: 'WAC_QRcode.png'
         }]
       }).catch();
     });
