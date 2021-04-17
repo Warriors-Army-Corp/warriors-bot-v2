@@ -1,3 +1,7 @@
+/*
+ * author : Slapze
+ */
+
 const { MessageEmbed } = require("discord.js")
 const fetch = require("node-fetch");
 const date = require("../fonctions/date.js");
