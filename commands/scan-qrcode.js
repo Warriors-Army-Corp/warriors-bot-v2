@@ -23,7 +23,7 @@ exports.cmd = async (client, msg, args) => {
             return 1;
           }
 
-          msg.channel.send(value.result);
+          msg.channel.send(value.result, {disableMentions: "all"});
         }
         try {
           qr.decode(img.bitmap);
