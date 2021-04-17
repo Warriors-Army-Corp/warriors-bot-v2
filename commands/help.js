@@ -63,7 +63,7 @@ exports.cmd = (client, msg, args) => {
     });
 
     if (cmdHelp.author) {
-      helpEmbed.setFooter("co-développé avec "+cmdHelp.author);
+      helpEmbed.setFooter("co-développée avec "+cmdHelp.author);
     }
 
     msg.channel.send(helpEmbed);

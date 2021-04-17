@@ -25,7 +25,7 @@ exports.cmd = async (client, msg, args) => {
         "url": "https://i.imgur.com/7ypOKTa.jpg"
       },
       "footer": {
-        "text": "co-développé avec Slapze"
+        "text": "co-développée avec Slapze"
       },
       "fields": [
         {
