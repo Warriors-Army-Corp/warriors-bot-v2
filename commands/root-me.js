@@ -5,7 +5,7 @@ const { Menu } = require('discord.js-menu');
 // appel de fetch pour les requêtes
 const fetch = require('node-fetch');
 // récupération de la clé d'API
-const key = process.env.ROOTME_KEY;
+const key = require('../config.json').ROOTME_KEY;
 // importantion de la fonction pour afficher correctement un statut
 const statut = require('../fonctions/statutRootMe.js');
 
@@ -49,7 +49,12 @@ exports.cmd = async (client, msg, args) => {
           if (checkImg.ok) {
             img = "https://www.root-me.org/IMG/auton"+idUser+".png";
           } else {
-            img = "https://www.root-me.org/IMG/auton0.png";
+            checkImg = await fetch("https://www.root-me.org/IMG/auton"+idUser+".gif").catch();
+            if (checkImg) {
+              img = "https://www.root-me.org/IMG/auton"+idUser+".gif";
+            } else {
+              img = "https://www.root-me.org/IMG/auton0.png";
+            }
           }
         }
 
@@ -67,7 +72,7 @@ exports.cmd = async (client, msg, args) => {
             "title": "Profil Root-Me de **"+profil.nom+"**",
             "color": 0,
             "footer": {
-              "text": "ID de l'utilisateur : "+idUser+"\t\t\tPage "+numPage+" sur "+nbPages,
+              "text": "ID de l'utilisateur : "+idUser+"\t\t\t\t\tPage "+numPage+" sur "+nbPages,
               "icon_url": client.THUMB
             },
             "thumbnail": {
