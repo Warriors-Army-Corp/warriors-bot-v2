@@ -39,6 +39,6 @@ exports.help = {
   cmd: "ip",
   args: "[adresse IP]",
   desc: "Donne des infos sur une adresse IP.",
-  categ: "UTILITY",
+  categ: "FUN",
   author: "Osiris"
 }
