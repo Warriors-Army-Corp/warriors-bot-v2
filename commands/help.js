@@ -52,12 +52,12 @@ exports.cmd = (client, msg, args) => {
       "thumbnail": {
         "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
       },
-      "description": `\`${client.commands.get(args[0]).help.cmd} ${cmdHelp.args}\`
+      "description": `\`${client.commands.get(args[0]).help.cmd}${(cmdHelp.args!=="")?(" "+cmdHelp.args):""}\`
         ${cmdHelp.desc}`
     });
 
     if (cmdHelp.author) {
-      helpEmbed.setFooter("co-dévelopé avec "+cmdHelp.author);
+      helpEmbed.setFooter("co-développé avec "+cmdHelp.author);
     }
 
     msg.channel.send(helpEmbed);
