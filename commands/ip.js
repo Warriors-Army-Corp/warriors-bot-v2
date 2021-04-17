@@ -2,13 +2,17 @@
  * author : Osιrιs#3420 (Laelith-Security)
  */
 
+// importation des packages dont on a besoin
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 exports.cmd = async (client, msg, args) => {
+  // requête sur l'API avec l'IP passé en paramètre
   const resp = await fetch(`http://ip-api.com/json/${args[0]}?fields=isp,as,org,country,countryCode,regionName,city,zip,proxy,hosting,status`).then(r => r.json()).catch();
 
+  // si la commande a réussi
   if (resp.status === "success") {
+    // on créer un embed avec toutes les infos qui vont biens
     let Geo = new MessageEmbed({
       "color": msg.member.displayColor,
       "title":`**IP Lookup**`,
@@ -28,8 +32,11 @@ exports.cmd = async (client, msg, args) => {
       }
     });
 
+    // on send l'embed
     msg.channel.send(Geo);
+  // si la commande a pas réussi
   }else {
+    // on dit à l'utilisateur ce dont on a besoin pour que ça se passe bien
     msg.channel.send("Il faut que vous donniez une adresse IP publique.");
   }
 }
@@ -39,6 +46,6 @@ exports.help = {
   cmd: "ip",
   args: "[adresse IP]",
   desc: "Donne des infos sur une adresse IP.",
-  categ: "UTILITY",
+  categ: "FUN",
   author: "Osiris"
 }
