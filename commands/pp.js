@@ -14,7 +14,7 @@ exports.cmd = /*async si besoin*/ (client, msg, args) => {
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "pp",
-  args: "([@ping])",
+  args: "(@ping)",
   desc: "Permet d'afficher la photo de profil d'un utilisateur en grand.",
   categ: "UTILITY"
 }
