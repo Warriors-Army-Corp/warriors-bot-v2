@@ -43,5 +43,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "scan-qrcode",
   args: "[une image ou le lien d'une image]",
-  desc: "Permet de lire un QR code."
+  desc: "Permet de lire un QR code.",
+  categ: "FUN"
 }

@@ -23,5 +23,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "qrcode",
   args: "[un texte quelconque]",
-  desc: "Permet de transformer votre texte en image QR code."
+  desc: "Permet de transformer votre texte en image QR code.",
+  categ: "FUN"
 }

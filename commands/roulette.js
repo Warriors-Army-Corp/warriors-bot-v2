@@ -44,5 +44,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "roulette",
   args: "",
-  desc: "Permet de jouer à la roulette russe."
+  desc: "Permet de jouer à la roulette russe.",
+  categ: "FUN"
 }

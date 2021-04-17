@@ -38,5 +38,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "ip",
   args: "[adresse IP]",
-  desc: "Donne des infos sur une adresse IP."
+  desc: "Donne des infos sur une adresse IP.",
+  categ: "UTILITY"
 }

@@ -33,5 +33,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "help",
   args: "",
-  desc: "Permet d'afficher ce message."
+  desc: "Permet d'afficher ce message.",
+  categ: "UTILITY"
 }
