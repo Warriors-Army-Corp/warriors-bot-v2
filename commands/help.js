@@ -1,9 +1,12 @@
+// importation des packages dont on a besoin
 const { MessageEmbed, Collection } = require('discord.js');
 
 exports.cmd = (client, msg, args) => {
 
+  // si y a pas de paramètres
   if (args.length === 0) {
 
+    // on affiche la liste des commandes plus une description du bot
     const helpEmbed = new MessageEmbed({
       "title": `LISTE DES COMMANDES | prefix : ${client.PREFIX}`,
       "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'inforamtions sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\nCe bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).",
@@ -17,6 +20,7 @@ exports.cmd = (client, msg, args) => {
       }
     });
 
+    // on affiche la liste par catégorie (c'est tout un bordel)
     var util = [];
     var modo = [];
     var fun = [];
@@ -44,6 +48,8 @@ exports.cmd = (client, msg, args) => {
     }
 
     msg.channel.send(helpEmbed);
+    
+  // si y a un paramètre on affiche l'aide correspondant au paramètre
   } else {
     const cmdHelp = client.commands.get(args[0]).help;
     const helpEmbed = new MessageEmbed({
