@@ -4,6 +4,7 @@ const tempy = require('tempy');
 exports.cmd = async (client, msg, args) => {
   if (args.length>0) {
     const output = tempy.file({extension: 'png'});
+    console.log(output);
 
     QRCode.toFile(output, args.join(" "), {margin: 1}, function (error) {
       if (error) console.error(error);
