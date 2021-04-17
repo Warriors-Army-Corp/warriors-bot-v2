@@ -28,7 +28,7 @@ exports.cmd = async (client, msg, args) => {
         **Proxy** : ${resp.proxy?"Activé":"Désactivé"}
         **Hosting** : ${resp.hosting?"Activé":"Aucun"} `,
       "footer":{
-        "text": "La localisation IP n'est jamais précise\nco-développé avec Osiris"
+        "text": "La localisation IP n'est jamais précise\nco-développée avec Osiris"
       }
     });
 
