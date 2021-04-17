@@ -48,9 +48,9 @@ exports.cmd = (client, msg, args) => {
     }
 
     msg.channel.send(helpEmbed);
-    
-  // si y a un paramètre on affiche l'aide correspondant au paramètre
-  } else {
+
+  // si y a un paramètre qui correspondant à une commande on affiche l'aide correspondant au paramètre
+  } else if (client.commands.get(args[0])) {
     const cmdHelp = client.commands.get(args[0]).help;
     const helpEmbed = new MessageEmbed({
       "color": msg.member.displayColor,
@@ -67,6 +67,10 @@ exports.cmd = (client, msg, args) => {
     }
 
     msg.channel.send(helpEmbed);
+
+  // si la commande n'existe pas on lui dit
+  } else {
+    msg.channel.send("Cette commande n'existe pas.");
   }
 }
 
