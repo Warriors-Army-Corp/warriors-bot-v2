@@ -78,5 +78,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "roleInfo",
   args: "[nom du rôle]",
-  desc: "Permet d'avoir quelques infos sur un rôle."
+  desc: "Permet d'avoir quelques infos sur un rôle.",
+  categ: "UTILITY"
 }

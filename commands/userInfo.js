@@ -116,6 +116,7 @@ exports.cmd = async (client, msg) => {
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "userInfo",
-  args: "([@ping])",
-  desc: "Permet d'avoir quelques infos sur une personne."
+  args: "(@ping)",
+  desc: "Permet d'avoir quelques infos sur une personne.",
+  categ: "UTILITY"
 }

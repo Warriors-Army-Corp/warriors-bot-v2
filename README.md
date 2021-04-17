@@ -30,6 +30,7 @@ exports.help = {
   perm: "la permission nécessaire pour utiliser cette commande (mettre SEND_MESSAGES s'il n'y a pas besoin de perm particulière)",
   cmd: "nom de la commande (exemple : say_hello)",
   args: "les paramètres de la commandes (entre [] et entre () si c'est optionnel, ne rien mettre s'il n'y en a pas besoin)",
-  desc: "Courte description de la commande"
+  desc: "Courte description de la commande",
+  categ: "le type de commande, répartie en 3 catégories -> MODERATION, FUN et UTILITY"
 }
 ```

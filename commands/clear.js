@@ -10,5 +10,6 @@ exports.help = {
   perm: "MANAGE_MESSAGES",
   cmd: "clear",
   args: "[nombre]",
-  desc: "Permet de supprimer un grand nombre de messages."
+  desc: "Permet de supprimer un grand nombre de messages.",
+  categ: "MODERATION"
 }

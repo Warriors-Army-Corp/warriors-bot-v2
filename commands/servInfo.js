@@ -94,5 +94,6 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "servInfo",
   args: "",
-  desc: "Permet d'avoir quelques infos sur le serveur."
+  desc: "Permet d'avoir quelques infos sur le serveur.",
+  categ: "UTILITY"
 }

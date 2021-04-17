@@ -24,7 +24,7 @@ exports.cmd = async (client, msg, args) => {
         **Proxy** : ${resp.proxy?"Activé":"Désactivé"}
         **Hosting** : ${resp.hosting?"Activé":"Aucun"} `,
       "footer":{
-        "text": "La localisation IP n'est jamais précise\ndéveloppé en coopération avec Osiris"
+        "text": "La localisation IP n'est jamais précise\nco-développé avec Osiris"
       }
     });
 
@@ -38,5 +38,7 @@ exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "ip",
   args: "[adresse IP]",
-  desc: "Donne des infos sur une adresse IP."
+  desc: "Donne des infos sur une adresse IP.",
+  categ: "UTILITY",
+  author: "Osiris"
 }
