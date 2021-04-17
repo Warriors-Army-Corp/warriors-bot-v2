@@ -2,6 +2,7 @@
  * author : Slapze
  */
 
+// importation des packages dont on a besoin
 const { MessageEmbed } = require("discord.js")
 const fetch = require("node-fetch");
 const date = require("../fonctions/date.js");
@@ -9,7 +10,10 @@ const date = require("../fonctions/date.js");
 
 exports.cmd = async (client, msg, args) => {
 
+    // requête sur l'API pour avoir les infos de l'ISS
     const resp = await fetch("https://api.wheretheiss.at/v1/satellites/25544").then(res => res.json());
+
+    // quand c'est fait on créer un embed avec les infos qui vont biens
     let issembed = new MessageEmbed({
       "title": "ISS",
       "color": msg.member.displayColor,
@@ -57,6 +61,7 @@ exports.cmd = async (client, msg, args) => {
       ]
     });
 
+    // puis on send l'embed
     msg.channel.send(issembed);
 
 }
