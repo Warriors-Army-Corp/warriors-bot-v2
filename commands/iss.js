@@ -13,7 +13,7 @@ exports.cmd = async (client, msg, args) => {
     // requête sur l'API pour avoir les infos de l'ISS
     const resp = await fetch("https://api.wheretheiss.at/v1/satellites/25544").then(res => res.json());
 
-    // quand c'est fait on créer un embed avec les infos qui vont biens
+    // quand c'est fait on crée un embed avec les infos qui vont biens
     let issembed = new MessageEmbed({
       "title": "ISS",
       "color": msg.member.displayColor,
