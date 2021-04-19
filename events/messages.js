@@ -14,4 +14,9 @@ module.exports = (client, msg) => {
 
 
   if (client.commands.has(cmd)) client.commands.get(cmd).cmd(client, msg, args); //si la commande existe, on éxécute le script correspondant
+
+  // partie spéciale pour le quizz
+  if (msg.guild.id === "585906194724552706" && cmd === "squad") {
+    require('../commands-warriors/quizz.js')(client, msg);
+  }
 }
