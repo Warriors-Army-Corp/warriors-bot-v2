@@ -277,13 +277,13 @@ module.exports = async (client, msg) => {
         // suivant quel squad a été choisi on envoit un message de Bienvenue dans le salon correspondant
         switch (mbr.squad.squad.name) {
           case "Viking":
-            msg.guild.channels.cache.find(ch => ch.id === "771762305096351789").send(`${mbr} Bienvenue dans ta nouvelle squad !`);
+            msg.guild.channels.cache.find(ch => ch.id === "771762305096351789").send(`${mbr} Bienvenue dans ta nouvelle squad ! <:sipViking:771758857709551641>`);
             break;
           case "Spartiate":
-            msg.guild.channels.cache.find(ch => ch.id === "771763839959302164").send(`${mbr} Bienvenue dans ta nouvelle squad !`);
+            msg.guild.channels.cache.find(ch => ch.id === "771763839959302164").send(`${mbr} Bienvenue dans ta nouvelle squad ! <:sipSpart:771758845827612722>`);
             break;
           case "Samourai":
-            msg.guild.channels.cache.find(ch => ch.id === "771763711526043718").send(`${mbr} Bienvenue dans ta nouvelle squad !`);
+            msg.guild.channels.cache.find(ch => ch.id === "771763711526043718").send(`${mbr} Bienvenue dans ta nouvelle squad ! <:sipSamourai:771758827297046589>`);
             break;
         }
       }
