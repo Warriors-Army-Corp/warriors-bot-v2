@@ -31,7 +31,7 @@ exports.cmd = async (client, msg, args) => {
 
 exports.help = {
   perm: "SEND_MESSAGES",
-  cmd: "shorte-url",
+  cmd: "short-url",
   args: "[URL]",
   desc: "Raccourcit une URL.",
   categ: "UTILITY",
