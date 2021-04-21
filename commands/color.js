@@ -4,8 +4,8 @@ const { MessageEmbed } = require('discord.js');
 exports.cmd = async (client, msg, args) => {
   var resp = await fetch("http://www.thecolorapi.com/id?hex="+args[0]).then(res => res.json());
 
-  if (!args[0]) {
-    msg.channel.send("Il faut que vous me donniez un code couleur en hexadécimal.");
+  if (!args[0] || resp.code) {
+    msg.channel.send("Il faut que vous me donniez un code couleur en hexadécimal (sans `#` au début).");
   } else {
     var colorEmbed = new MessageEmbed({
       "title": "Infos sur la couleur "+resp.hex.value,
