@@ -45,5 +45,6 @@ exports.help = {
   cmd: "roulette",
   args: "",
   desc: "Permet de jouer à la roulette russe.",
-  categ: "FUN"
+  categ: "FUN",
+  author: "Mizari"
 }

@@ -60,5 +60,6 @@ exports.help = {
   cmd: "scan-qrcode",
   args: "[une image ou le lien d'une image]",
   desc: "Permet de lire un QR code.",
-  categ: "FUN"
+  categ: "FUN",
+  author: "Mizari"
 }

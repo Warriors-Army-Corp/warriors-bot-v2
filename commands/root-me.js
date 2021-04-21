@@ -135,5 +135,6 @@ exports.help = {
   cmd: "root-me",
   args: "[pseudo Root-Me]",
   desc: "Donne des infos sur un profil [Root-ME](https://www.root-me.org/).",
-  categ: "FUN"
+  categ: "FUN",
+  author: "Mizari"
 }

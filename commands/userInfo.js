@@ -118,5 +118,6 @@ exports.help = {
   cmd: "userInfo",
   args: "(@ping)",
   desc: "Permet d'avoir quelques infos sur une personne.",
-  categ: "UTILITY"
+  categ: "UTILITY",
+  author: "Mizari"
 }

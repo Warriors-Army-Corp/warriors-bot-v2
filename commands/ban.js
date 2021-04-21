@@ -87,5 +87,6 @@ exports.help = {
   cmd: "ban",
   args: "[ping] (raison du ban)",
   desc: "Permet de bannir un membre.",
-  categ: "MODERATION"
+  categ: "MODERATION",
+  author: "Mizari"
 }
