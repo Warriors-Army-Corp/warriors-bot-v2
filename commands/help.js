@@ -50,15 +50,15 @@ exports.cmd = (client, msg, args) => {
     msg.channel.send(helpEmbed);
 
   // si y a un paramètre qui correspondant à une commande on affiche l'aide correspondant au paramètre
-  } else if (client.commands.get(args[0])) {
-    const cmdHelp = client.commands.get(args[0]).help;
+  } else if (client.commands.get(args[0].toLowerCase())) {
+    const cmdHelp = client.commands.get(args[0].toLowerCase()).help;
     const helpEmbed = new MessageEmbed({
       "color": msg.member.displayColor,
       "title": "Description de la commande "+cmdHelp.cmd,
       "thumbnail": {
         "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
       },
-      "description": `\`${client.commands.get(args[0]).help.cmd}${(cmdHelp.args!=="")?(" "+cmdHelp.args):""}\`
+      "description": `\`${cmdHelp.cmd}${(cmdHelp.args!=="")?(" "+cmdHelp.args):""}\`
         ${cmdHelp.desc}`,
       "footer":{
         "text": `développée par ${cmdHelp.author}`
