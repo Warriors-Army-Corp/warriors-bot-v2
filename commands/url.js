@@ -35,5 +35,5 @@ exports.help = {
   args: "[URL]",
   desc: "Raccourcit une URL.",
   categ: "UTILITY",
-  author: "Osiris"
+  author: "Osiris et Mizari"
 }

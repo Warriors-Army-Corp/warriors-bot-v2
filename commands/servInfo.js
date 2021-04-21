@@ -95,5 +95,6 @@ exports.help = {
   cmd: "servInfo",
   args: "",
   desc: "Permet d'avoir quelques infos sur le serveur.",
-  categ: "UTILITY"
+  categ: "UTILITY",
+  author: "Mizari"
 }

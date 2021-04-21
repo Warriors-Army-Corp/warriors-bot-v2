@@ -72,5 +72,5 @@ exports.help = {
   args: "",
   desc: "Quelques infos sur l'ISS comme ses coordonnées géographiques en temps réel !",
   categ: "FUN",
-  author: "Slpaze"
+  author: "Slpaze et Mizari"
 }

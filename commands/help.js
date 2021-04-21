@@ -59,12 +59,11 @@ exports.cmd = (client, msg, args) => {
         "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
       },
       "description": `\`${client.commands.get(args[0]).help.cmd}${(cmdHelp.args!=="")?(" "+cmdHelp.args):""}\`
-        ${cmdHelp.desc}`
+        ${cmdHelp.desc}`,
+      "footer":{
+        "text": `développée par ${cmdHelp.author}`
+      }
     });
-
-    if (cmdHelp.author) {
-      helpEmbed.setFooter("co-développée avec "+cmdHelp.author);
-    }
 
     msg.channel.send(helpEmbed);
 
@@ -80,5 +79,6 @@ exports.help = {
   cmd: "help",
   args: "(nom d'une commande)",
   desc: "Permet d'afficher la liste des commandes ou les détails d'une commande spécifique.",
-  categ: "UTILITY"
+  categ: "UTILITY",
+  author: "Mizari"
 }

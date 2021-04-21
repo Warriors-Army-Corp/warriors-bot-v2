@@ -79,5 +79,6 @@ exports.help = {
   cmd: "roleInfo",
   args: "[nom du rôle]",
   desc: "Permet d'avoir quelques infos sur un rôle.",
-  categ: "UTILITY"
+  categ: "UTILITY",
+  author: "Mizari"
 }

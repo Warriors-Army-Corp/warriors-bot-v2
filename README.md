@@ -31,6 +31,7 @@ exports.help = {
   cmd: "nom de la commande (exemple : say_hello)",
   args: "les paramètres de la commandes (entre [] et entre () si c'est optionnel, ne rien mettre s'il n'y en a pas besoin)",
   desc: "Courte description de la commande",
-  categ: "le type de commande, répartie en 3 catégories -> MODERATION, FUN et UTILITY"
+  categ: "le type de commande, répartie en 3 catégories -> MODERATION, FUN et UTILITY",
+  author: "Votre pseudo (soyez fier de ce que vous avez dev)"
 }
 ```

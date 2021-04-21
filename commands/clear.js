@@ -14,5 +14,6 @@ exports.help = {
   cmd: "clear",
   args: "[nombre]",
   desc: "Permet de supprimer un grand nombre de messages.",
-  categ: "MODERATION"
+  categ: "MODERATION",
+  author: "Mizari"
 }

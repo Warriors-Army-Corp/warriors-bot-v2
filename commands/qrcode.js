@@ -31,5 +31,6 @@ exports.help = {
   cmd: "qrcode",
   args: "[un texte quelconque]",
   desc: "Permet de transformer votre texte en image QR code.",
-  categ: "FUN"
+  categ: "FUN",
+  author: "Mizari"
 }

@@ -16,5 +16,6 @@ exports.help = {
   cmd: "pp",
   args: "(@ping)",
   desc: "Permet d'afficher la photo de profil d'un utilisateur en grand.",
-  categ: "UTILITY"
+  categ: "UTILITY",
+  author: "Mizari"
 }

@@ -47,5 +47,5 @@ exports.help = {
   args: "[adresse IP]",
   desc: "Donne des infos sur une adresse IP.",
   categ: "FUN",
-  author: "Osiris"
+  author: "Osiris et Mizari"
 }
