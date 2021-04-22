@@ -59,7 +59,7 @@ exports.cmd = async (client, msg, args) => {
           Rétablissements : ${respCountryCases.All.recovered}
           Vaccinés : ${respCountryVaccines.All.people_vaccinated}
           Nombre d'habitants : ${respCountryCases.All.population}\n
-          Pourcentage d'habitants infectés : ${Pourcetage()}/100`,
+          Pourcentage d'habitants infectés : ${Pourcetage()}%`,
           "footer": {
             "text": "Les données ne sont pas toujours précises\nDéveloppée par Osiris et Mizari"
           }
