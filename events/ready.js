@@ -16,19 +16,20 @@ module.exports = (client) => {
             "Accept": "application/vnd.twitchtv.v5+json"
           }
         }).then(res => res.json()).then(json => json._total).catch();
-        client.user.setActivity(followers+" followers | WarriorsArmyOff on Twitch", {type: 'STREAMING', url: "https://www.twitch.tv/warriorsarmyoff"});
+        client.user.setActivity(`${followers} followers | WarriorsArmyOff on Twitch`, {type: 'STREAMING', url: "https://www.twitch.tv/warriorsarmyoff"});
         break;
       case 1:
-        client.user.setActivity(`${client.guilds.cache.size} servers`, {type: 'WATCHING'});
+        var subscribers = await fetch("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCwlbtfVO3ilb1g1_ZcBhwnQ&key="+process.env.YOUTUBE_KEY).then(res => res.json()).then(json => json.items[0].statistics.subscriberCount).catch();
+        client.user.setActivity(`${subscribers} subscribers | Warriors Army on YouTube`, {type: 'WATCHING'});
         break;
       case 2:
-        client.user.setActivity(`${client.MARQUE} | ${client.PREFIX}help`, {type: 'PLAYING'});
+        client.user.setActivity(`${client.PREFIX}help | ${client.MARQUE}`, {type: 'PLAYING'});
         break;
       case 3:
         client.user.setActivity("WAC song", {type: 'LISTENING'});
         break;
       case 4:
-        client.user.setActivity("FC WAC", {type: 'COMPETING'});
+        client.user.setActivity(`${client.guilds.cache.size} servers`, {type: 'COMPETING'});
         break;
       default:
         console.log("y a un problème chef");
