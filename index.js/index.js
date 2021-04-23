@@ -7,14 +7,21 @@ const fs = require('fs'); //pour les commands handler
 //modification de la class GuildMember
 Structures.extend('GuildMember', GuildMember => {
   class GuildMemberV2 extends GuildMember {
+    pending = false;
+
     constructor(client, data, guild) {
       super(client, data, guild);
       this.pending = data.pending;
     }
+
+    _patch(data) {
+        super._patch(data);
+        this.pending = data.pending;
+    }
   }
 
   return GuildMemberV2;
-});
+})
 
 //constantes à utiliser partout dans le programme du bot
 client.PREFIX = "w?";
