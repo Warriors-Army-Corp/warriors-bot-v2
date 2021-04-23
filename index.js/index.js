@@ -1,22 +1,15 @@
-const Discord = require('discord.js'); //appeler la bibliothèque discord
-const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); //création du client
-client.commands = new Discord.Collection(); //création d'une collection pour répertorier les commandes
+const { Client, Collection, Structures } = require('discord.js'); //appeler la bibliothèque discord
+const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }); //création du client
+client.commands = new Collection(); //création d'une collection pour répertorier les commandes
 
 const fs = require('fs'); //pour les commands handler
 
 //modification de la class GuildMember
-Discord.Structures.extend('GuildMember', GuildMember => {
+Structures.extend('GuildMember', GuildMember => {
   class GuildMemberV2 extends GuildMember {
-    pending = false;
-
     constructor(client, data, guild) {
       super(client, data, guild);
       this.pending = data.pending;
-    }
-
-    _patch(data) {
-        super._patch(data);
-        this.pending = data.pending;
     }
   }
 

@@ -1,13 +1,22 @@
+const fetch = require('node-fetch');
+
 module.exports = (client) => {
   console.log(`Logged in as ${client.user.tag}!`); //affichage dans la console que le client est bien co (c'est pour Mizari)
 
   var count = 0;
-  setInterval(() => {
+  setInterval(async () => {
     if(count > 4)
       count = 0;
     switch (count) {
       case 0:
-        client.user.setActivity("Click \"Watch\" button to see our Twitch channel.", {type: 'STREAMING', url: "https://www.twitch.tv/warriorsarmyoff"});
+        var followers = await fetch("https://api.twitch.tv/kraken/channels/440161668/follows?limit=1", {
+          method: "get",
+          headers: {
+            "Client-ID": "nmxkslcw0tdtzt3klrbnbrphwyjxwg",
+            "Accept": "application/vnd.twitchtv.v5+json"
+          }
+        }).then(res => res.json()).then(json => json._total).catch();
+        client.user.setActivity(followers+" followers | WarriorsArmyOff on Twitch", {type: 'STREAMING', url: "https://www.twitch.tv/warriorsarmyoff"});
         break;
       case 1:
         client.user.setActivity(`${client.guilds.cache.size} servers`, {type: 'WATCHING'});
