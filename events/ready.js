@@ -12,7 +12,7 @@ module.exports = (client) => {
         var followers = await fetch("https://api.twitch.tv/kraken/channels/440161668/follows?limit=1", {
           method: "get",
           headers: {
-            "Client-ID": "nmxkslcw0tdtzt3klrbnbrphwyjxwg",
+            "Client-ID": process.env.TWITCH_ID,
             "Accept": "application/vnd.twitchtv.v5+json"
           }
         }).then(res => res.json()).then(json => json._total).catch();
