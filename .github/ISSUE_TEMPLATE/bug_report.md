@@ -1,13 +1,13 @@
 ---
 name: Bug report
 about: Rapportez un bug pour nous aider à améliorer le bot
-title: "[BUG]"
+title: "[BUG] (commande sur laquelle il y a le bug)"
 labels: bug
 assignees: ''
 
 ---
 
-**Décrivez le bug**
+**Déscription du bug**
 Une description claire et concise de ce qu'est le bug.
 
 **Pour reproduire**
