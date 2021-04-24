@@ -17,11 +17,16 @@ Si vous trouvez un bug, vous pouvez le signaler en créant une "Issue", ou alors
 Vous pouvez proposer de nouvelles fonctionnalités dans les "Issues" ou alors coder une nouvelle fonctionnalité et la proposer dans les "Pull Request" en suivant ce model :
 ```javascript
 // appel des packages nécessaire
+// exemple :
+const { MessageEmbed } = require("discord.js");
+
+/*
+ * @param {Client} client En gros c'est le bot en lui même
+ * @param {Message} msg L'objet message
+ * @âram {array} args Liste des paramètres donnés par l'utilisateur
+ */
 exports.cmd = /*async si besoin*/ (client, msg, args) => {
   // code a executer
-  // client est le bot
-  // msg est le message
-  // args est la liste des paramètres donnés par l'utilisateur
   // exemple :
   msg.channel.send("Hello World !");
 }
@@ -35,3 +40,5 @@ exports.help = {
   author: "Votre pseudo (soyez fier de ce que vous avez dev)"
 }
 ```
+
+Pour pouvoir faire des "Pull Request" il faut "Fork" le projet et le modifier dans votre repos.
