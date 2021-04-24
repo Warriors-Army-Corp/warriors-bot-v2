@@ -41,9 +41,9 @@ exports.cmd = async (client, msg, args) => {
     }).then(res => res.json()).catch();
 
     // Calcul du pourcentage de cas de covid-19 pour un pays
-    function Pourcetage(msg){
+    function Pourcentage(msg){
       var i = 100*`${respCountryCases.All.confirmed}`/`${respCountryCases.All.population}`;
-      let res = i.toFixed(0);
+      let res = i.toFixed(1);
       return `${res}`
     }
     // Si la commande a un argument (pays)
@@ -59,7 +59,7 @@ exports.cmd = async (client, msg, args) => {
           Rétablissements : ${respCountryCases.All.recovered}
           Vaccinés : ${respCountryVaccines.All.people_vaccinated}
           Nombre d'habitants : ${respCountryCases.All.population}\n
-          Pourcentage d'habitants infectés : ${Pourcetage()}%`,
+          Pourcentage d'habitants infectés : ${Pourcentage()}%`,
           "footer": {
             "text": "Les données ne sont pas toujours précises\nDéveloppée par Osiris et Mizari"
           }
