@@ -41,7 +41,7 @@ exports.cmd = async (client, msg, args) => {
         }
     }
     // Si la commande a un argument (anime)
-    if (resp.results) {
+    if (resp.results > "0") {
         // Notre embed
         let AnimeEmbed = new MessageEmbed({
             "title": `**ANIME**`,
@@ -57,7 +57,7 @@ exports.cmd = async (client, msg, args) => {
                 "url": `${resp.results[0].image_url}`
             },
             "footer": {
-                "text": `Développée par Osiris et Mizari`
+                "text": `Co-développée avec Osiris`
             }
 
         });
@@ -67,12 +67,11 @@ exports.cmd = async (client, msg, args) => {
         msg.channel.send("Le nom de l'anime n'est pas valide, n'est pas spécifié, ou n'est pas inclus dans la base de données. Vérifiez son orthographe et réessayez.")
     }
 }
-
 exports.help = {
     perm: "SEND_MESSAGES",
     cmd: "anime",
     args: "[Nom d'anime]",
     desc: "Affiche les informations sur un anime specifié, ou de celui dont le nom se rapproche le plus.",
-    categ: "FUN",
-    author: "Mizari et Osiris"
+    categ: "UTILITY",
+    author: "Mizari & Osiris"
 }
