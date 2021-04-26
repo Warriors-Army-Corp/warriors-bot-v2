@@ -57,7 +57,7 @@ exports.cmd = async (client, msg, args) => {
                 "url": `${resp.results[0].image_url}`
             },
             "footer": {
-                "text": `Co-développée avec Osiris`
+                "text": `Développée par Osiris & Mizari`
             }
 
         });
@@ -72,6 +72,6 @@ exports.help = {
     cmd: "anime",
     args: "[Nom d'anime]",
     desc: "Affiche les informations sur un anime specifié, ou de celui dont le nom se rapproche le plus.",
-    categ: "UTILITY",
+    categ: "FUN",
     author: "Mizari & Osiris"
 }
