@@ -15,10 +15,8 @@ exports.cmd = async (client, msg, args) => {
     // on prépare un fichier dans le dossier tmp
     const output = await tempy.file({extension: 'png'});
 
-    // code temporaire pour afficher le chemin
-    console.log(output);
-    //////////////////////////////////////////
-    
+    console.log(tempy.root);
+
     // on télécharge l'image de l'url qu'on a choppé
     const check = await download(link, output);
     // on vérifie que c t bien une image
