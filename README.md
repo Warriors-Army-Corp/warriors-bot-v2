@@ -23,7 +23,7 @@ const { MessageEmbed } = require("discord.js");
 /*
  * @param {Client} client En gros c'est le bot en lui même
  * @param {Message} msg L'objet message
- * @âram {array} args Liste des paramètres donnés par l'utilisateur
+ * @param {array} args Liste des paramètres donnés par l'utilisateur
  */
 exports.cmd = /*async si besoin*/ (client, msg, args) => {
   // code a executer
