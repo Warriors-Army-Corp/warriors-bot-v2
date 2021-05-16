@@ -8,12 +8,12 @@ exports.cmd = (client, msg, args) => {
   if (args.length > 0) {
     // si le premier paramètre vaut 0 (ou moins) c'est soit qu'il ne veut pas le changer, soit qu'il a mit de la merde
     // Math.random ne mets que 17 chiffres après la virgules donc on peut pas aller plus loin que 100 000 000 000 000 000
-    max = (args[0] && (args[0]|0)>0 && (args[0]|0)<=100000000000000000)?(args[0]|0):6;
+    max = (args[0] && parseInt(args[0])>0 && parseInt(args[0])<=100000000000000000)?parseInt(args[0]):6;
     // si le deuxième paramètre vaut 0 (ou moins) c'est soit qu'il ne veut pas le changer, soit qu'il a mit de la merde
-    min = (args[1] && (args[1]|0)>0)?(args[1]|0):0;
+    min = (args[1] && parseInt(args[1])>0)?parseInt(args[1]):0;
     // si le troisième paramètre vaut 0 (ou moins) c'est soit qu'il ne veut pas le changer, soit qu'il a mit de la merde
     // pour éviter les raids et respecter le cooldown de Discord, on ne peut lancer que 5 dés en même temps.
-    nbr = (args[2] && (args[2]|0)>0 && (args[2]|0)<=5)?(args[2]|0):1;
+    nbr = (args[2] && parseInt(args[2])>0 && parseInt(args[2])<=5)?parseInt(args[2]):1;
   }
 
   // si le débile d'utilisateur a mit un max inférieur au min, alors on les inverse
