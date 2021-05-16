@@ -36,7 +36,7 @@ module.exports = function getBadges(user, mbr) {
         case "VERIFIED_BOT":
           badges.push("<:verified_bot:831222135707533342>");
           break;
-        case "EARLY_VERIFIED_BOT_DEVELOPER":
+        case "EARLY_VERIFIED_DEVELOPER":
           badges.push("<:early_verified_bot_developer:831222047383355452>");
           break;
         default:
@@ -49,13 +49,15 @@ module.exports = function getBadges(user, mbr) {
     }
     // si il boost le serveur
     if (mbr.premiumSinceTimestamp > 0) {
-      badges.push("<:nitro:831222111041093703>"); // ça veut dire qu'il a également nitro
       badges.push("<:boost:831221972796571751>");
-    // si il ne boost pas mais qu'il a une pp gif c'est qu'il a nitro
-    // (si il a nitro mais qu'il n'a pas de pp gif et qu'il boost pas... bah il casse les couilles voilà)
-    } else if (user.avatarURL({dynamic: true}).includes("gif")) {
+    }
+
+    // si i a une pp gif c'est qu'il a nitro
+    // (si il a nitro mais qu'il n'a pas de pp gif... bah il casse les couilles voilà)
+    if (user.avatarURL({dynamic: true}).includes("gif")) {
       badges.push("<:nitro:831222111041093703>");
     }
+
     // si il a des badges on les envoi, s'il n'en a pas on dit qu'il n'en a pas
     return badges.join("");
   } else {
