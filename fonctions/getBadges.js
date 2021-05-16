@@ -43,10 +43,7 @@ module.exports = function getBadges(user, mbr) {
           console.log("flag inconnu : "+flag); // si jamais on tombe sur un cas pas prévu on l'affiche
       }
     }
-    // si c'est un bot mais qu'il n'a pas été détecté comme bot vérifié
-    if (user.bot && !user.flags.toArray().includes("VERIFIED_BOT")) {
-      badges.push("<:bot:831221986033664080>");
-    }
+
     // si il boost le serveur
     if (mbr.premiumSinceTimestamp > 0) {
       badges.push("<:boost:831221972796571751>");
@@ -58,9 +55,16 @@ module.exports = function getBadges(user, mbr) {
       badges.push("<:nitro:831222111041093703>");
     }
 
-    // si il a des badges on les envoi, s'il n'en a pas on dit qu'il n'en a pas
-    return badges.join("");
   } else {
-    return "Aucun";
+
+    // si c'est un bot mais qu'il n'a pas été détecté comme bot vérifié
+    if (user.bot) {
+      badges.push("<:bot:831221986033664080>");
+    } else {
+      badges = "Aucun";
+    }
+
   }
+
+  return badges;
 }
