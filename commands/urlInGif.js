@@ -6,7 +6,7 @@ exports.cmd = (client, msg, args) => {
     var url = args[0];
 
     var embed = new MessageEmbed({
-      "description": "L'URL caché dans le gif est "+url
+      "description": "L'URL caché dans le gif est "+url,
       "url": url,
       "image": {
         "url": "https://media.discordapp.net/attachments/586232536934645790/823251570853543947/W.A.C-PP-withoutloop.gif"
