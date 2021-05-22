@@ -1,32 +1,20 @@
 // importation des packages dont on a besoin
-const { MessageEmbed, Collection } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const { Menu } = require('discord.js-menu');
 
 exports.cmd = (client, msg, args) => {
 
   // si y a pas de paramètres
   if (args.length === 0) {
-
-    // on affiche la liste des commandes plus une description du bot
-    const helpEmbed = new MessageEmbed({
-      "title": `LISTE DES COMMANDES | prefix : ${client.PREFIX}`,
-      "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'inforamtions sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\nCe bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).",
-      "color": msg.member.displayColor,
-      "thumbnail": {
-        "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
-      },
-      "footer": {
-        "icon_url": client.THUMB,
-        "text": `${client.MARQUE}`
-      }
-    });
-
-    // on affiche la liste par catégorie (c'est tout un bordel)
+    // tous les embeds
+    var embeds = [];
+    // les catégories
     var util = [];
     var modo = [];
     var fun = [];
-
+    // création des listes des commandes suivant leur catégories (et en fonction des perms du user aussi)
     client.commands.forEach(help => {
-      if (msg.member.hasPermission(help.help.perm)) {
+      if (msg.member.hasPermission(help.help.perm) && msg.guild.me.hasPermission(help.help.perm)) {
         if (help.help.categ === "UTILITY") {
           util.push("`"+help.help.cmd+"`");
         } else if (help.help.categ === "FUN") {
@@ -37,17 +25,112 @@ exports.cmd = (client, msg, args) => {
       }
     });
 
+    // contage des pages
+    var countPages = 1; // initialisé à un car il y aura toujours forcément la page infos
     if (util.length > 0) {
-      helpEmbed.addField("UTILE", util.join(", "));
+      countPages++;
     }
     if (fun.length > 0) {
-      helpEmbed.addField("FUN", fun.join(", "));
+      countPages++;
     }
     if (modo.length > 0) {
-      helpEmbed.addField("MODERATION", modo.join(", "));
+      countPages++;
     }
 
-    msg.channel.send(helpEmbed);
+    // on créer d'abord l'embed d'infos
+    const infosEmbed = {
+      name: "Infos",
+      content: new MessageEmbed({
+        "title": `Infos sur le bot`,
+        "description": "Ce bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).",
+        "color": msg.member.displayColor,
+        "thumbnail": {
+          "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
+        },
+        "footer": {
+          "icon_url": client.THUMB,
+          "text": `${client.MARQUE}\t\t\t\t\t\t\t\t\t\t\t\t\t\tPage 1 sur ${countPages}`
+        }
+      }),
+      reactions: {
+        '⬅️': 'previous',
+        '➡️': 'next'
+      }
+    }
+
+    // on ajoute l'embed infos aux embeds
+    embeds.push(infosEmbed);
+
+    // on construit les embeds des différentes catégories
+    if (util.length > 0) {
+      const utilEmbed = {
+        name: "UTILE",
+        content: new MessageEmbed({
+          "title": "UTILE",
+          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+util.join(", "),
+          "color": msg.member.displayColor,
+          "thumbnail": {
+            "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
+          },
+          "footer": {
+            "icon_url": client.THUMB,
+            "text": `${client.MARQUE}\t\t\t\t\t\t\t\t\t\t\t\t\t\tPage 2 sur ${countPages}`
+          }
+        }),
+        reactions: {
+          '⬅️': 'previous',
+          '➡️': 'next'
+        }
+      }
+      embeds.push(utilEmbed);
+    }
+    if (fun.length > 0) {
+      const funEmbed = {
+        name: "FUN",
+        content: new MessageEmbed({
+          "title": "FUN",
+          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+fun.join(", "),
+          "color": msg.member.displayColor,
+          "thumbnail": {
+            "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
+          },
+          "footer": {
+            "icon_url": client.THUMB,
+            "text": `${client.MARQUE}\t\t\t\t\t\t\t\t\t\t\t\t\t\tPage 3 sur ${countPages}`
+          }
+        }),
+        reactions: {
+          '⬅️': 'previous',
+          '➡️': 'next'
+        }
+      }
+      embeds.push(funEmbed);
+    }
+    if (modo.length > 0) {
+      const modoEmbed = {
+        name: "MODERATION",
+        content: new MessageEmbed({
+          "title": "MODERATION",
+          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+modo.join(", "),
+          "color": msg.member.displayColor,
+          "thumbnail": {
+            "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
+          },
+          "footer": {
+            "icon_url": client.THUMB,
+            "text": `${client.MARQUE}\t\t\t\t\t\t\t\t\t\t\t\t\t\tPage 4 sur ${countPages}`
+          }
+        }),
+        reactions: {
+          '⬅️': 'previous',
+          '➡️': 'next'
+        }
+      }
+      embeds.push(modoEmbed);
+    }
+
+    const helpEmbed = new Menu(msg.channel, msg.author.id, embeds, 300000);
+    helpEmbed.start();
 
   // si y a un paramètre qui correspondant à une commande on affiche l'aide correspondant au paramètre
   } else if (client.commands.get(args[0].toLowerCase())) {

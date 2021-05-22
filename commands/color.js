@@ -38,7 +38,7 @@ const color = args[0].toLowerCase();
 exports.help = {
   perm: "SEND_MESSAGES",
   cmd: "couleurInfo",
-  args: "[code couleur hexadécimal]",
+  args: "[code_couleur_hexadécimal]",
   desc: "Permet de montrer la couleur d'un code couleur (hexa)",
   categ: "UTILITY",
   author: "Mizari"
