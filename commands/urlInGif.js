@@ -1,10 +1,14 @@
+// importation des packages dont on a besoin
 const { MessageEmbed } = require('discord.js');
 
 exports.cmd = (client, msg, args) => {
 
+  // on check qu'il y a au moins un argument
   if (args.length > 0) {
+    // l'url à save est le premier argument
     var url = args[0];
 
+    // on créer l'embed
     var embed = new MessageEmbed({
       "description": "L'URL caché dans le gif est "+url,
       "url": url,
@@ -13,8 +17,10 @@ exports.cmd = (client, msg, args) => {
       }
     });
 
+    // on envoit l'embed (si l'argument n'était pas une URL ça génère une erreur, du coup on engueule le user)
     msg.channel.send(embed).catch(() => msg.channel.send("Vous devez me donner une URL valide et rien d'autre"));
 
+  // si y a pas d'argument on engueule le user
   } else {
     msg.channel.send("Il me faut une URL");
   }
