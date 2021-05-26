@@ -42,7 +42,7 @@ exports.cmd = (client, msg, args) => {
       name: "Infos",
       content: new MessageEmbed({
         "title": `Infos sur le bot`,
-        "description": "Ce bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).",
+        "description": "Ce bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).\n\nTous les dessins ont été réalisé par Ema.",
         "color": msg.member.displayColor,
         "thumbnail": {
           "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
@@ -61,13 +61,16 @@ exports.cmd = (client, msg, args) => {
     // on ajoute l'embed infos aux embeds
     embeds.push(infosEmbed);
 
+    // phrase qu'il y aura sur chaque embeds (sauf le premier)
+    const infosUtilisation = "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom_de_la_commande]`\n\n";
+
     // on construit les embeds des différentes catégories
     if (util.length > 0) {
       const utilEmbed = {
         name: "UTILE",
         content: new MessageEmbed({
           "title": "UTILE",
-          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+util.join(", "),
+          "description": infosUtilisation+util.join(", "),
           "color": msg.member.displayColor,
           "thumbnail": {
             "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
@@ -89,7 +92,7 @@ exports.cmd = (client, msg, args) => {
         name: "FUN",
         content: new MessageEmbed({
           "title": "FUN",
-          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+fun.join(", "),
+          "description": infosUtilisation+fun.join(", "),
           "color": msg.member.displayColor,
           "thumbnail": {
             "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
@@ -111,7 +114,7 @@ exports.cmd = (client, msg, args) => {
         name: "MODERATION",
         content: new MessageEmbed({
           "title": "MODERATION",
-          "description": "Les `[]` indiquent les paramètres obligatoires et ne sont pas à écrire. Les `()` indiquent les paramètres optionnels et ne sont pas non plus à écrire.\nPour plus d'informations sur une commande écrivez `"+client.PREFIX+"help [nom de la commande]`\n\n"+modo.join(", "),
+          "description": infosUtilisation+modo.join(", "),
           "color": msg.member.displayColor,
           "thumbnail": {
             "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
