@@ -42,7 +42,7 @@ exports.cmd = (client, msg, args) => {
       name: "Infos",
       content: new MessageEmbed({
         "title": `Infos sur le bot`,
-        "description": "Ce bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).",
+        "description": "Ce bot a principalement été conçu pour et par la communauté [Warriors Army Corp](https://discord.gg/N49Gxsu). Il a été ouvert au public pour en faire profiter tout le monde ! Pour l'ajouter cliquez [ici](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot). Pour accéder au support cliquez [ici](https://discord.gg/tDWF64AYkW).\n\nTous les dessins ont été réalisé par Ema.",
         "color": msg.member.displayColor,
         "thumbnail": {
           "url": "https://media.discordapp.net/attachments/661396307973242894/830125899298635817/Capture_decran_2021-04-09_a_19.03.32.png?width=498&height=498"
