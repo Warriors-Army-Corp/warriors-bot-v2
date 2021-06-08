@@ -43,6 +43,8 @@ client.on('message', msg => require('../events/messages.js')(client, msg));
 client.on('guildMemberUpdate', (oldMember, newMember) => require('../events/guildMemberUpdate.js')(oldMember, newMember));
 client.on('messageReactionAdd', (messageReaction, user) => require('../events/messageReactionAdd.js')(messageReaction, user));
 client.on('messageReactionRemove', (messageReaction, user) => require('../events/messageReactionRemove.js')(messageReaction, user));
+client.on('guildCreate', guild => require('../events/guildCreate.js')(client, guild));
+client.on('guildDelete', guild => require('../events/guildDelete.js')(client, guild));
 
 client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
