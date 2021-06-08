@@ -30,6 +30,7 @@ module.exports = (id) =>{
         }
 
         console.log("Insertion réussi");
+        connection.end();
       })
     }
   });
