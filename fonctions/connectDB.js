@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   database: process.env.DATABASE
 });
 
-module.exports = function connectDB(){
+module.exports = (){
   connection.connect(function(err) {
     if (err) {
       console.error("connection à la DB fail : "+err);
