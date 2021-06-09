@@ -16,5 +16,5 @@ module.exports = () => {
     console.log("connection à la DB réussi");
   });
 
-  return connect;
+  return connection;
 }
