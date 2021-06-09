@@ -10,13 +10,13 @@ const connection = mysql.createConnection({
 module.exports = (id) =>{
   connection.connect(function(err) {
     if (err) {
-      console.error("connection à la DB fail : "+err);
+      console.error("connection à la DB fail [checkGuild] : "+err);
       return;
     }
-    console.log("connection à la DB réussi");
+    console.log("connection à la DB réussi [checkGuild]");
   });
 
-  connection.query(`SELECT id FROM guild WHERE id=${id}`, function(err, results){
+  connection.query(`SELECT id FROM guild WHERE id='${id}'`, function(err, results){
     if (err) {
       console.error("J'arrive pas à chercher le serveur "+id+" : "+err);
       return;
