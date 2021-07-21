@@ -46,3 +46,31 @@ client.on('guildDelete', guild => require('../events/guildDelete.js')(client, gu
 client.login(process.env.TOKEN); //connexion
 client.on('error', console.error); //affichage des erreurs Discord dans la console
 client.on('warn', console.warn); //affichage des warns Discord dans la console
+
+/*
+                           ^
+                          /|\
+                         / | \
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                         | | |
+                   /|    |_|_|    |\
+                   \ \___/ W \___/ /
+                    \_____ _ _____/
+                          |-|
+                          |-|
+                          |-|
+                         .'-'.
+                         '---'
+*/
