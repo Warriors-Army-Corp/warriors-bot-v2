@@ -11,7 +11,7 @@ module.exports = {
   ],
   run: async(client, interaction, args) => {
     if (interaction.guild.members.resolve(client.user).permissions.has("MANAGE_MESSAGES")) {
-      const num = args[0];
+      const num = args[0]+1;
       interaction.channel.bulkDelete(num, true);
     } else {
       interaction.followUp({ content: "Je ne peux pas supprimer des messages, il me fait la permission \"Gérer les messages\"" });
