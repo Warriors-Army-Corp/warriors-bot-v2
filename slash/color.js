@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const checkHex = require('../fonctions/checkHex.js');
 
 module.exports = {
-  name: "color",
+  name: "color_infos",
   description: "Send informations about a color",
   options: [
     {
