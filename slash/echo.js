@@ -12,7 +12,7 @@ module.exports = {
   run: async(client, interaction, args) => {
     if (interaction.channel.permissionsFor(interaction.guild.members.resolve(client.user)).has("SEND_MESSAGES")) {
       interaction.deleteReply();
-      interaction.channel.send(args[0]);
+      interaction.channel.send({ content: args[0], allowedMentions: { parse: ['users'] } });
     } else {
       interaction.followUp({ content: "Je n'ai pas la permission d'envoyer des messages ici" });
     }
