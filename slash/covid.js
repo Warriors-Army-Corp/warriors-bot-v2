@@ -1,3 +1,7 @@
+/*
+ * authors : Osiris (Laelith-Security) & Mizari (Mizari-W)
+ */
+
 // Importation des modules requis
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
@@ -31,7 +35,7 @@ module.exports = {
           Rétablissements : ${resp.Global.TotalRecovered}\n
           [Ressources & Prévention](https://www.gouvernement.fr/info-coronavirus)`,
           "footer": {
-            "text": "Les données ne sont pas toujours précises\nDéveloppée par Osiris et Mizari"
+            "text": "Les données ne sont pas toujours précises"
           }
       });
     interaction.followUp({ embeds: [CovidEmbed] });
@@ -72,7 +76,7 @@ module.exports = {
             Nombre d'habitants : ${respCountryCases.All.population}\n
             Pourcentage d'habitants infectés : ${Pourcentage()}%`,
             "footer": {
-              "text": "Les données ne sont pas toujours précises\nDéveloppée par Osiris et Mizari"
+              "text": "Les données ne sont pas toujours précises"
             }
         });
         interaction.followUp({ embeds: [CovidCountryEmbed] });
