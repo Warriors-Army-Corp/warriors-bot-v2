@@ -1,4 +1,5 @@
 module.exports = async (client, interaction) => {
+  if (!interaction.guild) return interaction.reply({ content: "Pour le moment je ne fonctionne que sur les serveurs, désolé 🙏" }); // si la commande vient pas d'un serveur on l'oublie
   if (!interaction.isCommand()) return; //si c'est pas une commande
   await interaction.defer().catch(() => {});
   const cmd = client.slashCommands.get(interaction.commandName); //on récupère la commande
