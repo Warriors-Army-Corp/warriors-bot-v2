@@ -7,7 +7,7 @@ const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
-  name: "covid",
+  name: "covid_infos",
   description: "Display global or national statistics about COVID19",
   options: [
     {
