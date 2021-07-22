@@ -1,3 +1,7 @@
+/*
+ * author : Mizari (Mizari-W)
+ */
+
 module.exports = {
   name: "clear",
   description: "Delete some messages",

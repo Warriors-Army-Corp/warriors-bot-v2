@@ -1,3 +1,7 @@
+/*
+ * authors : Mizari (Mizari-W) & MotismaH (MotismaaaH)
+ */
+
 module.exports = {
   name: "kickhammer",
   description: "Kick a member",

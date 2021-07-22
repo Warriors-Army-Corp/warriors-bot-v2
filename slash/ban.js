@@ -1,3 +1,7 @@
+/*
+ * author : Mizari (Mizari-W)
+ */
+
 module.exports = {
   name: "banhammer",
   description: "Ban a member",
