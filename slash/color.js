@@ -14,7 +14,7 @@ module.exports = {
     }
   ],
   run: async(client, interaction, args) => {
-    const color = args[0];
+    const color = args[0].toLowerCase();
     var resp = await fetch("http://www.thecolorapi.com/id?hex="+color).then(res => res.json());
 
     if (!color || resp.code || !checkHex(color)) {
