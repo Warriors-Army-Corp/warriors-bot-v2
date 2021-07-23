@@ -7,7 +7,7 @@
  const fetch = require('node-fetch');
 
 module.exports = {
-  name: "ip_infos",
+  name: "ip-infos",
   description: "Show informations about an IP adress",
   options: [
     {
