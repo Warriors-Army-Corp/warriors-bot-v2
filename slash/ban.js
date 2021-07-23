@@ -37,7 +37,7 @@ module.exports = {
           // on envoit un message MP à la victime
           await mbr.createDM().then(ch => ch.send(`Vous avez été banni de ${interaction.guild.name} par ${interaction.user.tag} pour la raison "${reason}"`)).catch();
           // on indique que la personne s'est fait ban et on donne l'auteur du ban
-          await interaction.followUp({ content: `${mbr.user.tag} s'est prit un violent coup de banhammer sur la tête de la part de ${interaction.user}` });
+          await interaction.followUp({ content: `${mbr.user.tag} s'est pris un violent coup de banhammer sur la tête de la part de ${interaction.user}` });
           // on ban la victime
           await mbr.ban({ reason: `"${reason}" par ${interaction.user.tag}` }).catch();
         // si la victime n'est pas bannable
