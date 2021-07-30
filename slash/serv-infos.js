@@ -58,6 +58,10 @@ module.exports = {
       servEmbed.setImage(guild.bannerURL({format: "png", size: 4096}));
     }
 
+    if (guild.description) {
+      servEmbed.setDescription(guild.description);
+    }
+
     interaction.deleteReply();
     interaction.channel.send({ embeds: [servEmbed] });
   }
