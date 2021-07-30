@@ -1,6 +1,6 @@
 module.exports = function getBadges(user, mbr) {
   var badges = []; // initialisation du tableau qui contiendra les badges
-  if (user.flags.toArray().length > 0) {
+  if (user.flags) {
     // on parcour la liste des "flags"
     for (var i = 0; i < user.flags.toArray().length; i++) {
       var flag = user.flags.toArray()[i]; // on stock le flag dans une variable c'est plus pratique
