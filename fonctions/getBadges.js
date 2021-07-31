@@ -34,7 +34,7 @@ module.exports = function getBadges(user, mbr) {
           badges.push("<:bug_hunter_lvl2:831222010289979503>");
           break;
         case "VERIFIED_BOT":
-          badges.push("<:verified_bot:831222135707533342>");
+          badges.push("<:verified_bot:870765263669309580>");
           break;
         case "EARLY_VERIFIED_DEVELOPER":
           badges.push("<:early_verified_bot_developer:831222047383355452>");
@@ -51,20 +51,16 @@ module.exports = function getBadges(user, mbr) {
 
     // si i a une pp gif c'est qu'il a nitro
     // (si il a nitro mais qu'il n'a pas de pp gif... bah il casse les couilles voilà)
-    if (user.avatarURL({dynamic: true}).includes("gif")) {
+    if (user.avatar && user.avatarURL({dynamic: true}).includes("gif")) {
       badges.push("<:nitro:831222111041093703>");
-    }
-
-  } else {
-
-    // si c'est un bot mais qu'il n'a pas été détecté comme bot vérifié
-    if (user.bot) {
-      badges.push("<:bot:831221986033664080>");
-    } else {
-      badges = "Aucun";
     }
 
   }
 
-  return badges;
+  // si c'est un bot mais qu'il n'a pas été détecté comme bot vérifié
+  if (user.bot) {
+    badges.push("<:bot:870765250725695548>");
+  }
+
+  return badges.length>0?badges.join(""):"Aucun";
 }
