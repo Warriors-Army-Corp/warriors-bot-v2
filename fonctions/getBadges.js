@@ -1,3 +1,5 @@
+const colors = require('./colors.js');
+
 module.exports = function getBadges(user, mbr) {
   var badges = []; // initialisation du tableau qui contiendra les badges
   if (user.flags) {
@@ -36,11 +38,11 @@ module.exports = function getBadges(user, mbr) {
         case "VERIFIED_BOT":
           badges.push("<:verified_bot:870765263669309580>");
           break;
-        case "EARLY_VERIFIED_DEVELOPER":
+        case "EARLY_VERIFIED_BOT_DEVELOPER":
           badges.push("<:early_verified_bot_developer:831222047383355452>");
           break;
         default:
-          console.log("flag inconnu : "+flag); // si jamais on tombe sur un cas pas prévu on l'affiche
+          console.log(`[${colors.FgRed}Unknown flag${colors.Reset}] ${flag}`); // si jamais on tombe sur un cas pas prévu on l'affiche
       }
     }
 
