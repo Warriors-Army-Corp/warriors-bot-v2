@@ -85,6 +85,6 @@ module.exports = {
     //     interaction.followUp({ content: "Soit le pays n'existe pas, soit vous n'avez pas entré le pays en anglais." });
     //   }
     // }
-    interaction.followUp({ content: "Indisponnible pour le moment" });
+    interaction.followUp({ content: "Indisponible pour le moment" });
   }
 }
