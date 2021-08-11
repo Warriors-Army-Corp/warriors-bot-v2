@@ -42,6 +42,24 @@ module.exports = {
       }
     }
 
+    // fonction pour récup' la PP de serv
+    async function getGuildPP(user) {
+      // requête pour la bannière
+      var data = await fetch(`https://discord.com/api/v9/guilds/${interaction.guild.id}/members/${user.id}`, {
+        method: 'get',
+        headers: {Authorization: "Bot "+client.token}
+      }).then(res => res.json()).catch();
+
+      // si il y a une PP de serv on créer le lien qui va bien
+      if (data.avatar !== null) {
+        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${data.avatar+(data.avatar.startsWith("a_")?".gif":".png")}`;
+      // si y a pas de PP de serv on récupère la PP par défaut
+      } else {
+        return user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL;
+      }
+    }
+
+    // fonction pour donner un statut (assez arbitraire)
     function status(){
       if (guild.ownerId === user.id) {
         return "Owner";
@@ -69,20 +87,20 @@ module.exports = {
     await Badges(user, mbr).then(bdg => badges = bdg);
 
     var userEmbed = new MessageEmbed({
-      title: "Informations sur "+user.username,
       color: mbr.displayColor!==0?mbr.displayColor:"#2F3136",
-      thumbnail: {
-        url: user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL
+      author: {
+        name: user.username,
+        iconURL: user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL
       },
       fields: [
         {
-          name: "ID",
-          value: `${user.id}`,
+          name: "Infos sur",
+          value: `<@${user.id}>`,
           inline: true
         },
         {
-          name: "Pseudo sur le serv",
-          value: mbr.nickname?mbr.nickname:"Aucun",
+          name: "ID",
+          value: `${user.id}`,
           inline: true
         },
         {
@@ -91,8 +109,18 @@ module.exports = {
           inline: true
         },
         {
+          name: "Pseudo sur le serv",
+          value: mbr.nickname?mbr.nickname:"Aucun",
+          inline: true
+        },
+        {
           name: "Rang",
           value: `${status()}`,
+          inline: true
+        },
+        {
+          name: "Boost",
+          value: `${mbr.premiumSince!==null?date(mbr.premiumSince):"Ne boost pas"}`,
           inline: true
         },
         {
@@ -104,19 +132,22 @@ module.exports = {
           name: "Arrivée sur le serv",
           value: `${date(mbr.joinedAt)}`,
           inline: true
-        },
-        {
-          name: "Boost",
-          value: `${mbr.premiumSince!==null?date(mbr.premiumSince):"Ne boost pas"}`
         }
       ]
     });
 
+    // ajout de la bannière (si y en a une)
     var banner = null;
     await getBanner(user.id).then(res => banner = res);
-
     if (banner !== null) {
       userEmbed.setImage(banner);
+    }
+
+    // ajout de la PP guild
+    var ppGuild = null;
+    await getGuildPP(user).then(pp => ppGuild = pp);
+    if (ppGuild !== null) {
+      userEmbed.setThumbnail(ppGuild);
     }
 
     interaction.deleteReply();
