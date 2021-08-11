@@ -1,7 +1,7 @@
 const colors = require('../fonctions/colors.js');
 
 module.exports = (client, guild) => {
-  client.user.setActivity(`${client.guilds.cache.size} servers | ${client.PREFIX}help`, {type: 'COMPETING'});
+  client.user.setActivity(`${client.guilds.cache.size} servers |  use "/"`, {type: 'COMPETING'});
   // mise en page des logs dans la console (ça c'est pour Mizari)
   console.log(`[${colors.FgGreen}    Logs    ${colors.Reset}] Ancien serv : ${guild.name}`);
   console.log(`               Nombre de membres : ${guild.memberCount}`);
