@@ -7,22 +7,22 @@ module.exports = async (client) => {
   // client.user.setActivity(`${client.guilds.cache.size} servers | use "/"`, {type: 'COMPETING'}); //affiche sur combien de serv est le bot
   client.user.setActivity(`Under maintenance. Please don't use.`, {type: 'COMPETING'});
   // await client.guilds.cache.each(guild => guild.commands.set(client.arraySlashCommands));
-  client.guilds.cache.each(async guild => {
-    console.log("name : "+guild.name);
-    await guild.commands.fetch().then(async cmds => {
-      console.log("commandes : "+cmds.size);
-      await cmds.forEach(async cmd => {
-        console.log("\t"+cmd.name);
-        cmd.delete();
-      });
-    });
-  });
-
-  client.application.commands.fetch().then(async cmds => {
-    console.log("commandes : "+cmds.size);
-    await cmds.forEach(async cmd => {
-      console.log("\t"+cmd.name);
-      cmd.delete();
-    });
-  });
+  // client.guilds.cache.each(async guild => {
+  //   console.log("name : "+guild.name);
+  //   await guild.commands.fetch().then(async cmds => {
+  //     console.log("commandes : "+cmds.size);
+  //     await cmds.forEach(async cmd => {
+  //       console.log("\t"+cmd.name);
+  //       cmd.delete();
+  //     });
+  //   });
+  // });
+  //
+  // client.application.commands.fetch().then(async cmds => {
+  //   console.log("commandes : "+cmds.size);
+  //   await cmds.forEach(async cmd => {
+  //     console.log("\t"+cmd.name);
+  //     cmd.delete();
+  //   });
+  // });
 }
