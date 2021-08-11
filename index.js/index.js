@@ -14,7 +14,7 @@ client.arraySlashCommands = []; //liste des salsh commands pour les créer aprè
 const fs = require('fs'); //pour les commands handler
 
 //constantes à utiliser partout dans le programme du bot
-client.PREFIX = "w?";
+// client.PREFIX = "w/";
 client.MARQUE = "Warriors Bot official";
 client.THUMB = "https://cdn.discordapp.com/emojis/823254034654822401.png";
 
@@ -35,8 +35,8 @@ for(const file of slashFiles){
 
 //appel des events
 client.on('ready', () => require('../events/ready.js')(client));
-client.on('messageCreate', msg => require('../events/messages.js')(client, msg));
-client.on('interactionCreate', interaction => require('../events/interaction.js')(client, interaction));
+// client.on('messageCreate', msg => require('../events/messages.js')(client, msg));
+// client.on('interactionCreate', interaction => require('../events/interaction.js')(client, interaction));
 client.on('guildMemberUpdate', (oldMember, newMember) => require('../events/guildMemberUpdate.js')(oldMember, newMember));
 client.on('messageReactionAdd', (messageReaction, user) => require('../events/messageReactionAdd.js')(messageReaction, user));
 client.on('messageReactionRemove', (messageReaction, user) => require('../events/messageReactionRemove.js')(messageReaction, user));

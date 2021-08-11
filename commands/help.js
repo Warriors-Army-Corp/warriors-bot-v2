@@ -14,7 +14,7 @@ exports.cmd = (client, msg, args) => {
     var fun = [];
     // création des listes des commandes suivant leur catégories (et en fonction des perms du user aussi)
     client.commands.forEach(help => {
-      if (msg.member.hasPermission(help.help.perm) && msg.guild.me.hasPermission(help.help.perm)) {
+      if (msg.member.permissions.has(help.help.perm) && msg.guild.me.permissions.has(help.help.perm)) {
         if (help.help.categ === "UTILITY") {
           util.push("`"+help.help.cmd+"`");
         } else if (help.help.categ === "FUN") {
