@@ -1,30 +1,18 @@
 {
-  "name": "warriors-bot",
-  "version": "2.0.0",
-  "description": "Upgrade du Warriors Bot",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Warriors-Army/warriors-bot-v2.git"
-  },
-  "author": "Mizari",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Warriors-Army/warriors-bot-v2/issues"
-  },
-  "homepage": "https://github.com/Warriors-Army/warriors-bot-v2#readme",
-  "dependencies": {
-    "discord.js": "^13.0.0-dev.4d53d0f.1626523373",
-    "discord.js-menu": "^2.3.1",
-    "dotenv": "^8.6.0",
-    "fs": "0.0.1-security",
-    "jimp": "^0.16.1",
-    "mysql": "^2.18.1",
-    "node-fetch": "^2.6.1",
-    "qrcode-reader": "^1.0.4",
-    "tempy": "^1.0.1"
-  }
+    "name": "djs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node -r dotenv/config index.js",
+        "test": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^13.2.0",
+        "dotenv": "^10.0.0",
+        "glob": "^7.1.7"
+    }
 }
