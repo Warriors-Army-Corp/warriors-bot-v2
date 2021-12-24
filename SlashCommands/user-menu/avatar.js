@@ -1,9 +1,8 @@
 const { Client, CommandInteraction } = require("discord.js");
 
 module.exports = {
-    name: "ping",
-    description: "returns websocket ping",
-    type: 'CHAT_INPUT',
+    name: "avatar",
+    type: 'USER',
     /**
      *
      * @param {Client} client
@@ -11,6 +10,7 @@ module.exports = {
      * @param {String[]} args
      */
     run: async (client, interaction, args) => {
-        interaction.followUp({ content: `${client.ws.ping}ms!` });
+      const user = await client.users.fetch(interaction.targetId);
+        interaction.followUp({ content: user.displayAvatarURL({ dynamic: true, size: 4096}) });
     },
 };
