@@ -1,6 +1,6 @@
 // importation des packages dont on a besoin
 const fs = require('fs');
-const fetch = import('node-fetch');
+const fetch = require('node-fetch');
 
 module.exports = async function download(url, output) {
   // initialisation d'une variable

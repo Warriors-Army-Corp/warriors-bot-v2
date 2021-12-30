@@ -1,5 +1,5 @@
 const colors = require('./colors.js');
-const fetch = import('node-fetch');
+const fetch = require('node-fetch');
 
 module.exports = async function getBadges(user, mbr) {
   var badges = []; // initialisation du tableau qui contiendra les badges

@@ -6,6 +6,7 @@
  const tempy = require('tempy');
  const QrCode = require('qrcode-reader');
  const Jimp = require("jimp");
+ const fetch = require('node-fetch');
  // importation des fonctions dont on a besoin
  const getLink = require('../../fonctions/getLink.js');
  const download = require('../../fonctions/download.js');
@@ -49,20 +50,14 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
-    // récupération de la commande
-    const cmd = interaction.options.array()[0];
-    // faut refaire les arguments du coup
-    args = [];
-    cmd.options.array().map(option => {
-      args.push(option.value);
-    });
     // si la commande c'est "create"
-    if (cmd.name === "create"){
+    if (args[0] === "create"){
       // création du QR code (trop dur mdr)
-      interaction.followUp({ content: "https://chart.googleapis.com/chart?cht=qr&chs=500x500&chl="+args[0].replace(/ +/g, "%20") });
+      interaction.followUp({ content: "https://chart.googleapis.com/chart?cht=qr&chs=500x500&chl="+args[1].replace(/ +/g, "%20") });
     // sinon (du coup c'est "read")
     } else {
       // petite fonction des familles pour chopper une url
+      args.shift();
       const link = getLink({attachments: []}, args);
 
       // si on a réussi à chopper l'url

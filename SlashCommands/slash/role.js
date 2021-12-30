@@ -36,8 +36,8 @@ module.exports = {
           inline: true
         },
         {
-          name: "Nombres de membres",
-          value: `${role.members.array().length}`,
+          name: "Membres",
+          value: `${role.members.size}`,
           inline: true
         },
         {
@@ -56,7 +56,7 @@ module.exports = {
           inline: true
         },
         {
-          name: "Généré automatiquement ?",
+          name: "Auto généré ?",
           value: role.managed?"✅":"❌",
           inline: true
         }

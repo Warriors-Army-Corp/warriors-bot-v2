@@ -38,7 +38,7 @@ module.exports = {
     var max = 6;
     var num = 1;
 
-    args = interaction.options.array(); // redéfinition des arguments
+    args = interaction.options._hoistedOptions; // redéfinition des arguments
     // récupération des arguments de l'utilisateur
     for (var i = 0; i < args.length; i++) {
       switch (args[i].name) {
