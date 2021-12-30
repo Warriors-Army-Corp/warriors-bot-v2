@@ -25,7 +25,7 @@ client.on("interactionCreate", async (interaction) => {
         cmd.run(client, interaction, args);
 
         // Logs
-        console.log(`[ ${colors.FgGreen}slash-cmd${colors.Reset}  ]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}\n\t\targs : ${args}`);
+        console.log(`[ ${colors.FgCyan}slash-cmd${colors.Reset}  ]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}\n\t\targs : ${args}`);
     }
 
     // Context Menu Handling
