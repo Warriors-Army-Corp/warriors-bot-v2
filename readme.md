@@ -16,28 +16,36 @@ Si vous trouvez un bug, vous pouvez le signaler en créant une "Issue", ou alors
 ### Nouvelles fonctionnalités
 Vous pouvez proposer de nouvelles fonctionnalités dans les "Issues" ou alors coder une nouvelle fonctionnalité et la proposer dans les "Pull Request" en suivant ce model :
 ```javascript
+/*
+ * author : votre nom/pseudo
+ */
+
 // appel des packages nécessaire
 // exemple :
 const { MessageEmbed } = require("discord.js");
 
-/*
- * @param {Client} client En gros c'est le bot en lui même
- * @param {Message} msg L'objet message
- * @param {array} args Liste des paramètres donnés par l'utilisateur
- */
-exports.cmd = /*async si besoin*/ (client, msg, args) => {
-  // code a executer
-  // exemple :
-  msg.channel.send("Hello World !");
-}
-
-exports.help = {
-  perm: "la permission nécessaire pour utiliser cette commande (mettre SEND_MESSAGES s'il n'y a pas besoin de perm particulière)",
-  cmd: "nom de la commande (exemple : say_hello)",
-  args: "les paramètres de la commandes (entre [] et entre () si c'est optionnel, ne rien mettre s'il n'y en a pas besoin)",
-  desc: "Courte description de la commande",
-  categ: "le type de commande, répartie en 3 catégories -> MODERATION, FUN et UTILITY",
-  author: "Votre pseudo (soyez fier de ce que vous avez dev)"
+module.exports = {
+  name: "nom de la commande",
+  description: "description de la commande",
+  // facultatif
+  options: [
+    {
+      name: "nom de l'option",
+      description: "description de l'option",
+      type: "TYPE_DE_L'OPTION",
+      required: true // ou false
+    }
+  ],
+  type: 'CHAT_INPUT',
+  /**
+   *
+   * @param {Client} client
+   * @param {CommandInteraction} interaction
+   * @param {String[]} args
+   */
+  run: async(client, interaction, args) => {
+    // code a exécuter à l'appel de cette commande
+  }
 }
 ```
 
