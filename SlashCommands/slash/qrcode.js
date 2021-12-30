@@ -3,7 +3,7 @@
  */
 
  // importation des packages dont on a besoin
- const tempy = import('tempy');
+ const tempy = require('tempy');
  const QrCode = require('qrcode-reader');
  const Jimp = require("jimp");
  // importation des fonctions dont on a besoin

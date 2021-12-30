@@ -4,7 +4,7 @@
 
 // importation des packages dont on a besoin
 const { MessageEmbed } = require("discord.js")
-const fetch = import("node-fetch");
+const fetch = require("node-fetch");
 const date = require("../../fonctions/date.js");
 
 module.exports = {

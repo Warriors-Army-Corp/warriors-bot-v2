@@ -3,7 +3,7 @@
  */
 
 // importation des packages qui vont biens
-const fetch = import('node-fetch');
+const fetch = require('node-fetch');
 const { MessageEmbed } = require('discord.js');
 const checkHex = require('../../fonctions/checkHex.js');
 
