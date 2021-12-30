@@ -20,6 +20,6 @@
         "mysql": "^2.18.1",
         "node-fetch": "^2.6.6",
         "qrcode-reader": "^1.0.4",
-        "tempy": "^2.0.0"
+        "tempy": "^1.0.1"
     }
 }
