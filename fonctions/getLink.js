@@ -1,3 +1,10 @@
+const colors = require('./colors.js');
+
+/**
+ * getLink
+ * @param {String} msg
+ * @param {String[]} args
+ */
 module.exports = function getLink(msg, args) {
   // si y a des attachments dans le message
   if (msg.attachments.size > 0) {
@@ -11,11 +18,13 @@ module.exports = function getLink(msg, args) {
       return args[0];
     // sinon
     }else {
+      console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\targs[0] doesn't includes "http" or "https" : ${args[0]}\n\t\targs : ${args}`);
       // on dit qu'il y a rien
       return null;
     }
   // sinon
   } else {
+    console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\tno args : ${args}`);
     // on dit qu'il y a rien
     return null;
   }

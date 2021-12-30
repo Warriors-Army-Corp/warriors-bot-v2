@@ -1,4 +1,3 @@
-
 module.exports = function getBadges(guild) {
   var badges = []; // initialisation du tableau qui contiendra les badges
 

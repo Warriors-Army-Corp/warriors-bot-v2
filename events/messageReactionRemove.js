@@ -1,4 +1,6 @@
-module.exports = async (messageReaction, user) => {
+const client = require("../index");
+
+client.on("messageReactionRemove", async (messageReaction, user) => {
   const msg = messageReaction.message; // le message qui a reçu la réaction
   const emote = messageReaction.emoji.name; // l'émote de la réaction
   const mbr = msg.guild.members.cache.get(user.id); // le membre qui réagit
@@ -70,4 +72,4 @@ module.exports = async (messageReaction, user) => {
           }
           break;
   }
-}
+});
