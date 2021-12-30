@@ -33,7 +33,7 @@ module.exports = async (client) => {
         await client.guilds.cache.each(async guild => {
           //await console.log(`[${colors.FgGreen}   Guild    ${colors.Reset}]\t${guild.name}`);
           // for each guild, set all commands
-          await guild.commands.set(arrayOfSlashCommands);
+          await guild.commands.set(arrayOfSlashCommands).catch(console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ guild : ${guild.name}`));
 
           // find all commands which is removed by default
           // var commands = await guild.commands.cache.filter(cmd => cmd.defaultPermission === false);
