@@ -24,8 +24,8 @@ client.on("interactionCreate", async (interaction) => {
 
         cmd.run(client, interaction, args);
 
-          // Logs
-          console.log(`[ ${colors.FgGreen}slash-cmd${colors.Reset}  ]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
+        // Logs
+        console.log(`[ ${colors.FgGreen}slash-cmd${colors.Reset}  ]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}\n\t\targs : ${args}`);
     }
 
     // Context Menu Handling
@@ -33,7 +33,7 @@ client.on("interactionCreate", async (interaction) => {
         await interaction.deferReply({ ephemeral: false });
         const command = client.slashCommands.get(interaction.commandName);
         if (command) command.run(client, interaction);
-        
+
         // Logs
         console.log(`[${colors.FgGreen}context-menu${colors.Reset}]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
     }
