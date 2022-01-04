@@ -3,6 +3,7 @@ const colors = require('../fonctions/colors.js');
 
 client.on("ready", () => {
    console.log(`[${colors.FgGreen} Connected  ${colors.Reset}]\tLogged in as ${client.user.tag}!`);
+   client.user.setActivity(`${client.guilds.cache.size} servers |  use "/"`, {type: 'COMPETING'});
 
    // Pour tout delete (normalement ça marche)
    // client.application.commands.cache.each(cmd => {
