@@ -5,7 +5,7 @@ const { promisify } = require("util");
 
 const globPromise = promisify(glob);
 
-client.on("guildCreate", (guild) => {
+client.on("guildCreate", async (guild) => {
   client.user.setActivity(`${client.guilds.cache.size} servers |  use "/"`, {type: 'COMPETING'});
 
   // Slash Commands
