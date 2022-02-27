@@ -14,7 +14,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
     const member = newMember;
     const guild = member.guild;
     // l'id de la DB
-    const db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
+    var db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
     // on regarde si y a pas déjà une config pour ce serv
     var response = await notion.databases.query({
       database_id: db_id,
@@ -46,8 +46,24 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
       }
     }
 
-    if(oldMember.guild.id === '585906194724552706'){
-      newMember.roles.add('643207799630987299'); // on ajoute le rôle membre
+    ///////////////////////////////////////////////////////
+
+    db_id = 'a03bb09931e942b686e5e8c8950af90e';
+    var response = await notion.databases.query({
+      database_id: db_id,
+      filter: {
+        property: 'GuildID',
+        text: {
+          contains: guild.id
+        }
+      }
+    });
+
+    if(response.results.length > 0){
+      const page = response.results[0];
+      const role = page.properties.RoleID.rich_text[0].plain_text;
+
+      member.roles.add(role);
     }
   }
 });

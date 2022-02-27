@@ -11,7 +11,7 @@ client.on("guildMemberAdd", async (member) => {
   const guild = member.guild;
   if (guild.features.find(feature => feature === "MEMBER_VERIFICATION_GATE_ENABLED") == undefined){
     // l'id de la DB
-    const db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
+    var db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
     var response = await notion.databases.query({
       database_id: db_id,
       filter: {
@@ -35,11 +35,33 @@ client.on("guildMemberAdd", async (member) => {
       msg = msg.replaceAll("{member}", member);
       msg = msg.replaceAll("\\n", String.fromCharCode(10));
 
+      // if (guild.channels.cache.get(channel))
+
       if (channel === "DM") {
         member.send(msg);
       } else {
         guild.channels.cache.get(channel).send(msg);
       }
+    }
+
+    /////////////////////////////////////////////////////////////
+
+    db_id = 'a03bb09931e942b686e5e8c8950af90e';
+    var response = await notion.databases.query({
+      database_id: db_id,
+      filter: {
+        property: 'GuildID',
+        text: {
+          contains: guild.id
+        }
+      }
+    });
+
+    if(response.results.length > 0){
+      const page = response.results[0];
+      const role = page.properties.RoleID.rich_text[0].plain_text;
+
+      member.roles.add(role);
     }
   }
 });
