@@ -28,11 +28,11 @@ client.on("guildMemberAdd", async (member) => {
       var channel = page.properties.SalonID.rich_text[0].plain_text;
       var msg = page.properties.Message.rich_text[0].plain_text;
 
-      msg = msg.replaceAll("[server.name]", guild.name);
-      msg = msg.replaceAll("[server.description]", guild.description);
-      msg = msg.replaceAll("[member.name]", member.user.username);
-      msg = msg.replaceAll("[member.tag]", member.user.tag);
-      msg = msg.replaceAll("[member]", member);
+      msg = msg.replaceAll("{server.name}", guild.name);
+      msg = msg.replaceAll("{server.description}", guild.description);
+      msg = msg.replaceAll("{member.name}", member.user.username);
+      msg = msg.replaceAll("{member.tag}", member.user.tag);
+      msg = msg.replaceAll("{member}", member);
       msg = msg.replaceAll("\\n", String.fromCharCode(10));
 
       if (channel === "DM") {
