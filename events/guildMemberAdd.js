@@ -35,7 +35,24 @@ client.on("guildMemberAdd", async (member) => {
       msg = msg.replaceAll("{member}", member);
       msg = msg.replaceAll("\\n", String.fromCharCode(10));
 
-      // if (guild.channels.cache.get(channel))
+      if (guild.channels.cache.get(channel) == undefined){
+        channel = "DM";
+
+        response = await notion.pages.update({
+          page_id: page.id,
+          properties: {
+            SalonID: {
+              rich_text: [
+                {
+                  text: {
+                    content: channel
+                  }
+                }
+              ]
+            }
+          }
+        });
+      }
 
       if (channel === "DM") {
         member.send(msg);
@@ -61,7 +78,14 @@ client.on("guildMemberAdd", async (member) => {
       const page = response.results[0];
       const role = page.properties.RoleID.rich_text[0].plain_text;
 
-      member.roles.add(role);
+      if (member.guild.roles.cache.get(role) == undefined) {
+        response = await notion.pages.update({
+          page_id: page.id,
+          archived: true
+        });
+      } else {
+        member.roles.add(role);
+      }
     }
   }
 });
