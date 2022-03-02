@@ -14,7 +14,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
     const member = newMember;
     const guild = member.guild;
     // l'id de la DB
-    const db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
+    var db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
     // on regarde si y a pas déjà une config pour ce serv
     var response = await notion.databases.query({
       database_id: db_id,
@@ -39,6 +39,25 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
       msg = msg.replaceAll("{member}", member);
       msg = msg.replaceAll("\\n", String.fromCharCode(10));
 
+      if (guild.channels.cache.get(channel) == undefined){
+        channel = "DM";
+
+        response = await notion.pages.update({
+          page_id: page.id,
+          properties: {
+            SalonID: {
+              rich_text: [
+                {
+                  text: {
+                    content: channel
+                  }
+                }
+              ]
+            }
+          }
+        });
+      }
+
       if (channel === "DM") {
         member.send(msg);
       } else {
@@ -46,8 +65,31 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
       }
     }
 
-    if(oldMember.guild.id === '585906194724552706'){
-      newMember.roles.add('643207799630987299'); // on ajoute le rôle membre
+    ///////////////////////////////////////////////////////
+
+    db_id = 'a03bb09931e942b686e5e8c8950af90e';
+    var response = await notion.databases.query({
+      database_id: db_id,
+      filter: {
+        property: 'GuildID',
+        text: {
+          contains: guild.id
+        }
+      }
+    });
+
+    if(response.results.length > 0){
+      const page = response.results[0];
+      const role = page.properties.RoleID.rich_text[0].plain_text;
+
+      if (member.guild.roles.cache.get(role) == undefined) {
+        response = await notion.pages.update({
+          page_id: page.id,
+          archived: true
+        });
+      } else {
+        member.roles.add(role);
+      }
     }
   }
 });
