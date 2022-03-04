@@ -212,111 +212,130 @@ module.exports = {
           break;
         // COnfig pour le rôle de bienvenue
         case "welcome-role":
-          const roleID = args[1];
-          db_id = "a03bb09931e942b686e5e8c8950af90e";
+          if (!interaction.guild.me.permissions.has("MANAGE_ROLES")){
+            const roleID = args[1];
+            if (!interaction.guild.roles.cache.get(roleID).managed){
+              db_id = "a03bb09931e942b686e5e8c8950af90e";
 
-          var response = await notion.databases.query({
-            database_id: db_id,
-            filter: {
-              property: 'GuildID',
-              text: {
-                contains: interaction.guild.id
-              }
-            }
-          });
-
-          if(response.results.length === 0){
-            response = await notion.pages.create({
-              parent: {
-                database_id: db_id
-              },
-              icon: {
-                type: 'external',
-                external: {
-                  url: interaction.guild.iconURL()!==null?interaction.guild.iconURL({ dynamic: false }):"https://cdn.discordapp.com/emojis/638828154978304010.png"
-                }
-              },
-              properties: {
-                GuildID: {
-                  title: [
-                    {
-                      text: {
-                        content: interaction.guild.id
-                      }
-                    }
-                  ]
-                },
-                RoleID: {
-                  rich_text: [
-                    {
-                      text: {
-                        content: roleID
-                      }
-                    }
-                  ]
-                }
-              }
-            });
-
-            if(response.object === "page"){
-              const embed = new MessageEmbed({
-                title: `✅ Fait`,
-                color: '#2F3136',
-                description: `Le rôle a bien été configuré pour être attribué à l'arrivé d'un nouveau membre.`,
-                fields: [
-                  {
-                    name: "rôle",
-                    value: `${interaction.guild.roles.cache.get(roleID)}`
+              var response = await notion.databases.query({
+                database_id: db_id,
+                filter: {
+                  property: 'GuildID',
+                  text: {
+                    contains: interaction.guild.id
                   }
-                ]
+                }
               });
-              interaction.followUp({ embeds: [embed] });
+
+              if(response.results.length === 0){
+                response = await notion.pages.create({
+                  parent: {
+                    database_id: db_id
+                  },
+                  icon: {
+                    type: 'external',
+                    external: {
+                      url: interaction.guild.iconURL()!==null?interaction.guild.iconURL({ dynamic: false }):"https://cdn.discordapp.com/emojis/638828154978304010.png"
+                    }
+                  },
+                  properties: {
+                    GuildID: {
+                      title: [
+                        {
+                          text: {
+                            content: interaction.guild.id
+                          }
+                        }
+                      ]
+                    },
+                    RoleID: {
+                      rich_text: [
+                        {
+                          text: {
+                            content: roleID
+                          }
+                        }
+                      ]
+                    }
+                  }
+                });
+
+                if(response.object === "page"){
+                  const embed = new MessageEmbed({
+                    title: `✅ Fait`,
+                    color: '#2F3136',
+                    description: `Le rôle a bien été configuré pour être attribué à l'arrivé d'un nouveau membre.`,
+                    fields: [
+                      {
+                        name: "rôle",
+                        value: `${interaction.guild.roles.cache.get(roleID)}`
+                      }
+                    ]
+                  });
+                  interaction.followUp({ embeds: [embed] });
+                } else {
+                  const embed = new MessageEmbed({
+                    title: `❌ Erreur`,
+                    color: '#2F3136',
+                    description: `Une erreur est survenue. Veuillez en faire par au staff sur le [serveur support](https://discord.gg/tDWF64AYkW).`
+                  });
+                  interaction.followUp({ embeds: [embed] });
+                }
+              } else {
+                const pageId = response.results[0].id;
+                response = await notion.pages.update({
+                  page_id: pageId,
+                  properties: {
+                    RoleID: {
+                      rich_text: [
+                        {
+                          text: {
+                            content: roleID
+                          }
+                        }
+                      ]
+                    }
+                  }
+                });
+
+                if(response.object === "page"){
+                  const embed = new MessageEmbed({
+                    title: `✅ Fait`,
+                    color: '#2F3136',
+                    description: `Le rôle a bien été configuré pour être attribué à l'arrivé d'un nouveau membre.`,
+                    fields: [
+                      {
+                        name: "role",
+                        value: `${interaction.guild.roles.cache.get(roleID)}`
+                      }
+                    ]
+                  });
+                  interaction.followUp({ embeds: [embed] });
+                } else {
+                  const embed = new MessageEmbed({
+                    title: `❌ Erreur`,
+                    color: '#2F3136',
+                    description: `Une erreur est survenue. Veuillez en faire par au staff sur le [serveur support](https://discord.gg/tDWF64AYkW).`
+                  });
+                  interaction.followUp({ embeds: [embed] });
+                }
+              }
             } else {
               const embed = new MessageEmbed({
                 title: `❌ Erreur`,
                 color: '#2F3136',
-                description: `Une erreur est survenue. Veuillez en faire par au staff sur le [serveur support](https://discord.gg/tDWF64AYkW).`
+                description: `Vous ne pouvez pas choisir un rôle auto-généré (rôle de bot ou boosters).`
               });
+
               interaction.followUp({ embeds: [embed] });
             }
           } else {
-            const pageId = response.results[0].id;
-            response = await notion.pages.update({
-              page_id: pageId,
-              properties: {
-                RoleID: {
-                  rich_text: [
-                    {
-                      text: {
-                        content: roleID
-                      }
-                    }
-                  ]
-                }
-              }
+            const embed = new MessageEmbed({
+              title: `❌ Erreur`,
+              color: '#2F3136',
+              description: `Il me faut la permission "gérer les rôles".`
             });
-
-            if(response.object === "page"){
-              const embed = new MessageEmbed({
-                title: `✅ Fait`,
-                color: '#2F3136',
-                description: `Le rôle a bien été configuré pour être attribué à l'arrivé d'un nouveau membre.`,
-                fields: [
-                  {
-                    name: "role",
-                    value: `${interaction.guild.roles.cache.get(roleID)}`
-                  }
-                ]
-              });
-              interaction.followUp({ embeds: [embed] });
-            } else {
-              const embed = new MessageEmbed({
-                title: `❌ Erreur`,
-                color: '#2F3136',
-                description: `Une erreur est survenue. Veuillez en faire par au staff sur le [serveur support](https://discord.gg/tDWF64AYkW).`
-              });
-              interaction.followUp({ embeds: [embed] });
-            }
+            interaction.followUp({ embeds: [embed] });
           }
           break;
 
