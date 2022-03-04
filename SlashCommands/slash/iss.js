@@ -54,7 +54,7 @@ module.exports = {
         },
         {
           "name": 'Vitesse de ISS',
-          "value": `${resp.velocity} km/h`,
+          "value": `${resp.velocity.toFixed(2)} km/h`,
           "inline": true
         },
         {
