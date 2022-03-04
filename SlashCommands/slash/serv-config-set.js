@@ -91,7 +91,7 @@ module.exports = {
               icon: {
                 type: 'external',
                 external: {
-                  url: interaction.guild.iconURL({ dynamic: false })
+                  url: interaction.guild.iconURL()!==null?interaction.guild.iconURL({ dynamic: false }):"https://cdn.discordapp.com/emojis/638828154978304010.png"
                 }
               },
               properties: {
@@ -233,7 +233,7 @@ module.exports = {
               icon: {
                 type: 'external',
                 external: {
-                  url: interaction.guild.iconURL({ dynamic: false })
+                  url: interaction.guild.iconURL()!==null?interaction.guild.iconURL({ dynamic: false }):"https://cdn.discordapp.com/emojis/638828154978304010.png"
                 }
               },
               properties: {
