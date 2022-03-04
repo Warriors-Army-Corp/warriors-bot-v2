@@ -89,7 +89,7 @@ module.exports = {
     }
 
     const user = mbr.user; // comme ça ça raccourci un peu le code
-    console.log(mbr);
+    
     // récupération des badges
     var badges = "Aucun";
     await Badges(user, mbr).then(bdg => badges = bdg);

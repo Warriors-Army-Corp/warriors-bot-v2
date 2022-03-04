@@ -1,5 +1,6 @@
-const client = require("../index")
- const { Client, LogLevel } = require("@notionhq/client")
+const client = require("../index");
+ const { Client, LogLevel } = require("@notionhq/client");
+ const colors = require('../fonctions/colors.js');
 
  // Initializing a client
  const notion = new Client({
@@ -84,7 +85,7 @@ client.on("guildMemberAdd", async (member) => {
           archived: true
         });
       } else {
-        member.roles.add(role);
+        member.roles.add(role).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ guild : ${guild.name}\n\t\terror : ${err}`));
       }
     }
   }
