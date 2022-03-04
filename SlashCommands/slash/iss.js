@@ -39,17 +39,17 @@ module.exports = {
         },
         {
           "name": 'Latitude',
-          "value": `${resp.latitude}`,
+          "value": `${resp.latitude.toFixed(5)}`,
           "inline": true
         },
         {
           "name": 'Longitude',
-          "value": `${resp.longitude}`,
+          "value": `${resp.longitude.toFixed(5)}`,
           "inline": true
         },
         {
           "name": 'Altitude',
-          "value": `${resp.altitude}`,
+          "value": `${resp.altitude.toFixed(2)}`,
           "inline": true
         },
         {
