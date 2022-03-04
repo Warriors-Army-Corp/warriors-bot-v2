@@ -30,6 +30,7 @@ module.exports = {
           name: "channel",
           description: "The channel to send to (the message will be send in private if not set)",
           type: "CHANNEL",
+          channelTypes: ["GUILD_TEXT", "GUILD_NEWS"],
           required: false
         }
       ]
@@ -65,21 +66,7 @@ module.exports = {
         case "welcome-message":
 
           const msg = args[1]; // le message de bienvenue
-          var channel = "DM"; // par défaut le message s'envoie en DM
-
-          // si l'utilisateur a défini un salon
-          if (args[2]){
-            channel = interaction.guild.channels.cache.get(args[2]);
-            // on check que le salon est un salon textuel
-            if (channel.type != "GUILD_TEXT" && channel.type != "GUILD_NEWS"){
-              // si s'en est pas un on le dit et on abandonne tout
-              interaction.followUp({ content : "⚠️ Le salon ne peut pas être autre chose qu'un salon textuel." });
-              return;
-            // sinon on récupère l'id
-            } else {
-              channel = args[2];
-            }
-          }
+          var channel = args[2]?args[2]:"DM"; // si y a un salon défini on prent ça, sinon c'est en DM
 
           // l'id de la DB
           db_id = 'c1dfe4dd-f812-4f06-b98a-b63a81252912';
