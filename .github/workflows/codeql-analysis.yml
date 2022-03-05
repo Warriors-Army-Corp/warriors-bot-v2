@@ -73,10 +73,6 @@ jobs:
       with:
         # Set always-auth in npmrc
         always-auth: false # optional, default is false
-        # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-        node-version: 17.3.0 # optional
-        # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
-        architecture: x86, x64 # optional
         # Used to pull node distributions from node-versions.  Since there's a default, this is typically not supplied by the user.
         token: ${{ github.token }} # optional, default is ${{ github.token }}
         # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm
