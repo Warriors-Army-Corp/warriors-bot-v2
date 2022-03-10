@@ -12,7 +12,7 @@ client.on("messageCreate", async (message) => {
     }
 
     message.content = message.content.trim().toLowerCase();
-    if (message.guild.id === "645239930896908293" && (message.content.endsWith("quoi") || message.content.endsWith("quoi?") || message.content.endsWith("quoi ?"))){
+    if (message.guild.id === "766621570155675670" && (message.content.endsWith("quoi") || message.content.endsWith("quoi?") || message.content.endsWith("quoi ?"))){
       message.reply("ffffffffffffffffffffffffffffffffffffffffffffffffffeur");
     }
 });
