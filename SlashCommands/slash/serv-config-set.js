@@ -212,7 +212,7 @@ module.exports = {
           break;
         // COnfig pour le rôle de bienvenue
         case "welcome-role":
-          if (!interaction.guild.me.permissions.has("MANAGE_ROLES")){
+          if (interaction.guild.me.permissions.has("MANAGE_ROLES")){
             const roleID = args[1];
             if (!interaction.guild.roles.cache.get(roleID).managed){
               db_id = "a03bb09931e942b686e5e8c8950af90e";
