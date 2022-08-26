@@ -1,4 +1,5 @@
 const client = require("../index");
+const colors = require('../fonctions/colors.js');
 
 client.on("interactionCreate", async (interaction) => {
     // Slash Command Handling
@@ -22,6 +23,9 @@ client.on("interactionCreate", async (interaction) => {
         interaction.member = interaction.guild.members.cache.get(interaction.user.id);
 
         cmd.run(client, interaction, args);
+
+        // Logs
+        console.log(`[ ${colors.FgCyan}slash-cmd${colors.Reset}  ]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}\n\t\targs : ${args}`);
     }
 
     // Context Menu Handling
@@ -29,5 +33,8 @@ client.on("interactionCreate", async (interaction) => {
         await interaction.deferReply({ ephemeral: false });
         const command = client.slashCommands.get(interaction.commandName);
         if (command) command.run(client, interaction);
+
+        // Logs
+        console.log(`[${colors.FgCyan}context-menu${colors.Reset}]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
     }
 });
