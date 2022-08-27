@@ -5,7 +5,7 @@ const client = new Client({intents: 3276799});
 module.exports = client;
 
 // Global Variables
-client.slashCommands = new Collection();
+client.commandsFiles = new Collection();
 client.THUMB = "https://cdn.discordapp.com/emojis/823254034654822401.png";
 
 // Initializing the project
