@@ -1,7 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
- const { MessageEmbed } = require("discord.js");
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
  const date = require("../../fonctions/date.js");
 
 module.exports = {
@@ -11,11 +11,11 @@ module.exports = {
     {
       name: "role",
       description: "The role you want to display informations about",
-      type: "ROLE",
+      type: ApplicationCommandOptionType.Role,
       required: true
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -25,7 +25,7 @@ module.exports = {
   run: async(client, interaction, args) => {
     const role = interaction.guild.roles.cache.get(args[0]);
 
-    const roleEmbed = new MessageEmbed({
+    const roleEmbed = new EmbedBuilder({
       color: role.color,
       title: "Infos sur "+role.name,
       thumbnail: { url: "https://media.discordapp.net/attachments/661396307973242894/830494635301273640/Capture_decran_2021-04-10_a_19.28.51.png?width=498&height=498" },

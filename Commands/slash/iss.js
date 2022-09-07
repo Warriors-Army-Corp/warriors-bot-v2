@@ -3,14 +3,14 @@
  */
 
 // importation des packages dont on a besoin
-const { MessageEmbed } = require("discord.js")
+const { EmbedBuilder, ApplicationCommandType } = require("discord.js")
 const fetch = require("node-fetch");
 const date = require("../../fonctions/date.js");
 
 module.exports = {
   name: "iss",
   description: "Display informations about the International Space Station",
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -22,7 +22,7 @@ module.exports = {
     const resp = await fetch("https://api.wheretheiss.at/v1/satellites/25544").then(res => res.json());
 
     // quand c'est fait on crée un embed avec les infos qui vont biens
-    let issembed = new MessageEmbed({
+    let issembed = new EmbedBuilder({
       "title": "ISS",
       "color": "#2F3136",
       "thumbnail": {

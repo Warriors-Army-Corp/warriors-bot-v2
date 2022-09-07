@@ -3,7 +3,7 @@
  */
 
  const { Client, LogLevel } = require("@notionhq/client")
- const { MessageEmbed, ApplicationCommandType } = require('discord.js');
+ const { MessageEmbed, ApplicationCommandType, ChannelType } = require('discord.js');
 
 // Initializing a client
 const notion = new Client({
@@ -12,43 +12,67 @@ const notion = new Client({
 });
 
 module.exports = {
-  name: "set",
+  name: "server-config",
   description: "Config your server",
   options: [
     {
-      name: "welcome-message",
-      description: "Set a welcome message to your server",
-      type: "SUB_COMMAND",
+      name: "set",
+      description: "Set a config",
       options: [
         {
-          name: "message",
-          description: "The welcome message to send",
-          type: "STRING",
-          required: true
+          name: "welcome-message",
+          description: "Set a welcome message to your server",
+          type: ApplicationCommandType.Subcommand,
+          options: [
+            {
+              name: "message",
+              description: "The welcome message to send",
+              type: ApplicationCommandType.String,
+              required: true
+            },
+            {
+              name: "channel",
+              description: "The channel to send to (the message will be send in private if not set)",
+              type: ApplicationCommandType.Channel,
+              channelTypes: [ChannelType.GuildText, ChannelType.GuildNews],
+              required: false
+            }
+          ]
         },
         {
-          name: "channel",
-          description: "The channel to send to (the message will be send in private if not set)",
-          type: "CHANNEL",
-          channelTypes: [0, 5],
-          required: false
+          name: "welcome-role",
+          description: "Set a role to automaticaly add to a new member (takes care to member ship screening)",
+          type: ApplicationCommandType.Subcommand,
+          options: [
+            {
+              name: "role",
+              description: "The role to add",
+              type: ApplicationCommandType.Role,
+              required: true
+            }
+          ]
         }
-      ]
+      ],
+      type: ApplicationCommandType.SubcommandGroup
     },
     {
-      name: "welcome-role",
-      description: "Set a role to automaticaly add to a new member",
-      type: "SUB_COMMAND",
+      name: "remove",
+      description: "Remove a config for your server",
       options: [
         {
-          name: "role",
-          description: "The role to add",
-          type: "ROLE",
-          required: true
+          name: "welcome-message",
+          description: "Remove the welcome message",
+          type: ApplicationCommandType.Subcommand
+        },
+        {
+          name: "welcome-role",
+          description: "Remove the welcome role",
+          type: ApplicationCommandType.Subcommand
         }
-      ]
+      ],
+      type: ApplicationCommandType.SubcommandGroup
     }
-  ],
+  ]
   type: ApplicationCommandType.ChatInput,
   /**
    *

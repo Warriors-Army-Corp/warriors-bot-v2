@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { MessageEmbed } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType } = require('discord.js');
  const fetch = require('node-fetch');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
@@ -19,7 +19,7 @@ module.exports = {
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -89,12 +89,12 @@ module.exports = {
     }
 
     const user = mbr.user; // comme ça ça raccourci un peu le code
-    
+
     // récupération des badges
     var badges = "Aucun";
     await Badges(user, mbr).then(bdg => badges = bdg);
 
-    var userEmbed = new MessageEmbed({
+    var userEmbed = new EmbedBuilder({
       color: mbr.displayColor!==0?mbr.displayColor:"#2F3136",
       author: {
         name: user.username,

@@ -1,9 +1,10 @@
 const client = require("../index");
 const colors = require('../fonctions/colors.js');
+const { ActivityType } = require("discord.js");
 
 client.on("ready", () => {
    console.log(`[${colors.FgGreen} Connected  ${colors.Reset}]\tLogged in as ${client.user.tag}!`);
-   client.user.setActivity(`${client.guilds.cache.size} servers |  use "/"`, {type: 'COMPETING'});
+   client.user.setActivity(`${client.guilds.cache.size} servers |  use "/"`, {type: ActivityType.Competing});
 
    // Pour tout delete (normalement ça marche)
    // client.application.commands.cache.each(cmd => {

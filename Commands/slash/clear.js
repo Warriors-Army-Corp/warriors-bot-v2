@@ -1,6 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
 
 module.exports = {
   name: "clear",
@@ -9,11 +10,11 @@ module.exports = {
     {
       name: "number",
       description: "The number of messages you want to delete",
-      type: "INTEGER",
+      type: ApplicationCommandOptionType.Integer,
       required: true
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

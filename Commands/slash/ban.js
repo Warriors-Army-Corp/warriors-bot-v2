@@ -1,6 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
 
 module.exports = {
   name: "banhammer",
@@ -11,17 +12,17 @@ module.exports = {
     {
       name: "user",
       description: "The user you want to ban",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: true
     },
     {
       name: "reason",
       description: "The reason of the ban",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

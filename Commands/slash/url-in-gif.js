@@ -1,6 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
+const { ApplicationCommandType } = require("discord.js");
 
  // importation des packages dont on a besoin
  const { MessageEmbed } = require('discord.js');
@@ -22,7 +23,7 @@ module.exports = {
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

@@ -2,18 +2,22 @@
  * author : Mizari (Mizari-W)
  */
 
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+
 module.exports = {
   name: "test",
-  description: "Delete some messages",
-  // options: [
-  //   {
-  //     name: "number",
-  //     description: "The number of messages you want to delete",
-  //     type: "INTEGER",
-  //     required: true
-  //   }
-  // ],
-  type: 'CHAT_INPUT',
+  description: "Default description",
+  options: [
+    {
+      name: "number",
+      description: "A number",
+      type: ApplicationCommandOptionType.Number,
+      required: true
+    }
+  ],
+  type: ApplicationCommandType.ChatInput,
+  nameLocalizations: {fr: "test_en_français"},
+  descriptionLocalizations: {fr: "Description en français"},
   /**
    *
    * @param {Client} client
@@ -21,7 +25,6 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
-    console.log(interaction.guild.channels.cache.get("702545113378190095"));
     interaction.followUp({ content: "✅" });
   }
 }

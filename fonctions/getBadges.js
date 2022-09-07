@@ -9,37 +9,37 @@ module.exports = async function getBadges(user, mbr) {
       var flag = user.flags.toArray()[i]; // on stock le flag dans une variable c'est plus pratique
       // à chaque flag son émote (=> badge)
       switch (flag) {
-        case "DISCORD_EMPLOYEE":
+        case "Staff":
           badges.push("<:discord_employee:831222022624510023>");
           break;
-        case "PARTNERED_SERVER_OWNER":
+        case "Partner":
           badges.push("<:partnered_server_owner:831222123917213716>");
           break;
-        case "HYPESQUAD_EVENTS":
+        case "Hypesquad":
           badges.push("<:hypesquad_events:831222096520675419>");
           break;
-        case "BUGHUNTER_LEVEL_1":
+        case "BugHunterLevel1":
           badges.push("<:bug_hunter_lvl1:831221997341114449>");
           break;
-        case "HOUSE_BRAVERY":
+        case "HypeSquadOnlineHouse1":
           badges.push("<:house_bravery:831222072159502406>");
           break;
-        case "HOUSE_BRILLIANCE":
+        case "HypeSquadOnlineHouse2":
           badges.push("<:house_brilliance:831222083660939284>");
           break;
-        case "HOUSE_BALANCE":
+        case "HypeSquadOnlineHouse3":
           badges.push("<:house_balance:831222059903352912>");
           break;
-        case "EARLY_SUPPORTER":
+        case "PremiumEarlySupporter":
           badges.push("<:early_supporter:831222034268029031>");
           break;
-        case "BUGHUNTER_LEVEL_2":
+        case "BugHunterLevel2":
           badges.push("<:bug_hunter_lvl2:831222010289979503>");
           break;
-        case "VERIFIED_BOT":
+        case "VerifiedBot":
           badges.push("<:verified_bot:870765263669309580>");
           break;
-        case "EARLY_VERIFIED_BOT_DEVELOPER":
+        case "VerifiedDeveloper":
           badges.push("<:early_verified_bot_developer:831222047383355452>");
           break;
         default:

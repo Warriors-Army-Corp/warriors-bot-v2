@@ -2,6 +2,8 @@
  * authors : Mizari (Mizari-W) & MotismaH (MotismaaaH)
  */
 
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+
 module.exports = {
   name: "kickhammer",
   description: "Kick a member",
@@ -11,17 +13,17 @@ module.exports = {
     {
       name: "user",
       description: "The user you want to kick",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: true
     },
     {
       name: "reason",
       description: "The reason of the kick",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

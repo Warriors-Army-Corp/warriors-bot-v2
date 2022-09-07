@@ -4,11 +4,6 @@ const { Client } = require("discord.js");
 const colors = require('../fonctions/colors.js');
 
 const globPromise = promisify(glob);
-const cmdType = {
-  "CHAT_INPUT": 1,
-  "USER": 2,
-  "MESSAGE": 3
-}
 const optType = {
   "SUB_COMMAND": 1,
   "SUB_COMMAND_GROU": 2,
@@ -45,7 +40,6 @@ module.exports = async (client) => {
 
         if (["MESSAGE", "USER"].includes(file.type)) delete file.description;
 
-        file.type = cmdType[file.type];
         if (file.options){
           for (var i = 0; i < file.options.length; i++) {
             if (file.options[i].type === "SUB_COMMAND" && file.options[i].options) {

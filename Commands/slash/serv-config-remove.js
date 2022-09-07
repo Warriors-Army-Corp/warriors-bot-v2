@@ -3,7 +3,7 @@
  */
 
  const { Client, LogLevel } = require("@notionhq/client")
- const { MessageEmbed } = require('discord.js');
+ const { MessageEmbed, ApplicationCommandType } = require('discord.js');
 
 // Initializing a client
 const notion = new Client({
@@ -26,7 +26,7 @@ module.exports = {
       type: "SUB_COMMAND"
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

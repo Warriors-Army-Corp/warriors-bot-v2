@@ -7,6 +7,7 @@
  const QrCode = require('qrcode-reader');
  const Jimp = require("jimp");
  const fetch = require('node-fetch');
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
  // importation des fonctions dont on a besoin
  const getLink = require('../../fonctions/getLink.js');
  const download = require('../../fonctions/download.js');
@@ -18,12 +19,12 @@ module.exports = {
     {
       name: "create",
       description: "Make a QR code",
-      type: "SUB_COMMAND",
+      type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "message",
           description: "The message to put in QR code",
-          type: "STRING",
+          type: ApplicationCommandOptionType.String,
           required: true
         }
       ]
@@ -31,18 +32,18 @@ module.exports = {
     {
       name: "read",
       description: "Read a QR code",
-      type: "SUB_COMMAND",
+      type: ApplicationCommandOptionType.Subcommand,
       options: [
         {
           name: "url",
           description: "The URL of the QR code image",
-          type: "STRING",
+          type: ApplicationCommandOptionType.String,
           required: true
         }
       ]
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

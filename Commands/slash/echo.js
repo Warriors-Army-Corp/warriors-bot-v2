@@ -1,6 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
 
 module.exports = {
   name: "echo",
@@ -9,11 +10,11 @@ module.exports = {
     {
       name: "message",
       description: "The message you want to repeat",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

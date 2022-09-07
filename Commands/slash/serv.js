@@ -2,7 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 // importation des packages et fonctions dont on a besoin
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, ApplicationCommandType } = require('discord.js');
 const date = require('../../fonctions/date.js');
 const badges = require('../../fonctions/getServBadges.js');
 
@@ -10,7 +10,7 @@ const badges = require('../../fonctions/getServBadges.js');
 module.exports = {
   name: "server-infos",
   description: "Show some informations about this server.",
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

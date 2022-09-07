@@ -1,8 +1,8 @@
-const { Client, CommandInteraction } = require("discord.js");
+const { ApplicationCommandType } = require("discord.js");
 
 module.exports = {
     name: "avatar",
-    type: 'USER',
+    type: ApplicationCommandType.User,
     /**
      *
      * @param {Client} client
