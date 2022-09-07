@@ -62,7 +62,7 @@ module.exports = {
     });
 
     if (guild.banner) {
-      servEmbed.setImage(guild.bannerURL({format: "png", size: 4096}));
+      servEmbed.setImage(guild.bannerURL({format: "png", size: 4096, dynamic: true}));
     }
 
     if (guild.description) {
