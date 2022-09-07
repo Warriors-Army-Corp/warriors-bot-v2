@@ -27,7 +27,7 @@ module.exports = {
       thumbnail: {
         url: guild.iconURL({dynamic: true})
       },
-      color: "#2F3136",
+      color: parseInt("2F3136", 16),
       fields:[
         {
           name: "Owner",

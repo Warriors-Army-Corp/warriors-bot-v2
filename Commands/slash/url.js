@@ -39,7 +39,7 @@ module.exports = {
       let URLEmbed = new EmbedBuilder ({
         title: "URL SHORTENER 🔗",
         description: `Votre URL courte : ${resp.link}`,
-        color: "#2F3136"
+        color: parseInt("2F3136", 16)
       });
       // on envoit l'embed
       interaction.followUp({ embeds: [URLEmbed] });

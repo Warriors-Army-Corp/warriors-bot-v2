@@ -24,7 +24,7 @@ module.exports = {
     // quand c'est fait on crée un embed avec les infos qui vont biens
     let issembed = new EmbedBuilder({
       "title": "ISS",
-      "color": "#2F3136",
+      "color": parseInt("2F3136", 16),
       "thumbnail": {
         "url": 'https://i.imgur.com/d4PFOSv.jpg'
       },

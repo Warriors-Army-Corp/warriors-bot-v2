@@ -32,7 +32,7 @@ module.exports = {
     if (resp.status === "success") {
       // on crée un embed avec toutes les infos de l'IP
       let Geo = new EmbedBuilder({
-        "color": "#2F3136",
+        "color": parseInt("2F3136", 16),
         "title":`**IP Lookup**`,
         "description":`**__Récupération des informations d'une IP :__**\n
           **Adresse IP** : ${args[0]}

@@ -3,7 +3,7 @@
  */
 
  // importation des packages dont on a besoin
- const { MessageEmbed, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
   name: "url-in-gif",
@@ -40,13 +40,13 @@ module.exports = {
     }
 
     // on créé l'embed
-    var embed = new MessageEmbed({
+    var embed = new EmbedBuilder({
       description: "Mettez le gif en favori, puis envoyez le gif dans n'importe quel salon",
       url: url,
       image: {
         url: gif!==null?gif:"https://media.discordapp.net/attachments/586232536934645790/823251570853543947/W.A.C-PP-withoutloop.gif"
       },
-      color: "#2F3136"
+      color: parseInt("2F3136", 16)
     });
 
     // on envoit l'embed (si l'argument n'était pas une URL ça génère une erreur, du coup on engueule le user)

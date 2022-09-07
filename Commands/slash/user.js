@@ -95,7 +95,7 @@ module.exports = {
     await Badges(user, mbr).then(bdg => badges = bdg);
 
     var userEmbed = new EmbedBuilder({
-      color: mbr.displayColor!==0?mbr.displayColor:"#2F3136",
+      color: mbr.displayColor!==0?mbr.displayColor:parseInt("2F3136", 16),
       author: {
         name: user.username,
         iconURL: user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL
