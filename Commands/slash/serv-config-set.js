@@ -30,7 +30,7 @@ module.exports = {
           name: "channel",
           description: "The channel to send to (the message will be send in private if not set)",
           type: "CHANNEL",
-          channelTypes: ["GUILD_TEXT", "GUILD_NEWS"],
+          channelTypes: [0, 5],
           required: false
         }
       ]

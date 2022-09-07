@@ -6,7 +6,7 @@ client.on("interactionCreate", async (interaction) => {
     if (interaction.isCommand()) {
         await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
-        const cmd = client.slashCommands.get(interaction.commandName);
+        const cmd = client.commandsFiles.get(interaction.commandName);
         if (!cmd)
             return interaction.followUp({ content: "An error has occured " });
 
@@ -29,7 +29,7 @@ client.on("interactionCreate", async (interaction) => {
     }
 
     // Context Menu Handling
-    if (interaction.isContextMenu()) {
+    if (interaction.isContextMenuCommand()) {
         await interaction.deferReply({ ephemeral: false });
         const command = client.slashCommands.get(interaction.commandName);
         if (command) command.run(client, interaction);
