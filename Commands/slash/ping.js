@@ -11,6 +11,9 @@ module.exports = {
      * @param {String[]} args
      */
     run: async (client, interaction, args) => {
-        interaction.followUp({ content: `${client.ws.ping}ms!` });
+      let time = interaction.createdAt;
+      interaction.followUp({ content: `pong! 🏓` }).then(msg => {
+        msg.edit({ content: `${msg.content} with ${msg.createdAt - time}ms`});
+      });
     },
 };
