@@ -2,7 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 
-const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor } = require("discord.js");
 
 module.exports = {
   name: "test",
@@ -15,7 +15,6 @@ module.exports = {
       required: false
     }
   ],
-  defaultMemberPermissions: [PermissionsBitField.Flags.ManageGuild],
   type: ApplicationCommandType.ChatInput,
   nameLocalizations: {fr: "test_en_français"},
   descriptionLocalizations: {fr: "Description en français"},

@@ -5,7 +5,7 @@ const colors = require('../fonctions/colors.js');
 
 client.on("interactionCreate", async (interaction) => {
   // Slash Command Handling
-  if (interaction.isCommand()) {
+  if (interaction.isChatInputCommand()) {
     await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
     const cmd = client.commandsFiles.get(interaction.commandName);
@@ -33,7 +33,7 @@ client.on("interactionCreate", async (interaction) => {
   // Context Menu Handling
   if (interaction.isContextMenuCommand()) {
         await interaction.deferReply({ ephemeral: false });
-        const command = client.slashCommands.get(interaction.commandName);
+        const command = client.commandsFiles.get(interaction.commandName);
         if (command) command.run(client, interaction);
 
         // Logs
