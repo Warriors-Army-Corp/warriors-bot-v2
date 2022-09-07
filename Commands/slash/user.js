@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { EmbedBuilder, ApplicationCommandType } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
  const fetch = require('node-fetch');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
@@ -15,7 +15,7 @@ module.exports = {
     {
       name: "user",
       description: "The user you want to shopw informations",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: false
     }
   ],

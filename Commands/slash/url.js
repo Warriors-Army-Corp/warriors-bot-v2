@@ -1,10 +1,9 @@
 /*
  * authors : Osiris (Laelith-Security) & Mizari (Mizari-W)
  */
-const { ApplicationCommandType } = require("discord.js");
 
 // importation des modules requis
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 const fetch = require('node-fetch');
 
 
@@ -15,7 +14,7 @@ module.exports = {
     {
       name: "url",
       description: "The URL to shorten",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true
     }
   ],
@@ -37,7 +36,7 @@ module.exports = {
     // si ça s'est bien passé
     if (resp.link) {
       // notre petit embed
-      let URLEmbed = new MessageEmbed ({
+      let URLEmbed = new EmbedBuilder ({
         title: "URL SHORTENER 🔗",
         description: `Votre URL courte : ${resp.link}`,
         color: "#2F3136"

@@ -1,10 +1,9 @@
 /*
  * author : Mizari (Mizari-W)
  */
-const { ApplicationCommandType } = require("discord.js");
 
  // importation des packages dont on a besoin
- const { MessageEmbed } = require('discord.js');
+ const { MessageEmbed, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
   name: "url-in-gif",
@@ -13,13 +12,13 @@ module.exports = {
     {
       name: "url",
       description: "The URL to put in the gif",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true
     },
     {
       name: "gif",
-      description: "The gif that'll contain the URL",
-      type: "STRING",
+      description: "The gif that will contain the URL",
+      type: ApplicationCommandOptionType.String,
       required: false
     }
   ],

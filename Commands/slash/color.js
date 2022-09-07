@@ -38,7 +38,7 @@ module.exports = {
       // on créé l'embed à partir des infos de la requête
       var colorEmbed = new EmbedBuilder({
         "title": "Infos sur la couleur "+resp.hex.value,
-        "color": resp.hex.value,
+        "color": parseInt(color, 16),
         "description": `**RVB**
           niveau de rouge : ${resp.rgb.r}
           niveau de vert : ${resp.rgb.g}

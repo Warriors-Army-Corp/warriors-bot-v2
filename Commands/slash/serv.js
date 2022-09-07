@@ -2,7 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 // importation des packages et fonctions dont on a besoin
-const { MessageEmbed, ApplicationCommandType } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandType } = require('discord.js');
 const date = require('../../fonctions/date.js');
 const badges = require('../../fonctions/getServBadges.js');
 
@@ -22,7 +22,7 @@ module.exports = {
     const allChan = guild.channels.cache; // récupération de tous les salons
 
     // initialisation de l'embed
-    var servEmbed = new MessageEmbed({
+    var servEmbed = new EmbedBuilder({
       title: `Infos sur le serveur ${guild.name}`,
       thumbnail: {
         url: guild.iconURL({dynamic: true})

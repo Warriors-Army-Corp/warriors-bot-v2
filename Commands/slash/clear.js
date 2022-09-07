@@ -1,7 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
-const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField } = require("discord.js");
 
 module.exports = {
   name: "clear",
@@ -11,10 +11,12 @@ module.exports = {
       name: "number",
       description: "The number of messages you want to delete",
       type: ApplicationCommandOptionType.Integer,
-      required: true
+      required: true,
+      max_value: 50
     }
   ],
   type: ApplicationCommandType.ChatInput,
+  defaultMemberPermissions: PermissionsBitField.Flags.ManageMessages,
   /**
    *
    * @param {Client} client
@@ -23,12 +25,8 @@ module.exports = {
    */
   run: async(client, interaction, args) => {
     if (interaction.guild.members.resolve(client.user).permissions.has("MANAGE_MESSAGES")) {
-      if (interaction.member.permissions.has("MANAGE_MESSAGES")){
-        const num = args[0]+1;
-        interaction.channel.bulkDelete(num, true);
-      } else {
-        interaction.followUp({ content : "Vous n'avez pas la permission \"Gérer les messages\", n'essayez pas de m'utiliser pour bypass vos droits 😡" });
-      }
+      const num = args[0]+1;
+      interaction.channel.bulkDelete(num, true);
     } else {
       interaction.followUp({ content: "Je ne peux pas supprimer des messages, il me fait la permission \"Gérer les messages\"" });
     }
