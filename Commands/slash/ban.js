@@ -6,8 +6,6 @@ const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitFiel
 module.exports = {
   name: "banhammer",
   description: "Ban a member",
-  // defaultPermission: false,
-  // perm: "BAN_MEMBERS",
   options: [
     {
       name: "user",

@@ -2,13 +2,19 @@
  * author : Mizari (Mizari-W)
  */
 
-const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor, hyperlink, EmbedBuilder } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
   name: "test",
   description: "Default description",
   options: [
+    {
+      name: "test_oblige",
+      description: "param obligatoire",
+      type: ApplicationCommandOptionType.String,
+      required: true
+    },
     {
       name: "test_param",
       description: "A param",
@@ -26,8 +32,6 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
-    interaction.followUp({ content: "✅" });
-    let headers = await fetch(args[0]).then(resp => resp.headers).catch(err => console.error(err));
-    console.log(headers.get("pouet"));
+    interaction.followUp({ embeds: [new EmbedBuilder({ description: hyperlink("link", "https://root-me.org", "RootMe") })] });
   }
 }
