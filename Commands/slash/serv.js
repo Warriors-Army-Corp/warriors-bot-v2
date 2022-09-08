@@ -2,7 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 // importation des packages et fonctions dont on a besoin
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandType, ChannelType } = require('discord.js');
 const date = require('../../fonctions/date.js');
 const badges = require('../../fonctions/getServBadges.js');
 
@@ -10,7 +10,7 @@ const badges = require('../../fonctions/getServBadges.js');
 module.exports = {
   name: "server-infos",
   description: "Show some informations about this server.",
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -22,12 +22,12 @@ module.exports = {
     const allChan = guild.channels.cache; // récupération de tous les salons
 
     // initialisation de l'embed
-    var servEmbed = new MessageEmbed({
+    var servEmbed = new EmbedBuilder({
       title: `Infos sur le serveur ${guild.name}`,
       thumbnail: {
         url: guild.iconURL({dynamic: true})
       },
-      color: "#2F3136",
+      color: parseInt("2F3136", 16),
       fields:[
         {
           name: "Owner",
@@ -51,7 +51,7 @@ module.exports = {
         },
         {
           name: "Salons",
-          value: `Totale : ${allChan.size}\n${allChan.filter(ch => ch.type === "GUILD_CATEGORY" || ch.type === "GUILD_STORE" || ch.type === "UNKNOWN").size} spéciaux\n${allChan.filter(ch => ch.type === "GUILD_TEXT" || ch.type === "GUILD_NEWS" || ch.type === "GUILD_NEWS_THREAD" || ch.type === "GUILD_PUBLIC_THREAD" || ch.type === "GUILD_PRIVATE_THREAD").size} textuels et ${allChan.filter(ch => ch.type === "GUILD_VOICE" || ch.type === "GUILD_STAGE_VOICE").size} vocaux`,
+          value: `Totale : ${allChan.size}\n${allChan.filter(ch => ch.type === ChannelType.GuildCategory || ch.type === ChannelType.GuildForum).size} spéciaux\n${allChan.filter(ch => ch.type === ChannelType.GuildText || ch.type === ChannelType.GuildAnnouncement || ch.type === ChannelType.AnnouncementThread || ch.type === ChannelType.PublicThread || ch.type === ChannelType.PrivateThread).size} textuels et ${allChan.filter(ch => ch.type === ChannelType.GuildVoice || ch.type === ChannelType.GuildStageVoice).size} vocaux`,
           inline: true
         },
         {
@@ -62,7 +62,7 @@ module.exports = {
     });
 
     if (guild.banner) {
-      servEmbed.setImage(guild.bannerURL({format: "png", size: 4096}));
+      servEmbed.setImage(guild.bannerURL({format: "png", size: 4096, dynamic: true}));
     }
 
     if (guild.description) {

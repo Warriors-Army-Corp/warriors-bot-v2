@@ -2,6 +2,8 @@
  * author : Mizari (Mizari-W)
  */
 
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+
 module.exports = {
   name: "roll",
   description: "Roll a (or some) dice(s)",
@@ -9,23 +11,27 @@ module.exports = {
     {
       name: "min",
       description: "The minimum value of the dice(s) (1 by default, 1 min)",
-      type: "INTEGER",
-      required: false
+      type: ApplicationCommandOptionType.Integer,
+      required: false,
+      min_value: 1
     },
     {
       name: "max",
       description: "The maximum value of the dice(s) (6 by default, 9,007,199,254,740,991 max)",
-      type: "INTEGER",
-      required: false
+      type: ApplicationCommandOptionType.Integer,
+      required: false,
+      min_value: 1
     },
     {
       name: "num",
       description: "The number of dice you want to roll (1 by default, max 5)",
-      type: "INTEGER",
-      required: false
+      type: ApplicationCommandOptionType.Integer,
+      required: false,
+      min_value: 1,
+      max_value: 5
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

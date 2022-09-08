@@ -1,3 +1,5 @@
+const { ChannelType } = require("discord.js");
+
 // fonction pour chopper une invite du serv s'il y en a une, en créer une s'il y en a pas
 module.exports = async function createInvite(interaction){
   invites = interaction.guild.invites.cache; // initialisation d'une variable qui contiendra la liste des invites du serv
@@ -11,11 +13,11 @@ module.exports = async function createInvite(interaction){
   } else {
     var ch = null; // initialisation d'une variable qui contiendra le salon
     const chs = Array.from(interaction.guild.channels.cache); // on récupère la liste des salons du serv
-
+    console.log(chs);
     // on parcour les salons du serv
     for (var i = 0; i < chs.length; i++) {
       // si ce n'est pas une catégorie
-      if (chs[i][1].type !== "GUILD_CATEGORY" && chs[i][1].permissionsFor(interaction.guild.me).has("CREATE_INSTANT_INVITE")) {
+      if (chs[i][1].type !== ChannelType.GuildCategory && chs[i][1].permissionsFor(interaction.guild.members.me).has("CREATE_INSTANT_INVITE")) {
         // on récupère le salon
         ch = interaction.guild.channels.cache.get(chs[i][0]);
         // on sort de la boucle

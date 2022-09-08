@@ -3,11 +3,12 @@
  */
 
 const createInvite = require('../../fonctions/createInvite.js');
+const { ApplicationCommandType } = require("discord.js");
 
 module.exports = {
   name: "roulette",
   description: "Play the roulette game :D",
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client

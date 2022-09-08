@@ -1,12 +1,13 @@
 const client = require("../index");
- const { Client, LogLevel } = require("@notionhq/client");
- const colors = require('../fonctions/colors.js');
+const { Client, LogLevel } = require("@notionhq/client");
+const colors = require('../fonctions/colors.js');
+const { PermissionsBitField, ChannelType, resolveColor, EmbedBuilder } = require("discord.js");
 
- // Initializing a client
- const notion = new Client({
-   auth: process.env.NOTION_TOKEN,
-   LogLevel: LogLevel.Debug
- });
+// Initializing a client
+const notion = new Client({
+ auth: process.env.NOTION_TOKEN,
+ LogLevel: LogLevel.Debug
+});
 
 client.on("guildMemberUpdate", async (oldMember, newMember) => {
   // si l'ancien pending est différent du nouveau que le nouveau est false
@@ -68,29 +69,51 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
 
     ///////////////////////////////////////////////////////
 
-    db_id = 'a03bb09931e942b686e5e8c8950af90e';
-    var response = await notion.databases.query({
-      database_id: db_id,
-      filter: {
-        property: 'GuildID',
-        text: {
-          contains: guild.id
+    if (guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)){
+
+      db_id = 'a03bb09931e942b686e5e8c8950af90e';
+      var response = await notion.databases.query({
+        database_id: db_id,
+        filter: {
+          property: 'GuildID',
+          text: {
+            contains: guild.id
+          }
+        }
+      });
+
+      if(response.results.length > 0){
+        const page = response.results[0];
+        let role = page.properties.RoleID.rich_text[0].plain_text;
+        role = member.guild.roles.cache.get(role);
+
+        if (role == undefined) {
+          response = await notion.pages.update({
+            page_id: page.id,
+            archived: true
+          });
+        } else if (!role.editable) {
+          let chl = null;
+          chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText).random();
+          const embed = new EmbedBuilder({
+            title: `❌ Erreur`,
+            color: resolveColor('#2F3136'),
+            description: `Il semblerait que je ne peux plus gérer le rôle ${role} 🤔.`
+          });
+          chl.send({ embeds: [embed] });
+        } else {
+          member.roles.add(role).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ guild : ${guild.name}\n\t\terror : ${err}`));
         }
       }
-    });
-
-    if(response.results.length > 0){
-      const page = response.results[0];
-      const role = page.properties.RoleID.rich_text[0].plain_text;
-
-      if (member.guild.roles.cache.get(role) == undefined) {
-        response = await notion.pages.update({
-          page_id: page.id,
-          archived: true
-        });
-      } else {
-        member.roles.add(role).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ guild : ${guild.name}\n\t\terror : ${err}`));
-      }
+    } else {
+      let chl = null;
+      chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText).random();
+      const embed = new EmbedBuilder({
+        title: `❌ Erreur`,
+        color: resolveColor('#2F3136'),
+        description: `Il semblerait que je n'ai plus la permission de gérer les rôles 🤔.`
+      });
+      chl.send({ embeds: [embed] });
     }
   }
 });

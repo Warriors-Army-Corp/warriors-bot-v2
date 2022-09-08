@@ -1,10 +1,9 @@
 /*
  * author : Mizari (Mizari-W)
  */
-
 // importation des packages qui vont biens
 const fetch = require('node-fetch');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 const checkHex = require('../../fonctions/checkHex.js');
 
 module.exports = {
@@ -14,11 +13,11 @@ module.exports = {
     {
       name: "hexa_code",
       description: "The hexa code of the color you want informations",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -37,9 +36,9 @@ module.exports = {
       interaction.followUp({ content: "Il faut que vous me donniez un code couleur en hexadécimal (sans `#` au début)." });
     } else {
       // on créé l'embed à partir des infos de la requête
-      var colorEmbed = new MessageEmbed({
+      var colorEmbed = new EmbedBuilder({
         "title": "Infos sur la couleur "+resp.hex.value,
-        "color": resp.hex.value,
+        "color": parseInt(color, 16),
         "description": `**RVB**
           niveau de rouge : ${resp.rgb.r}
           niveau de vert : ${resp.rgb.g}

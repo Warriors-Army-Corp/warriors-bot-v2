@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { MessageEmbed } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor } = require('discord.js');
  const fetch = require('node-fetch');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
@@ -15,11 +15,11 @@ module.exports = {
     {
       name: "user",
       description: "The user you want to shopw informations",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -42,27 +42,10 @@ module.exports = {
         return "https://cdn.discordapp.com/banners/"+userID+"/"+data.banner+(data.banner.startsWith("a_")?".gif":".png")+"?size=4096";
       // si y a pas de bannière on récupère la couleur
       } else if (data.banner_color !== null) {
-        return `https://singlecolorimage.com/get/${data.banner_color.slice(1)}/500x200`;
+        return `https://singlecolorimage.com/get/${data.banner_color.slice(1)}/600x240`;
       // si y a pas de couleur non plus (probablement un bot) on renvoie null
       } else {
         return null;
-      }
-    }
-
-    // fonction pour récup' la PP de serv
-    async function getGuildPP(user) {
-      // requête pour la bannière
-      var data = await fetch(`https://discord.com/api/v9/guilds/${interaction.guild.id}/members/${user.id}`, {
-        method: 'get',
-        headers: {Authorization: "Bot "+client.token}
-      }).then(res => res.json()).catch();
-
-      // si il y a une PP de serv on créer le lien qui va bien
-      if (data.avatar !== null) {
-        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${data.avatar+(data.avatar.startsWith("a_")?".gif":".png")}`;
-      // si y a pas de PP de serv on récupère la PP par défaut
-      } else {
-        return user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL;
       }
     }
 
@@ -70,9 +53,9 @@ module.exports = {
     function status(){
       if (guild.ownerId === user.id) {
         return "Owner";
-      } else if (mbr.permissions.has("ADMINISTRATOR")) {
+      } else if (mbr.permissions.has(PermissionsBitField.Flags.Administrator)) {
         return "Admin";
-      } else if (mbr.permissions.has("MANAGE_MESSAGES")) {
+      } else if (mbr.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
         return "Mod";
       } else {
         return "Member";
@@ -89,13 +72,16 @@ module.exports = {
     }
 
     const user = mbr.user; // comme ça ça raccourci un peu le code
-    
+
     // récupération des badges
     var badges = "Aucun";
     await Badges(user, mbr).then(bdg => badges = bdg);
 
-    var userEmbed = new MessageEmbed({
-      color: mbr.displayColor!==0?mbr.displayColor:"#2F3136",
+    var userEmbed = new EmbedBuilder({
+      color: mbr.displayColor!==0?mbr.displayColor:resolveColor("#2F3136"),
+      thumbnail: {
+        url: mbr.displayAvatarURL({ dynamic: true, format: "png" })
+      },
       author: {
         name: user.username,
         iconURL: user.avatar?user.avatarURL({ dynamic: true, format: "png" }):user.defaultAvatarURL
@@ -151,14 +137,6 @@ module.exports = {
       userEmbed.setImage(banner);
     }
 
-    // ajout de la PP guild
-    var ppGuild = null;
-    await getGuildPP(user).then(pp => ppGuild = pp);
-    if (ppGuild !== null) {
-      userEmbed.setThumbnail(ppGuild);
-    }
-
-    interaction.deleteReply();
-    interaction.channel.send({ embeds: [userEmbed] });
+    interaction.followUp({ embeds: [userEmbed] });
   }
 }

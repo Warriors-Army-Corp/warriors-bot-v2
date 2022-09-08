@@ -1,5 +1,11 @@
 .env
 node_modules
+<<<<<<< HEAD
+Commands/slash/test.js
+.vs
+temp
+=======
 SlashCommands/slash/test.js
 .vs
 temps
+>>>>>>> main

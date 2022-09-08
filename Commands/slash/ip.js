@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { MessageEmbed } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
  const fetch = require('node-fetch');
 
 module.exports = {
@@ -13,11 +13,11 @@ module.exports = {
     {
       name: "ip",
       description: "The IP adress you want to know some informations",
-      type: "STRING",
+      type: ApplicationCommandOptionType.String,
       required: true
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
@@ -31,8 +31,8 @@ module.exports = {
     // si la commande a réussi
     if (resp.status === "success") {
       // on crée un embed avec toutes les infos de l'IP
-      let Geo = new MessageEmbed({
-        "color": "#2F3136",
+      let Geo = new EmbedBuilder({
+        "color": parseInt("2F3136", 16),
         "title":`**IP Lookup**`,
         "description":`**__Récupération des informations d'une IP :__**\n
           **Adresse IP** : ${args[0]}

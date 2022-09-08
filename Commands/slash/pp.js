@@ -2,6 +2,8 @@
  * author : Mizari (Mizari-W)
  */
 
+const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+
 module.exports = {
   name: "pp",
   description: "Display your profile picture in large",
@@ -9,11 +11,11 @@ module.exports = {
     {
       name: "user",
       description: "The user you want to display the profile picture",
-      type: "USER",
+      type: ApplicationCommandOptionType.User,
       required: false
     }
   ],
-  type: 'CHAT_INPUT',
+  type: ApplicationCommandType.ChatInput,
   /**
    *
    * @param {Client} client
