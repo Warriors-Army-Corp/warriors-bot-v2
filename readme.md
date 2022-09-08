@@ -1,5 +1,5 @@
 # Warriors Bot
-Le bot des Warriors, 100% dev par la communauté
+[Le bot des Warriors, 100% dev par la communauté](https://discord.com/api/oauth2/authorize?client_id=591655828348731422&permissions=8&scope=bot%20applications.commands)
 
 ## Comment participer au développement du bot ?
 Vous pouvez y participer de différentes manières :
