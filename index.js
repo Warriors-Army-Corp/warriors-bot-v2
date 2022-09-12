@@ -1,7 +1,7 @@
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
  const fetch = require('node-fetch');
 
-const client = new Client({intents: 3276799});
+const client = new Client({intents: 3276799, ws: { properties: { browser: "Discord iOS" }}});
 module.exports = client;
 
 // Global Variables
