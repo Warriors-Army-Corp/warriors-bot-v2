@@ -100,7 +100,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
             color: resolveColor('#2F3136'),
             description: `Il semblerait que je ne peux plus gérer le rôle ${role} 🤔.`
           });
-          chl.send({ embeds: [embed] }).catch(err => console.error(`[${colors.FgGreen} ❌ Error   ${colors.Reset}]\tImpossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer le rôle ${role.name} sur ${guild.name}`));
+          chl.send({ embeds: [embed] }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Impossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer le rôle ${role.name} sur ${guild.name}`));
         } else {
           member.roles.add(role).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ guild : ${guild.name}\n\t\terror : ${err}`));
         }
@@ -113,7 +113,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
         color: resolveColor('#2F3136'),
         description: `Il semblerait que je n'ai plus la permission de gérer les rôles 🤔.`
       });
-      chl.send({ embeds: [embed] }).catch(err => console.error(`[${colors.FgGreen} ❌ Error   ${colors.Reset}]\tImpossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer les rôles sur ${guild.name}`));
+      chl.send({ embeds: [embed] }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Impossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer les rôles sur ${guild.name}`));
     }
   }
 });
