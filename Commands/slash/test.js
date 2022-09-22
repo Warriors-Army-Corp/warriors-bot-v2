@@ -33,5 +33,6 @@ module.exports = {
    */
   run: async(client, interaction, args) => {
     interaction.followUp({ embeds: [new EmbedBuilder({ description: hyperlink("link", "https://root-me.org", "RootMe") })] });
+    console.log(`locale : ${interaction.locale}`);
   }
 }
