@@ -7,7 +7,7 @@ client.on("messageCreate", async (message) => {
     if (message.guild.id === "645239930896908293" && message.channel.id === "833710821833441360"){
       console.log(`[ ${colors.FgCyan} webhook ${colors.Reset}  ]\tIl se passe des trucs, tiens pour te rassurer le token du webhook ${process.env.TPG_WEBHOOK_TOKEN}`);
       console.log(`\t\tEt voilà le message que j'ai capté ${message.content} de ${message.author.username} ${message.author.bot?"c'est bien un bot":"c'est pas un bot en plus"}`);
-      if (message.author.id === "1038035511455002634" /*message.author.id === "1035580586586275893" || message.author.id === "1035580649169494148"*/){
+      if (message.author.id === "1035580586586275893" || message.author.id === "1035580649169494148"){
         message.attachments.each(at => {
           message.content += `\n${at.url}`;
         });
