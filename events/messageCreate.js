@@ -5,7 +5,7 @@ client.on("messageCreate", async (message) => {
 
     if (message.guild.id === "645239930896908293" && message.channel.id === "833710821833441360"){
       if (message.author.id === "1035580588280774687" || message.author.id === "1035580650377461770"){
-        const webhook = new WebhookClient({id: "1038048951401713725", token: "WP7ucuABwc6TDOfulGPe_CTxXUfj5VpoxiWE-kwVZCOVxGtYZfwJfQdEfpwNu0TUe4Jd" });
+        const webhook = new WebhookClient({id: "1038053909211656262", token: process.env.TPG_WEBHOOK_TOKEN });
         webhook.send(message.content);
       }
     }
