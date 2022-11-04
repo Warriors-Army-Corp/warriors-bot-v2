@@ -1,7 +1,7 @@
 /*
  * author : Mizari (Mizari-W)
  */
-const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
+const { ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   name: "echo",
@@ -23,7 +23,7 @@ module.exports = {
    */
   run: async(client, interaction, args) => {
     // si le bot a la perm d'écrire dans le salon
-    if (interaction.channel.permissionsFor(interaction.guild.members.resolve(client.user)).has("SEND_MESSAGES")) {
+    if (interaction.channel.permissionsFor(interaction.guild.members.resolve(client.user)).has(PermissionFlagsBits.SendMessages)) {
       // on supprime le reply
       interaction.deleteReply();
       // on envoit le message de l'utilisateur dans le salon (il ne peut rien mentionner à part les users)
