@@ -28,7 +28,7 @@ client.on("messageCreate", async (message) => {
 
     message.content = message.content.trim().toLowerCase();
     const reg = /(quoi+\s*\?*\s*)$/g;
-    if (message.guild.id === "645239930896908293" /*"766621570155675670"*/ && reg.test(message.content)){
+    if (message.guild.id === "766621570155675670" && reg.test(message.content)){
       message.reply("ffffffffffffffffffffffffffffffffffffffffffffffffffeur");
     }
 });
