@@ -4,7 +4,6 @@
 
 // importation des packages dont on a besoin
 const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, resolveColor } = require('discord.js');
-const fetch = require("node-fetch");
 
 module.exports = {
   name: "url-in-gif",
