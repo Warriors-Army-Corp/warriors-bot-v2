@@ -2,7 +2,6 @@
  * author : Mizari (Mizari-W)
  */
 // importation des packages qui vont biens
-const fetch = require('node-fetch');
 const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 const checkHex = require('../../fonctions/checkHex.js');
 

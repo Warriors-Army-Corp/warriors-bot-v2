@@ -4,7 +4,6 @@
 
 // importation des packages dont on a besoin
 const { EmbedBuilder, ApplicationCommandType } = require("discord.js")
-const fetch = require("node-fetch");
 const date = require("../../fonctions/date.js");
 
 module.exports = {

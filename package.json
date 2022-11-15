@@ -24,7 +24,6 @@
     "fs": "^0.0.1-security",
     "glob": "^7.2.3",
     "jimp": "^0.16.1",
-    "node-fetch": "^2.6.7",
     "qrcode-reader": "^1.0.4",
     "tempy": "^1.0.1"
   }

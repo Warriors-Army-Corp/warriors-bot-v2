@@ -6,7 +6,6 @@
  const tempy = require('tempy');
  const QrCode = require('qrcode-reader');
  const Jimp = require("jimp");
- const fetch = require('node-fetch');
 const { ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js");
  // importation des fonctions dont on a besoin
  const getLink = require('../../fonctions/getLink.js');

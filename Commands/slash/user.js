@@ -4,7 +4,6 @@
 
  // importation des packages requis
  const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor } = require('discord.js');
- const fetch = require('node-fetch');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
 
