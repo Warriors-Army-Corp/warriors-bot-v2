@@ -4,6 +4,10 @@ const client = require("../index");
 const colors = require('../fonctions/colors.js');
 
 client.on("interactionCreate", async (interaction) => {
+  if (!interaction.guild) {
+    return interaction.reply("Can't do commands in PM :/");
+  }
+
   // Slash Command Handling
   if (interaction.isChatInputCommand()) {
     await interaction.deferReply({ ephemeral: false }).catch(() => {});
