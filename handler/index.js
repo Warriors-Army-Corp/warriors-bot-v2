@@ -1,6 +1,6 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
-const { Client } = require("discord.js");
+const { Client, ApplicationCommandType } = require("discord.js");
 const colors = require('../fonctions/colors.js');
 
 const globPromise = promisify(glob);
@@ -25,9 +25,9 @@ module.exports = async (client) => {
         if (!file?.name) return;
         client.commandsFiles.set(file.name, file);
 
-        if (["MESSAGE", "USER"].includes(file.type)) delete file.description;
+        if ([ApplicationCommandType.Message, ApplicationCommandType.User].includes(file.type)) delete file.description;
 
-        arrayOfSlashCommands.push(file);
+        if ([ApplicationCommandType.Message, ApplicationCommandType.User, ApplicationCommandType.ChatInput].includes(file.type)) arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
         client.application.commands.set(arrayOfSlashCommands);
