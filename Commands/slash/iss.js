@@ -17,6 +17,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // requête sur l'API pour avoir les infos de l'ISS
     const resp = await fetch("https://api.wheretheiss.at/v1/satellites/25544").then(res => res.json());
 

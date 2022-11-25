@@ -18,6 +18,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     const guild = interaction.guild; // récupération du serv
     const allChan = guild.channels.cache; // récupération de tous les salons
 

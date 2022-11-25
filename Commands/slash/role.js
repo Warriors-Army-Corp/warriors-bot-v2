@@ -23,6 +23,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     const role = interaction.guild.roles.cache.get(args[0]);
 
     const roleEmbed = new EmbedBuilder({

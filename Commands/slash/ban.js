@@ -34,6 +34,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // vérification que le bot a la perm de ban
     if (interaction.guild.members.resolve(client.user).permissions.has(PermissionsBitField.Flags.BanMembers)) {
       const userID = args[0]; // l'ID du membre à ban

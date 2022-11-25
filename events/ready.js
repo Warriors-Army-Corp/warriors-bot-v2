@@ -1,6 +1,6 @@
 const client = require("../index");
 const colors = require('../fonctions/colors.js');
-const { ActivityType } = require("discord.js");
+const { ActivityType, ApplicationCommandType } = require("discord.js");
 
 client.on("ready", () => {
    console.log(`[${colors.FgGreen} Connected  ${colors.Reset}]\t✅ Logged in as ${client.user.tag}!`);

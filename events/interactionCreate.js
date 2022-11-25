@@ -10,11 +10,10 @@ client.on("interactionCreate", async (interaction) => {
 
   // Slash Command Handling
   if (interaction.isChatInputCommand()) {
-    await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
     const cmd = client.commandsFiles.get(interaction.commandName);
     if (!cmd)
-      return interaction.followUp({ content: "An error has occured " });
+      return interaction.reply({ content: "An error has occured", ephemeral: true });
 
     const args = [];
 
@@ -35,12 +34,21 @@ client.on("interactionCreate", async (interaction) => {
   }
 
   // Context Menu Handling
-  if (interaction.isContextMenuCommand()) {
-        await interaction.deferReply({ ephemeral: false });
-        const command = client.commandsFiles.get(interaction.commandName);
-        if (command) command.run(client, interaction);
+  else if (interaction.isContextMenuCommand()) {
+    await interaction.deferReply({ ephemeral: false });
+    const command = client.commandsFiles.get(interaction.commandName);
+    if (command) command.run(client, interaction);
 
-        // Logs
-        console.log(`[${colors.FgCyan}context-menu${colors.Reset}]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
-    }
+    // Logs
+    console.log(`[${colors.FgCyan}context-menu${colors.Reset}]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
+  }
+
+  else if (interaction.isModalSubmit()){
+    await interaction.deferReply({ ephemeral: true });
+    const command = client.commandsFiles.get(interaction.customId);
+    if (command) command.run(client, interaction);
+
+    // Logs
+    console.log(`[${colors.FgCyan}   modal    ${colors.Reset}]\tauthor : ${interaction.user.username}\n\t\tguild : ${interaction.guild.name}\n\t\tcmd : ${interaction.commandName}`);
+  }
 });

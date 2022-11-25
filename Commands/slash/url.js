@@ -25,6 +25,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // requête pour choper le lien raccourci
     var resp = await fetch('https://api-ssl.bitly.com/v4/shorten', {
       method: 'post',

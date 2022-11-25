@@ -39,6 +39,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // initialisation des variables
     var min = 1;
     var max = 6;

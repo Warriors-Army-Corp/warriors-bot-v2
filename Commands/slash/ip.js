@@ -25,6 +25,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // requête sur l'API avec l'IP passée en paramètre
     const resp = await fetch(`http://ip-api.com/json/${args[0]}?fields=isp,as,org,country,countryCode,regionName,city,zip,proxy,hosting,status`).then(r => r.json()).catch();
 
