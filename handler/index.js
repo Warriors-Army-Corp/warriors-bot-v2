@@ -1,6 +1,6 @@
 const { glob } = require("glob");
 const { promisify } = require("util");
-const { Client, ApplicationCommandType } = require("discord.js");
+const { Client, ApplicationCommandType, ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
 const colors = require('../fonctions/colors.js');
 
 const globPromise = promisify(glob);
