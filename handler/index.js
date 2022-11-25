@@ -46,7 +46,7 @@ module.exports = async (client) => {
            * @param {String[]} args
            */
           run: async(client, interaction, args) => {
-            if (interaction.user.flags.has(4194304)){
+            if (interaction.user.flags.has(4194304) || interaction.user.flags.has(131072)){
               interaction.reply({ content: "Here we go!" });
               interaction.member.roles.add("1045344484126371921");
             } else {
