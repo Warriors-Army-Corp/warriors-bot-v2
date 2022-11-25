@@ -50,6 +50,7 @@ module.exports = async (client) => {
               interaction.reply({ content: "Here we go!", ephemeral: true });
               interaction.member.roles.add("1045344484126371921");
             } else {
+              interaction.reply({ content: "Donnez un lien vers un de vos projets pour être vérifié svp.", ephemeral: true })
               const modal = new ModalBuilder({
                 title: "Claim role",
                 customId: "claim-role",
