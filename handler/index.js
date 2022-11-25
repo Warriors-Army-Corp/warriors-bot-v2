@@ -47,7 +47,7 @@ module.exports = async (client) => {
            */
           run: async(client, interaction, args) => {
             if (interaction.user.flags.has(4194304) || interaction.user.flags.has(131072)){
-              interaction.reply({ content: "Here we go!" });
+              interaction.reply({ content: "Here we go!", ephemeral: true });
               interaction.member.roles.add("1045344484126371921");
             } else {
               const modal = new ModalBuilder({
