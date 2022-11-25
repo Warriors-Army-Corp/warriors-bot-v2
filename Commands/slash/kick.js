@@ -32,6 +32,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // vérification que le bot a la perm de kick
     if (interaction.guild.members.resolve(client.user).permissions.has("KICK_MEMBERS")) {
       const userID = args[0]; // l'ID du membre à kick

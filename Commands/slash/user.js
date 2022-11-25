@@ -26,6 +26,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     const guild = interaction.guild; // récupération du serv
 
     // fonction pour récup' la bannière

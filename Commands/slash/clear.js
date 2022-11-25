@@ -24,11 +24,12 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
-    if (interaction.guild.members.resolve(client.user).permissions.has("MANAGE_MESSAGES")) {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
+    if (interaction.guild.members.resolve(client.user).permissions.has(PermissionsBitField.Flags.ManageMessages)) {
       const num = args[0]+1;
       interaction.channel.bulkDelete(num, true);
     } else {
-      interaction.followUp({ content: "Je ne peux pas supprimer des messages, il me fait la permission \"Gérer les messages\"" });
+      interaction.followUp({ content: "Je ne peux pas supprimer des messages, il me faut la permission \"Gérer les messages\"" });
     }
   }
 }

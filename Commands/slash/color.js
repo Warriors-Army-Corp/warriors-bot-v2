@@ -24,6 +24,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // pour palier aux problèmes de casse, on met tout en minuscule
     const color = args[0].toLowerCase();
     // on fait la requête à l'API qui donne des infos sur les couleurs

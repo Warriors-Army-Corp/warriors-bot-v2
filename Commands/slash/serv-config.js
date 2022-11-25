@@ -82,6 +82,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     var grp = interaction.options._group;
     var sub = interaction.options._subcommand;
     var args = interaction.options._hoistedOptions;

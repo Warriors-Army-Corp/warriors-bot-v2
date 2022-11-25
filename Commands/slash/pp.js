@@ -23,6 +23,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // si y a un argument
     if (args.length > 0) {
       // on affiche la pp de la personne mentionnée

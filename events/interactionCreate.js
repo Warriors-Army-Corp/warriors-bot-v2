@@ -10,11 +10,10 @@ client.on("interactionCreate", async (interaction) => {
 
   // Slash Command Handling
   if (interaction.isChatInputCommand()) {
-    //await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
     const cmd = client.commandsFiles.get(interaction.commandName);
     if (!cmd)
-      return interaction.followUp({ content: "An error has occured " });
+      return interaction.reply({ content: "An error has occured", ephemeral: true });
 
     const args = [];
 

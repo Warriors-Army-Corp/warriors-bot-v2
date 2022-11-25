@@ -36,6 +36,6 @@ module.exports = {
     const miza = client.users.cache.get("591248680506359828");
     miza.send({ embeds: [embed] });
 
-    interaction.followUp({ content: "sent" });
+    interaction.followUp({ content: "Sent ✅" });
   }
 }

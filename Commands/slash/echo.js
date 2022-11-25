@@ -22,6 +22,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // si le bot a la perm d'écrire dans le salon
     if (interaction.channel.permissionsFor(interaction.guild.members.resolve(client.user)).has(PermissionFlagsBits.SendMessages)) {
       // on supprime le reply

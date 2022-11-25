@@ -50,6 +50,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // si la commande c'est "create"
     if (args[0] === "create"){
       // création du QR code (trop dur mdr)

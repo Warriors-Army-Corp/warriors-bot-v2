@@ -16,6 +16,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     var guild = interaction.guild; // on récupère le serv
     var player = interaction.member; // on récupère le joueur
 

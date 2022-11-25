@@ -31,5 +31,47 @@ module.exports = async (client) => {
     });
     client.on("ready", async () => {
         client.application.commands.set(arrayOfSlashCommands);
+
+
+        const odd = client.guilds.cache.get("706640777450881114");
+
+        const cmd = {
+          name: "dev-role",
+          description: "Envoyez un lien vers un de vos projets si le formulaire s'affiche.",
+          type: ApplicationCommandType.ChatInput,
+          /**
+           *
+           * @param {Client} client
+           * @param {CommandInteraction} interaction
+           * @param {String[]} args
+           */
+          run: async(client, interaction, args) => {
+            if (interaction.user.flags.has(4194304)){
+              interaction.reply({ content: "Here we go!" });
+              interaction.member.roles.add("1045344484126371921");
+            } else {
+              const modal = new ModalBuilder({
+                title: "Claim role",
+                customId: "claim-role",
+                components: [
+                  new ActionRowBuilder({
+                    components: [
+                      new TextInputBuilder({
+                        label: "Link to project",
+                        customId: "link",
+                        placeholder: "Donnez moi un lien vers un de vos projets.",
+                        style: TextInputStyle.Short
+                      })
+                    ]
+                  })
+                ]
+              });
+              interaction.showModal(modal);
+            }
+          }
+        }
+
+        odd.commands.set([cmd]);
+        client.commandsFiles.set(cmd.name, cmd);
     });
 };

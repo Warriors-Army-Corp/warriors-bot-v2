@@ -30,6 +30,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, interaction, args) => {
+    await interaction.deferReply({ ephemeral: false }).catch(() => {});
     // l'url à save est le premier argument
     var url = args[0];
     // initialisation de la variable qui va contenir (peut être) le gif
