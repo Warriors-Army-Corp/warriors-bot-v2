@@ -50,9 +50,9 @@ module.exports = {
         // on envoit un message MP à la victime
         await mbr.createDM().then(ch => {
           if (interaction.locale === "fr") {
-            ch.send(`Vous avez été banni de ${interaction.guild.name} par ${interaction.user.tag} pour la raison "${reason}"`);
+            ch.send(`Vous avez été banni de ${interaction.guild.name} par ${interaction.user.tag} pour la raison "${reason}"`).catch();
           } else {
-            ch.send(`You've been banned from ${interaction.guild.name} by ${interaction.user.tag} for the reason "${reason}"`);
+            ch.send(`You've been banned from ${interaction.guild.name} by ${interaction.user.tag} for the reason "${reason}"`).catch();
           }
         }).catch();
         // on indique que la personne s'est fait ban et on donne l'auteur du ban
