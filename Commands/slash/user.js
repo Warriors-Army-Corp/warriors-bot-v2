@@ -53,9 +53,9 @@ module.exports = {
     function status(){
       if (guild.ownerId === user.id) {
         return "Owner";
-      } else if (mbr.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      } else if (mbr.permissions.has(PermissionFlagsBits.Administrator)) {
         return "Admin";
-      } else if (mbr.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
+      } else if (mbr.permissions.has(PermissionFlagsBits.ManageMessages)) {
         return "Mod";
       } else {
         return "Member";
