@@ -78,6 +78,10 @@ module.exports = async function getBadges(user, mbr) {
       headers: {Authorization: "Bot "+process.env.TOKEN}
     }).then(res => res.json()).catch();
 
+    if (user.flags.has(4194304)){
+      badges.push("<:active_developer:1047230188385206424>");
+    }
+
     if ((user.avatar && user.avatarURL({dynamic: true}).includes("gif")) || data.banner !== null) {
       badges.push("<:nitro:831222111041093703>");
     }

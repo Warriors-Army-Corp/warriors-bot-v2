@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionsBitField, resolveColor } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, resolveColor } = require('discord.js');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
 
@@ -137,6 +137,12 @@ module.exports = {
       userEmbed.setImage(banner);
     }
 
-    interaction.followUp({ embeds: [userEmbed] });
+    const clientMbr = interaction.guild.members.cache.get(client.user.id);
+    if (clientMbr.permissions.has(PermissionFlagsBits.SendMessages) && clientMbr.permissions.has(PermissionFlagsBits.EmbedLinks)){
+      interaction.channel.send({ embeds: [userEmbed] });
+      interaction.deleteReply();
+    } else {
+      interaction.followUp({ content: "Can't send messages or embed links :/" });
+    }
   }
 }
