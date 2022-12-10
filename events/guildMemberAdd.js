@@ -1,5 +1,5 @@
 const client = require("../index");
- const { Client, LogLevel } = require("@notionhq/client");
+ const { Client, LogLevel, PermissionsBitField } = require("@notionhq/client");
  const colors = require('../fonctions/colors.js');
 
  // Initializing a client
