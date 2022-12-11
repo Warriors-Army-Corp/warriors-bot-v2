@@ -63,7 +63,7 @@ client.on("guildMemberAdd", async (member) => {
     }
 
     /////////////////////////////////////////////////////////////
-    if (guild.members.me.permissions.has(PermissionFlagsBits.ManageRoles)){
+    if (guild.members.me.permissions.has(1 << 28)){
 
       db_id = 'a03bb09931e942b686e5e8c8950af90e';
       var response = await notion.databases.query({
