@@ -1,6 +1,7 @@
 const client = require("../index");
- const { Client, LogLevel, PermissionFlagsBits } = require("@notionhq/client");
- const colors = require('../fonctions/colors.js');
+const { Client, LogLevel } = require("@notionhq/client");
+const colors = require('../fonctions/colors.js');
+const { PermissionFlagsBits, ChannelType, resolveColor, EmbedBuilder } = require("discord.js");
 
  // Initializing a client
  const notion = new Client({
@@ -63,7 +64,7 @@ client.on("guildMemberAdd", async (member) => {
     }
 
     /////////////////////////////////////////////////////////////
-    if (PermissionFlagsBits && PermissionFlagsBits.ManageRoles && guild.members.me.permissions.has(PermissionFlagsBits.ManageRoles)){
+    if (guild.members.me.permissions.has(PermissionFlagsBits.ManageRoles)){
 
       db_id = 'a03bb09931e942b686e5e8c8950af90e';
       var response = await notion.databases.query({
