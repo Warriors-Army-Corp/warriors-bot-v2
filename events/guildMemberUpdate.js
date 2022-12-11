@@ -1,7 +1,7 @@
 const client = require("../index");
 const { Client, LogLevel } = require("@notionhq/client");
 const colors = require('../fonctions/colors.js');
-const { PermissionsBitField, ChannelType, resolveColor, EmbedBuilder } = require("discord.js");
+const { PermissionFlagsBits, ChannelType, resolveColor, EmbedBuilder } = require("discord.js");
 
 // Initializing a client
 const notion = new Client({
@@ -69,7 +69,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
 
     ///////////////////////////////////////////////////////
 
-    if (guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)){
+    if (guild.members.me.permissions.has(PermissionFlagsBits.ManageRoles)){
 
       db_id = 'a03bb09931e942b686e5e8c8950af90e';
       var response = await notion.databases.query({
@@ -94,7 +94,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
           });
         } else if (!role.editable) {
           let chl = null;
-          chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)).random();
+          chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionFlagsBits.SendMessages)).random();
           const embed = new EmbedBuilder({
             title: `❌ Erreur`,
             color: resolveColor('#2F3136'),
@@ -114,7 +114,7 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
       }
     } else {
       let chl = null;
-      chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)).random();
+      chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionFlagsBits.SendMessages)).random();
       const embed = new EmbedBuilder({
         title: `❌ Erreur`,
         color: resolveColor('#2F3136'),
