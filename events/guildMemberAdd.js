@@ -1,5 +1,5 @@
 const client = require("../index");
- const { Client, LogLevel, PermissionsBitField } = require("@notionhq/client");
+ const { Client, LogLevel, PermissionFlagsBits } = require("@notionhq/client");
  const colors = require('../fonctions/colors.js');
 
  // Initializing a client
@@ -63,7 +63,7 @@ client.on("guildMemberAdd", async (member) => {
     }
 
     /////////////////////////////////////////////////////////////
-    if (guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)){
+    if (guild.members.me.permissions.has(PermissionFlagsBits.ManageRoles)){
 
       db_id = 'a03bb09931e942b686e5e8c8950af90e';
       var response = await notion.databases.query({
@@ -88,7 +88,7 @@ client.on("guildMemberAdd", async (member) => {
           });
         } else if (!role.editable) {
           let chl = null;
-          chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)).random();
+          chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionFlagsBits.SendMessages)).random();
           const embed = new EmbedBuilder({
             title: `❌ Erreur`,
             color: resolveColor('#2F3136'),
@@ -108,7 +108,7 @@ client.on("guildMemberAdd", async (member) => {
       }
     } else {
       let chl = null;
-      chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages)).random();
+      chl = guild.channels.cache.filter(chn => chn.type === ChannelType.GuildText && chn.permissionsFor(guild.members.me).has(PermissionFlagsBits.SendMessages)).random();
       const embed = new EmbedBuilder({
         title: `❌ Erreur`,
         color: resolveColor('#2F3136'),
