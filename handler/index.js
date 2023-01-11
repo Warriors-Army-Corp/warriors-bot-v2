@@ -33,7 +33,7 @@ module.exports = async (client) => {
         client.application.commands.set(arrayOfSlashCommands);
 
 
-        // const odd = client.guilds.cache.get("706640777450881114");
+        const odd = client.guilds.cache.get("706640777450881114");
         //
         // const cmd = {
         //   name: "dev-role",
@@ -71,7 +71,9 @@ module.exports = async (client) => {
         //   }
         // }
         //
-        // odd.commands.set([cmd]);
+        odd.commands.cache.each(cmd => {
+          cmd.delete();
+        });
         // client.commandsFiles.set(cmd.name, cmd);
     });
 };
