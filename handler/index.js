@@ -72,7 +72,8 @@ module.exports = async (client) => {
         // }
         //
         odd.commands.cache.each(cmd => {
-          cmd.delete();
+          console.log(cmd);
+          cmd.delete().then(() => console.log("deleted"));
         });
         // client.commandsFiles.set(cmd.name, cmd);
     });
