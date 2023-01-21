@@ -125,7 +125,7 @@ client.on("guildMemberAdd", async (member) => {
           }).catch(err => console.log(`\t\t❌ Pas pu prévenir l'owner...`)));
         });
       } catch (e) {
-        console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ {e}`);
+        console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ ${e}`);
       }
 
     }
