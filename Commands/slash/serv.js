@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           name: "Membres",
-          value: `Totale : ${guild.memberCount}\n${guild.members.cache.filter(mbr => mbr.presence && mbr.presence.status === "online").size} online\n${guild.members.cache.filter(mbr => !mbr.user.bot).size} humains et ${guild.members.cache.filter(mbr => mbr.user.bot).size} bots`,
+          value: `Totale : ${guild.memberCount}\n${guild.members.cache.filter(mbr => mbr.presence && mbr.presence.status !== "offline").size} online\n${guild.members.cache.filter(mbr => !mbr.user.bot).size} humains et ${guild.members.cache.filter(mbr => mbr.user.bot).size} bots`,
           inline: true
         },
         {
