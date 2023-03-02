@@ -228,6 +228,7 @@ module.exports = {
                   }
                 ]
               });
+              
               interaction.followUp({ embeds: [embed] });
             } else {
               const embed = new EmbedBuilder({
