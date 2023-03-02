@@ -3,7 +3,7 @@
  */
 
  // importation des packages requis
- const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
+ const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, resolveColor } = require('discord.js');
  const fetch = require('node-fetch');
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
     if (resp.status === "success") {
       // on crée un embed avec toutes les infos de l'IP
       let Geo = new EmbedBuilder({
-        "color": parseInt("2F3136", 16),
+        "color": resolveColor('#2F3136'),
         "title":`**IP Lookup**`,
         "description":`**__Récupération des informations d'une IP :__**\n
           **Adresse IP** : ${args[0]}

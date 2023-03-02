@@ -1,0 +1,143 @@
+/*
+ * author : Mizari (Mizari-W)
+ */
+const { ActionRowBuilder, StringSelectMenuBuilder, ComponentType, StringSelectMenuOptionBuilder, EmbedBuilder, resolveColor } = require("discord.js");
+const { Client, LogLevel } = require("@notionhq/client");
+
+// Initializing a client
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
+  LogLevel: LogLevel.Debug
+});
+
+module.exports = {
+  name: "validation_modal",
+  type: "Modal",
+  /**
+   *
+   * @param {Client} client
+   * @param {CommandInteraction} interaction
+   */
+  run: async(client, interaction) => {
+    var userFlag = interaction.components[0].components[0].value;
+    interaction.deferReply({ ephemeral: true });
+
+    // id de la db
+    var db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";
+    // on cherche le thread dans la db
+    var challResponse = await notion.databases.query({
+      database_id: db_id,
+      filter: {
+        property: 'ThreadID',
+        text: {
+          contains: interaction.channel.id
+        }
+      }
+    });
+
+    if (challResponse.results.length > 0){
+      // on update le chall
+      const properties = challResponse.results[0].properties;
+      const flag = properties.Flag.rich_text[0].plain_text;
+
+      if (userFlag === flag){
+        let score = properties.Difficulty.rich_text[0].plain_text;
+        score = score==="easy"?5:(score==="middle"?10:15)
+        let firstBlood = properties.FirstBlood.rich_text;
+
+        interaction.followUp({ content: `Good job! You win ${score} points from this challenge! 🥳 ${firstBlood.length===0?"And firstblooded the challenge 😱":""}`});
+
+        // firstBlood
+        if (firstBlood.length === 0){
+          const pageId = challResponse.results[0].id;
+          await notion.pages.update({
+            page_id: pageId,
+            properties: {
+              FirstBlood: {
+                rich_text: [
+                  {
+                    text: {
+                      content: interaction.user.username
+                    }
+                  }
+                ]
+              }
+            }
+          });
+
+          const embed = interaction.message.embeds[0];
+          embed.fields[1].value = interaction.user.username;
+
+          let button = interaction.message.components[0];
+
+          interaction.message.edit({ embeds: [embed], components: [button] });
+        }
+
+        // id de la db
+        db_id = "95fba5ee-8580-49e3-8d2a-6fdfef29762b";
+        // on cherche le membre dans le scoreboard
+        memberResponse = await notion.databases.query({
+          database_id: db_id,
+          filter: {
+            property: 'MemberId',
+            text: {
+              contains: interaction.user.id
+            }
+          }
+        });
+
+        if (memberResponse.results.length === 0){
+          // on créé le membre dans le scoreboard
+          await notion.pages.create({
+            parent: {
+              database_id: db_id
+            },
+            properties: {
+              MemberId: {
+                title: [
+                  {
+                    text: {
+                      content: interaction.user.id
+                    }
+                  }
+                ]
+              },
+              Score: {
+                number: score
+              },
+              Challenges: {
+                relation: [
+                  {
+                    id: challResponse.results[0].id
+                  }
+                ]
+              }
+            }
+          });
+        } else {
+          const oldScore = memberResponse.results[0].properties.Score.number;
+          const allChallenges = memberResponse.results[0].properties.Challenges.relation;
+          allChallenges.push({ id: challResponse.results[0].id })
+
+          // on update le membre dans le scoreboard
+          const pageId = memberResponse.results[0].id;
+          await notion.pages.update({
+            page_id: pageId,
+            properties: {
+              Score: {
+                number: oldScore + score
+              },
+              Challenges: {
+                relation: allChallenges
+              }
+            }
+          });
+        }
+      } else {
+        interaction.followUp({ content: "It's not the good flag... try again!" });
+      }
+    } else {
+      interaction.followUp({ content: "Something went wrong..." });
+    }
+  }
+}

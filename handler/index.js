@@ -25,15 +25,13 @@ module.exports = async (client) => {
         if (!file?.name) return;
         client.commandsFiles.set(file.name, file);
 
-        if ([ApplicationCommandType.Message, ApplicationCommandType.User].includes(file.type)) delete file.description;
-
         if ([ApplicationCommandType.Message, ApplicationCommandType.User, ApplicationCommandType.ChatInput].includes(file.type)) arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
         client.application.commands.set(arrayOfSlashCommands);
 
 
-        const odd = client.guilds.cache.get("706640777450881114");
+        //const odd = client.guilds.cache.get("706640777450881114");
         //
         // const cmd = {
         //   name: "dev-role",
@@ -71,10 +69,10 @@ module.exports = async (client) => {
         //   }
         // }
         //
-        odd.commands.cache.each(cmd => {
-          console.log(cmd);
-          cmd.delete().then(() => console.log("deleted"));
-        });
-        // client.commandsFiles.set(cmd.name, cmd);
+        // odd.commands.cache.each(cmd => {
+        //   console.log(cmd);
+        //   cmd.delete().then(() => console.log("deleted"));
+        // });
+        //client.commandsFiles.set(cmd.name, cmd);
     });
 };

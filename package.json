@@ -4,7 +4,7 @@
   "description": "Le bot de la WAC",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config index.js",
+    "start": "node --trace-deprecation -r dotenv/config index.js",
     "test": "nodemon index.js"
   },
   "repository": {
