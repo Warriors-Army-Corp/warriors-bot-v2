@@ -71,16 +71,28 @@ module.exports = {
           interaction.reply({ content: "You already did this challenge", ephemeral: true });
         } else {
           if (interaction.channel.ownerId === interaction.user.id){
-              let page = challResponse.results[0];
-              if (page.properties.FirstBlood.rich_text.length === 0){
-                interaction.reply({ content: "Please wait for the First Blood", ephemeral: true });
-              } else {
+            let page = challResponse.results[0];
+            if (page.properties.FirstBlood.rich_text.length === 0){
+              interaction.reply({ content: "Please wait for the First Blood", ephemeral: true });
+            } else {
+              try {
                 // apparission du modal
                 interaction.showModal(modal);
+              } catch(err) {
+                interaction.reply({ content: "Something went wrong... Please retry :/", ephemeral: true });
+                //Logs
+                console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Le modal a planté ???`);
               }
+            }
           } else {
-            // apparission du modal
-            interaction.showModal(modal);
+            try {
+              // apparission du modal
+              interaction.showModal(modal);
+            } catch(err) {
+              interaction.reply({ content: "Something went wrong... Please retry :/", ephemeral: true });
+              //Logs
+              console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Le modal a planté ???`);
+            }
           }
         }
       } else {
