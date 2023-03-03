@@ -67,20 +67,20 @@ module.exports = {
               value: "0",
               inline: true
             },
-            {
-              name: "",
-              value: ""
-            },
-            {
-              name: "🩸 First Blood",
-              value: "None",
-              inline: true
-            },
-            {
-              name: "🚩 Last Flagger",
-              value: "None",
-              inline: true
-            }
+            // {
+            //   name: "",
+            //   value: ""
+            // },
+            // {
+            //   name: "🩸 First Blood",
+            //   value: "None",
+            //   inline: true
+            // },
+            // {
+            //   name: "🚩 Last Flagger",
+            //   value: "None",
+            //   inline: true
+            // }
           ]
         });
 

@@ -19,8 +19,8 @@ module.exports = {
    * @param {CommandInteraction} interaction
    */
   run: async(client, interaction) => {
-    var userFlag = interaction.components[0].components[0].value;
     interaction.deferReply({ ephemeral: true });
+    var userFlag = interaction.components[0].components[0].value;
 
     // id de la db
     var db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";
@@ -45,11 +45,11 @@ module.exports = {
         score = score==="easy"?5:(score==="middle"?10:15)
         let firstBlood = properties.FirstBlood.rich_text;
 
-        interaction.followUp({ content: `Good job! You win ${score} points from this challenge! 🥳 ${firstBlood.length===0?"And firstblooded the challenge 😱":""}`});
+        await interaction.followUp({ content: `Good job! You win ${score} points from this challenge! 🥳 ${firstBlood.length===0?"And firstblooded the challenge 😱":""}`});
 
-        var embed = interaction.message.embeds[0];
+        var embed = interaction.message.embeds[0]
         if (embed.fields.length === 2){
-          embed = new EmbedBuilder({
+          embed = await new EmbedBuilder({
             title: interaction.channel.name,
             color: resolveColor('#2B2D31'),
             fields: [
@@ -99,11 +99,11 @@ module.exports = {
             }
           });
 
-          embed.fields[3].value = interaction.user.username;
+          embed.data.fields[3].value = interaction.user.username;
         }
 
-        embed.fields[1].value = `${properties.ScoreBoard.relation.length+1}`;
-        embed.fields[4].value = interaction.user.username;
+        embed.data.fields[1].value = `${properties.ScoreBoard.relation.length+1}`;
+        embed.data.fields[4].value = interaction.user.username;
         let button = interaction.message.components[0];
 
         interaction.message.edit({ embeds: [embed], components: [button] });
