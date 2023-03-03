@@ -37,10 +37,9 @@ module.exports = {
         // apparission du modal
         interaction.showModal(modal);
       } catch(err) {
-        interaction.reply({ content: "Something went wrong... Please retry :/" });
+        interaction.reply({ content: "Something went wrong... Please retry :/", ephemeral: true });
         //Logs
         console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Le modal a planté ???`);
-
       }
 
     } else {
