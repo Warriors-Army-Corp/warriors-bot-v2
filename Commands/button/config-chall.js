@@ -2,6 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
+const colors = require('../fonctions/colors.js');
 
 module.exports = {
   name: "chall_btn",
@@ -32,8 +33,15 @@ module.exports = {
         ]
       });
 
-      // apparission du modal
-      interaction.showModal(modal);
+      try {
+        // apparission du modal
+        interaction.showModal(modal);
+      } catch(err) {
+        interaction.reply({ content: "Something went wrong... Please retry :/" });
+        //Logs
+        console.log(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Le modal a planté ???`);
+
+      }
 
     } else {
       interaction.reply({ content: "You're note the author of the challenge", ephemeral: true });

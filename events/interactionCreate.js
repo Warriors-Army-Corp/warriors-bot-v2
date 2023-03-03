@@ -1,5 +1,4 @@
 const { ApplicationCommandOptionType } = require("discord.js");
-
 const client = require("../index");
 const colors = require('../fonctions/colors.js');
 

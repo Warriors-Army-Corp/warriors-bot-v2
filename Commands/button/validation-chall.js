@@ -22,7 +22,7 @@ module.exports = {
 
     // création du modal
     let modal = new ModalBuilder({
-      title: "Challenge Configuration",
+      title: "Challenge Validation",
       customId: "validation_modal",
       components: [
         new ActionRowBuilder({

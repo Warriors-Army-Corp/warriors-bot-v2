@@ -47,6 +47,40 @@ module.exports = {
 
         interaction.followUp({ content: `Good job! You win ${score} points from this challenge! 🥳 ${firstBlood.length===0?"And firstblooded the challenge 😱":""}`});
 
+        var embed = interaction.message.embeds[0];
+        if (embed.fields.length === 2){
+          embed = new EmbedBuilder({
+            title: interaction.channel.name,
+            color: resolveColor('#2B2D31'),
+            fields: [
+              {
+                name: embed.fields[0].name,
+                value: embed.fields[0].value,
+                inline: true
+              },
+              {
+                name: "✅ Validations",
+                value: "0",
+                inline: true
+              },
+              {
+                name: "",
+                value: ""
+              },
+              {
+                name: "🩸 First Blood",
+                value: "None",
+                inline: true
+              },
+              {
+                name: "🚩 Last Flagger",
+                value: "None",
+                inline: true
+              }
+            ]
+          });
+        }
+
         // firstBlood
         if (firstBlood.length === 0){
           const pageId = challResponse.results[0].id;
@@ -65,13 +99,14 @@ module.exports = {
             }
           });
 
-          const embed = interaction.message.embeds[0];
-          embed.fields[1].value = interaction.user.username;
-
-          let button = interaction.message.components[0];
-
-          interaction.message.edit({ embeds: [embed], components: [button] });
+          embed.fields[3].value = interaction.user.username;
         }
+
+        embed.fields[1].value = `${properties.ScoreBoard.relation.length+1}`;
+        embed.fields[4].value = interaction.user.username;
+        let button = interaction.message.components[0];
+
+        interaction.message.edit({ embeds: [embed], components: [button] });
 
         // id de la db
         db_id = "95fba5ee-8580-49e3-8d2a-6fdfef29762b";
