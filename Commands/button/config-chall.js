@@ -2,7 +2,7 @@
  * author : Mizari (Mizari-W)
  */
 const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
-const colors = require('../fonctions/colors.js');
+const colors = require('../../fonctions/colors.js');
 
 module.exports = {
   name: "chall_btn",
