@@ -69,7 +69,7 @@ module.exports = {
               },
               {
                 name: "🩸 First Blood",
-                value: firstBlood.length === 0?"None":firstBlood.plain_text,
+                value: firstBlood.length === 0?"None":firstBlood[0].plain_text,
                 inline: true
               },
               {
