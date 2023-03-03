@@ -59,11 +59,27 @@ module.exports = {
           fields: [
             {
               name: `${score=="easy"?"🟢":(score=="middle"?"🟡":"🔴")} Difficulty`,
-              value: score[0].toUpperCase()+score.substring(1)+` (${score=="easy"?"5":(score=="middle"?"10":"15")} points)`
+              value: score[0].toUpperCase()+score.substring(1)+` (${score=="easy"?"5":(score=="middle"?"10":"15")} points)`,
+              inline: true
+            },
+            {
+              name: "✅ Validations",
+              value: "0",
+              inline: true
+            },
+            {
+              name: "",
+              value: ""
             },
             {
               name: "🩸 First Blood",
-              value: "None"
+              value: "None",
+              inline: true
+            },
+            {
+              name: "🚩 Last Flagger",
+              value: "None",
+              inline: true
             }
           ]
         });
