@@ -2,9 +2,16 @@
  * author : Mizari (Mizari-W)
  */
 // importation des packages et fonctions dont on a besoin
-const { EmbedBuilder, ApplicationCommandType, ChannelType } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandType, ChannelType, resolveColor } = require('discord.js');
 const date = require('../../fonctions/date.js');
 const badges = require('../../fonctions/getServBadges.js');
+const { Client, LogLevel } = require("@notionhq/client");
+
+// Initializing a client
+const notion = new Client({
+  auth: process.env.NOTION_TOKEN,
+  LogLevel: LogLevel.Debug
+});
 
 
 module.exports = {
@@ -21,6 +28,7 @@ module.exports = {
     await interaction.deferReply({ ephemeral: false }).catch(() => {});
     const guild = interaction.guild; // récupération du serv
     const allChan = guild.channels.cache; // récupération de tous les salons
+    var embeds = [];
 
     // initialisation de l'embed
     var servEmbed = new EmbedBuilder({
@@ -28,7 +36,7 @@ module.exports = {
       thumbnail: {
         url: guild.iconURL({dynamic: true})
       },
-      color: parseInt("2F3136", 16),
+      color: resolveColor("#2B2D31"),
       fields:[
         {
           name: "Owner",
@@ -70,7 +78,40 @@ module.exports = {
       servEmbed.setDescription(guild.description);
     }
 
+    embeds.push(servEmbed);
+
+    if (guild.id === "645239930896908293"){
+      // id de la db
+      var db_id = "95fba5ee-8580-49e3-8d2a-6fdfef29762b";
+      // on cherche le membre dans le scoreboard
+      var memberResponse = await notion.databases.query({
+        database_id: db_id,
+        sorts: [
+          {
+            property: "Score",
+            direction: "descending"
+          }
+        ]
+      });
+
+      if (memberResponse.results.length > 0){
+        var listMember = "";
+        for (var i = 0; i < memberResponse.results.length; i++) {
+          var scoreboardmbr = guild.members.cache.get(memberResponse.results[i].properties.MemberId.title[0].plain_text);
+          if (scoreboardmbr != undefined)
+            listMember += scoreboardmbr.user.username+" -> "+memberResponse.results[i].properties.Score.number+" points\n";
+        }
+        var scoreEmbed = new EmbedBuilder({
+          title: "Score Board",
+          color: resolveColor("#2B2D31"),
+          description: listMember
+        });
+
+        embeds.push(scoreEmbed);
+      }
+    }
+
     interaction.deleteReply();
-    interaction.channel.send({ embeds: [servEmbed] });
+    interaction.channel.send({ embeds: embeds });
   }
 }
