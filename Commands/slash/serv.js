@@ -80,7 +80,7 @@ module.exports = {
 
     embeds.push(servEmbed);
 
-    if (guild.id === "645239930896908293"){
+    if (guild.id === "706640777450881114"){
       // id de la db
       var db_id = "95fba5ee-8580-49e3-8d2a-6fdfef29762b";
       // on cherche le membre dans le scoreboard
