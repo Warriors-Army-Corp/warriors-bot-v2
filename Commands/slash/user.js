@@ -6,6 +6,13 @@
  const { EmbedBuilder, ApplicationCommandType, ApplicationCommandOptionType, PermissionFlagsBits, resolveColor } = require('discord.js');
  const Badges = require('../../fonctions/getBadges.js');
  const date = require('../../fonctions/date.js');
+ const { Client, LogLevel } = require("@notionhq/client");
+
+ // Initializing a client
+ const notion = new Client({
+   auth: process.env.NOTION_TOKEN,
+   LogLevel: LogLevel.Debug
+ });
 
 module.exports = {
   name: "user-infos",
@@ -78,7 +85,7 @@ module.exports = {
     await Badges(user, mbr).then(bdg => badges = bdg);
 
     var userEmbed = new EmbedBuilder({
-      color: mbr.displayColor!==0?mbr.displayColor:resolveColor("#2F3136"),
+      color: mbr.displayColor!==0?mbr.displayColor:resolveColor("#2B2D31"),
       thumbnail: {
         url: mbr.displayAvatarURL({ dynamic: true, format: "png" })
       },
@@ -130,6 +137,27 @@ module.exports = {
       ]
     });
 
+    // id de la db
+    var db_id = "95fba5ee-8580-49e3-8d2a-6fdfef29762b";
+    // on cherche le membre dans le scoreboard
+    var memberResponse = await notion.databases.query({
+      database_id: db_id,
+      filter: {
+        property: 'MemberId',
+        text: {
+          contains: user.id
+        }
+      }
+    });
+
+    if (memberResponse.results.length > 0){
+      userEmbed.addFields({
+        name: "Score",
+        value: `${memberResponse.results[0].properties.Score.number}`,
+        inline: true
+      });
+    }
+
     // ajout de la bannière (si y en a une)
     var banner = null;
     await getBanner(user.id).then(res => banner = res);
@@ -137,7 +165,7 @@ module.exports = {
       userEmbed.setImage(banner);
     }
 
-    const clientMbr = interaction.guild.members.cache.get(client.user.id);
+    const clientMbr = interaction.guild.members.me;
     if (clientMbr.permissions.has(PermissionFlagsBits.SendMessages) && clientMbr.permissions.has(PermissionFlagsBits.EmbedLinks)){
       interaction.channel.send({ embeds: [userEmbed] });
       interaction.deleteReply();
