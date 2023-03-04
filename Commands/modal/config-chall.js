@@ -3,6 +3,7 @@
  */
 const { ActionRowBuilder, StringSelectMenuBuilder, ComponentType, StringSelectMenuOptionBuilder } = require("discord.js");
 const { Client, LogLevel } = require("@notionhq/client");
+const colors = require('../../fonctions/colors.js');
 
 // Initializing a client
 const notion = new Client({
@@ -20,7 +21,7 @@ module.exports = {
    */
   run: async(client, interaction) => {
     var flag = interaction.components[0].components[0].value;
-    interaction.deferReply();
+    interaction.deferReply().catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
 
     // id de la db
     db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";

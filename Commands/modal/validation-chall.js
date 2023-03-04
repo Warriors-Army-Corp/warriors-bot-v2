@@ -3,6 +3,7 @@
  */
 const { ActionRowBuilder, StringSelectMenuBuilder, ComponentType, StringSelectMenuOptionBuilder, EmbedBuilder, resolveColor } = require("discord.js");
 const { Client, LogLevel } = require("@notionhq/client");
+const colors = require('../../fonctions/colors.js');
 
 // Initializing a client
 const notion = new Client({
@@ -19,7 +20,7 @@ module.exports = {
    * @param {CommandInteraction} interaction
    */
   run: async(client, interaction) => {
-    interaction.deferReply({ ephemeral: true });
+    interaction.deferReply({ ephemeral: true }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
     var userFlag = interaction.components[0].components[0].value;
 
     // id de la db
