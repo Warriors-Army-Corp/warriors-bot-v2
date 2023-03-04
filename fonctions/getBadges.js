@@ -42,6 +42,9 @@ module.exports = async function getBadges(user, mbr) {
         case "VerifiedDeveloper":
           badges.push("<:early_verified_bot_developer:831222047383355452>");
           break;
+        case "ActiveDeveloper":
+          badges.push("<:active_developer:1047230188385206424>");
+          break;
         default:
           console.log(`[${colors.FgRed}Unknown flag${colors.Reset}] ${flag}`); // si jamais on tombe sur un cas pas prévu on l'affiche
       }
@@ -77,10 +80,6 @@ module.exports = async function getBadges(user, mbr) {
       method: 'get',
       headers: {Authorization: "Bot "+process.env.TOKEN}
     }).then(res => res.json()).catch();
-
-    if (user.flags.has(4194304)){
-      badges.push("<:active_developer:1047230188385206424>");
-    }
 
     if ((user.avatar && user.avatarURL({dynamic: true}).includes("gif")) || data.banner !== null) {
       badges.push("<:nitro:831222111041093703>");
