@@ -99,7 +99,7 @@ module.exports = {
         for (var i = 0; i < memberResponse.results.length; i++) {
           var scoreboardmbr = guild.members.cache.get(memberResponse.results[i].properties.MemberId.title[0].plain_text);
           if (scoreboardmbr != undefined)
-            listMember += scoreboardmbr.user.username+"\n";
+            listMember += scoreboardmbr.user.username+" -> "+memberResponse.results[i].properties.Score.number+" points\n";
         }
         var scoreEmbed = new EmbedBuilder({
           title: "Score Board",
