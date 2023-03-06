@@ -20,7 +20,7 @@ module.exports = {
    * @param {CommandInteraction} interaction
    */
   run: async(client, interaction) => {
-    interaction.deferReply({ ephemeral: true }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
+    await interaction.deferReply({ ephemeral: true }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
     var userFlag = interaction.components[0].components[0].value;
 
     // id de la db
@@ -170,10 +170,10 @@ module.exports = {
           });
         }
       } else {
-        interaction.followUp({ content: "It's not the good flag... try again!" });
+        await interaction.followUp({ content: "It's not the good flag... try again!" });
       }
     } else {
-      interaction.followUp({ content: "Something went wrong..." });
+      await interaction.followUp({ content: "Something went wrong..." });
     }
   }
 }
