@@ -121,13 +121,15 @@ client.on("guildMemberUpdate", async (oldMember, newMember) => {
         description: `🇫🇷 Il semblerait que je n'ai plus la permission de gérer les rôles 🤔
         \r🇬🇧 It's sims like I can't even manage roles 🤔`
       });
-      chl.send({ embeds: [embed] }).catch(err => {
-        console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Impossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer les rôles sur ${guild.name}`);
-        guild.fetchOwner().then(owner => owner.send({
-          content: `🇫🇷 Je ne peux plus gérer les rôles sur votre serveur "${guild.name}" !
-          \r🇬🇧 I can't manage roles on your server "${guild.name}"!`
-        }).catch(err => console.log(`\t\t❌ Pas pu prévenir l'owner...`)));
-      });
+      if (chl){
+        chl.send({ embeds: [embed] }).catch(err => {
+          console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ Impossible d'envoyer de message dans un salon + je n'ai pas la perm de gérer les rôles sur ${guild.name}`);
+          guild.fetchOwner().then(owner => owner.send({
+            content: `🇫🇷 Je ne peux plus gérer les rôles sur votre serveur "${guild.name}" !
+            \r🇬🇧 I can't manage roles on your server "${guild.name}"!`
+          }).catch(err => console.log(`\t\t❌ Pas pu prévenir l'owner...`)));
+        });
+      }
     }
   }
 });
