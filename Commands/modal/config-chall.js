@@ -20,8 +20,9 @@ module.exports = {
    * @param {CommandInteraction} interaction
    */
   run: async(client, interaction) => {
-    var flag = interaction.components[0].components[0].value;
     interaction.deferReply().catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
+      const isCTF = interaction.channel.appliedTags.find(id => id === '1085176985258557491');
+      var flag = interaction.components[0].components[0].value;
 
     // id de la db
     db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";
@@ -63,17 +64,17 @@ module.exports = {
             options: [
               {
                 emoji: "🟢",
-                label: "Easy (5 points)",
+                label: `Easy (${isCTF!==undefined?"10":"5"} points)`,
                 value: "easy"
               },
               {
                 emoji: "🟡",
-                label: "Middle (10 points)",
+                label: `Middle (${isCTF!==undefined?"20":"10"} points)`,
                 value: "middle"
               },
               {
                 emoji: "🔴",
-                label: "Hard (15 points)",
+                label: `Hard (${isCTF!==undefined?"30":"15"} points)`,
                 value: "hard"
               }
             ],

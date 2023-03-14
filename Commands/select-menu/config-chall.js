@@ -21,6 +21,7 @@ module.exports = {
   run: async(client, interaction) => {
     if (interaction.user.id === interaction.channel.ownerId){
       let score = interaction.values[0];
+      const isCTF = interaction.channel.appliedTags.find(id => id === '1085176985258557491');
 
       // id de la db
       db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";
@@ -59,7 +60,7 @@ module.exports = {
           fields: [
             {
               name: `${score=="easy"?"🟢":(score=="middle"?"🟡":"🔴")} Difficulty`,
-              value: score[0].toUpperCase()+score.substring(1)+` (${score=="easy"?"5":(score=="middle"?"10":"15")} points)`,
+              value: score[0].toUpperCase()+score.substring(1)+` (${isCTF!==undefined?(score=="easy"?"10":(score=="middle"?"20":"30")):(score=="easy"?"5":(score=="middle"?"10":"15"))} points)`,
               inline: true
             },
             {

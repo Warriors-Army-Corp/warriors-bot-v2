@@ -22,6 +22,7 @@ module.exports = {
   run: async(client, interaction) => {
     await interaction.deferReply({ ephemeral: true }).catch(err => console.error(`[${colors.FgRed}   Error    ${colors.Reset}]\t❌ `+err));
     var userFlag = interaction.components[0].components[0].value;
+    const isCTF = interaction.channel.appliedTags.find(id => id === '1085176985258557491');
 
     // id de la db
     var db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";
@@ -43,7 +44,7 @@ module.exports = {
 
       if (userFlag === flag){
         let score = properties.Difficulty.rich_text[0].plain_text;
-        score = score==="easy"?5:(score==="middle"?10:15)
+        score = isCTF!==undefined?(score==="easy"?10:(score==="middle"?20:30)):(score==="easy"?5:(score==="middle"?10:15));
         let firstBlood = properties.FirstBlood.rich_text;
 
         await interaction.followUp({ content: `Good job! You win ${score} points from this challenge! 🥳 ${firstBlood.length===0?"And firstblooded the challenge 😱":""}`});
