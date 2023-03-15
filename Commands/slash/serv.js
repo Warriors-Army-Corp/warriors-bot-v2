@@ -55,12 +55,12 @@ module.exports = {
         },
         {
           name: "Membres",
-          value: `Totale : ${guild.memberCount}\n${guild.members.cache.filter(mbr => mbr.presence && mbr.presence.status !== "offline").size} online\n${guild.members.cache.filter(mbr => !mbr.user.bot).size} humains et ${guild.members.cache.filter(mbr => mbr.user.bot).size} bots`,
+          value: `Total : ${guild.memberCount}\n${guild.members.cache.filter(mbr => mbr.presence && mbr.presence.status !== "offline").size} online\n${guild.members.cache.filter(mbr => !mbr.user.bot).size} humains et ${guild.members.cache.filter(mbr => mbr.user.bot).size} bots`,
           inline: true
         },
         {
           name: "Salons",
-          value: `Totale : ${allChan.size}\n${allChan.filter(ch => ch.type === ChannelType.GuildCategory || ch.type === ChannelType.GuildForum).size} spéciaux\n${allChan.filter(ch => ch.type === ChannelType.GuildText || ch.type === ChannelType.GuildAnnouncement || ch.type === ChannelType.AnnouncementThread || ch.type === ChannelType.PublicThread || ch.type === ChannelType.PrivateThread).size} textuels et ${allChan.filter(ch => ch.type === ChannelType.GuildVoice || ch.type === ChannelType.GuildStageVoice).size} vocaux`,
+          value: `Total : ${allChan.size}\n${allChan.filter(ch => ch.type === ChannelType.GuildCategory || ch.type === ChannelType.GuildForum).size} spéciaux\n${allChan.filter(ch => ch.type === ChannelType.GuildText || ch.type === ChannelType.GuildAnnouncement || ch.type === ChannelType.AnnouncementThread || ch.type === ChannelType.PublicThread || ch.type === ChannelType.PrivateThread).size} textuels et ${allChan.filter(ch => ch.type === ChannelType.GuildVoice || ch.type === ChannelType.GuildStageVoice).size} vocaux`,
           inline: true
         },
         {
