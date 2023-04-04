@@ -85,7 +85,7 @@ module.exports = {
     await interaction.deferReply({ ephemeral: false }).catch(() => {});
     var grp = interaction.options._group;
     var sub = interaction.options._subcommand;
-    var args = interaction.options._hoistedOptions;
+    args = interaction.options._hoistedOptions;
 
     if (grp === "set") {
 
@@ -228,7 +228,7 @@ module.exports = {
                   }
                 ]
               });
-              
+
               interaction.followUp({ embeds: [embed] });
             } else {
               const embed = new EmbedBuilder({
