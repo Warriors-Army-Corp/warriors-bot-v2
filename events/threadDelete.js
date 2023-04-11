@@ -10,7 +10,7 @@ const notion = new Client({
 });
 
 client.on("threadDelete", async (thread) => {
-  if (["1078322593871974471", "1083314009786290186"].find(id => id === thread.parent.id) === undefined) return;
+  if (!["1078322593871974471", "1083314009786290186"].includes(thread.parentId)) return;
 
   // id de la db
   db_id = "4cbba861-b8a3-41b2-ac3d-39da419ea4a4";

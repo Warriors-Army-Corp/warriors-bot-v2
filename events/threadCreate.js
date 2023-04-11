@@ -10,7 +10,7 @@ const notion = new Client({
 });
 
 client.on("threadCreate", async (thread, newlyCreated) => {
-  if (["1078322593871974471", "1083314009786290186"].find(id => id === thread.parent.id) === undefined) return;
+  if (!["1078322593871974471", "1083314009786290186"].includes(thread.parentId)) return;
 
   console.log(thread.appliedTags);
 
